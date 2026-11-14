@@ -14,7 +14,7 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] PROGRESS.md cleaned
 - [x] DECISIONS.md created
 - [x] Architecture proposals P-1 to P-7 approved
-- [ ] Proposals P-8, P-9 and P-10 approved
+- [x] Proposals P-8, P-9 and P-10 approved (by owner delegation)
 - [ ] Scoring rules proposed and approved (required before implementing any game)
 
 ## Phase 1: Foundation
@@ -26,7 +26,9 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Server package: typecheck passes, server starts on port 4000 and loads shared + .env
 - [x] Server /health page confirmed in browser
 - [x] PostgreSQL 16 running via Docker Compose (healthy, accepting connections)
-- [ ] Prisma initialised and first migration
+- [x] Prisma 7.10.0 installed, client generated, typecheck passes
+- [x] First migration (20261114054931_init) applied; db:check connects and reads 0 rows
+- [ ] Prisma migration committed to Git
 - [x] Vitest configured and verified
 - [x] Prettier verified (npm run format)
 - [x] First Git commit made (18498ba, .env excluded)
@@ -57,4 +59,4 @@ Update after every development session. Never mark a feature complete unless it 
 None recorded yet.
 
 ## Next Task
-Owner approves P-8, P-9 and P-10. Then set up Prisma (version pinned, files created by hand) and review the first database schema BEFORE running any migration.
+Commit the Prisma work, review npm audit --omit=dev, then build the design system and homepage in web/.

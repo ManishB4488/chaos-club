@@ -11,6 +11,9 @@ dist/
 .next/
 coverage/
 
+# generated Prisma client (rebuilt by: npm run db:generate --workspace server)
+server/generated/
+
 # test output
 playwright-report/
 test-results/

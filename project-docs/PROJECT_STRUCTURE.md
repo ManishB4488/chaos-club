@@ -58,3 +58,11 @@ chaos-club/
 - `web` never holds secret game state; it renders only what the server sends that player.
 - `server` is the only place that decides scores, roles, words, votes and game completion.
 - Room state lives in memory behind a `RoomStore` interface so Redis can be added later.
+
+## Added in the Prisma step (unverified until PROGRESS.md says so)
+- `server/prisma.config.ts`: Prisma CLI configuration (loads the root `.env`)
+- `server/prisma/schema.prisma`: tables ContentItem, WordPack, Word, ContentReport
+- `server/prisma/migrations/`: created by `prisma migrate dev` (committed to Git)
+- `server/generated/`: generated Prisma client (NOT committed; rebuild with `db:generate`)
+- `server/src/lib/prisma.ts`: the shared database client
+- `server/scripts/db-check.ts`: connection check

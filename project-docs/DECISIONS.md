@@ -28,14 +28,16 @@ Architecture is never changed silently. Every change is recorded here with the o
 | D-020 | Ports | (P-5) Web 3000, server 4000, PostgreSQL 5432. |
 | D-021 | Content storage | (P-6) JSON files in `content/en/`, loaded into PostgreSQL by a seed script. |
 | D-022 | Scoring | (P-7) Scoring rules for all five games are written and approved by the owner BEFORE any game is implemented. |
+| D-023 | Server runtime | (P-8) The server runs TypeScript directly with `tsx` (no build step) in development and, initially, production. Revisit before the first deployment. |
+| D-024 | Naming and env | (P-9) The web package keeps the name `web`. One root `.env` serves the server and Docker; the website reads `web/.env.local` when needed. |
+| D-025 | Prisma | (P-10) Prisma pinned to 7.10.0 with `@prisma/adapter-pg`, `pg`, `dotenv`. Files written by hand (no `prisma init`). `prisma.config.ts` in `server/`; generated client in `server/generated/` (not committed). Do NOT upgrade to Prisma 8 (a release candidate was offered on 2026-11-14) without a new decision. |
+
+Note: D-023 to D-025 were approved by the owner's delegation ("do whatever is best for the project"). Delegation does not cover deployment or paid services (D-007).
 
 ## Proposed: awaiting owner approval
 
 | ID | Proposal | Why |
 |---|---|---|
-| P-8 | The server runs TypeScript directly with `tsx` (no separate build step) in development and, initially, in production. Revisit before the first deployment. | Keeps setup simple for a beginner. A compiled build may be better for production. |
-| P-9 | The web package keeps its generated name `web` (not `@chaos/web`). A single `.env` at the project root serves the server and Docker; the website reads `web/.env.local` when it needs settings. | Avoids unnecessary renaming. Next.js only reads env files inside `web/`. |
-| P-10 | Prisma is pinned to the exact version shown in its current v7 documentation (7.10.0), with `@prisma/adapter-pg`, `pg` and `dotenv`. Prisma files are written by hand (not with `prisma init`) so no second `.env` file is created. `prisma.config.ts` lives in `server/` and loads the root `.env`. The generated client goes in `server/generated/` and is not committed. The first schema is reviewed by the owner before any migration runs. | Prisma 7 changed how it is configured, and the docs mention a newer Prisma 8 that has not been reviewed. Pinning avoids surprise changes. |
 
 ## Open questions
 

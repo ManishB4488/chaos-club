@@ -1,0 +1,87 @@
+// CHAOS CLUB database schema (first version: game content and moderation reports).
+// Live room state (players, votes, scores) is NOT stored here. It lives in server memory.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ContentKind {
+  MOST_LIKELY_TO // "Who is most likely to..." questions
+  ROAST_PROMPT // Roast Your Friends prompts
+  TRIVIA // Fake Answer trivia (uses the "answer" field)
+}
+
+enum WordPackPurpose {
+  IMPOSTOR // word + related word pairs
+  DRAWING // words to draw
+}
+
+enum ReportStatus {
+  OPEN
+  REVIEWED
+  DISMISSED
+}
+
+/// One question / prompt / trivia item. "language" is ready for future Hinglish ("en" now).
+model ContentItem {
+  id        String      @id @default(cuid())
+  kind      ContentKind
+  language  String      @default("en")
+  category  String
+  text      String
+  answer    String? // only for TRIVIA: the real answer
+  isActive  Boolean     @default(true)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+
+  @@unique([kind, language, text])
+  @@index([kind, language, isActive])
+}
+
+/// A themed group of words (food, movies, animals...).
+model WordPack {
+  id        String          @id @default(cuid())
+  name      String
+  language  String          @default("en")
+  category  String
+  purpose   WordPackPurpose
+  isActive  Boolean         @default(true)
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+  words     Word[]
+
+  @@unique([purpose, language, name])
+}
+
+/// A word in a pack. For the Impostor game, relatedWord is what the impostor receives.
+model Word {
+  id          String   @id @default(cuid())
+  packId      String
+  pack        WordPack @relation(fields: [packId], references: [id], onDelete: Cascade)
+  text        String
+  relatedWord String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  @@unique([packId, text])
+  @@index([packId])
+}
+
+/// A player's report of inappropriate content, reviewed in the admin panel later.
+model ContentReport {
+  id         String       @id @default(cuid())
+  roomCode   String
+  game       String
+  text       String // copy of the reported text
+  reason     String?
+  status     ReportStatus @default(OPEN)
+  createdAt  DateTime     @default(now())
+  resolvedAt DateTime?
+
+  @@index([status, createdAt])
+}
