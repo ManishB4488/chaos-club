@@ -28,7 +28,7 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] PostgreSQL 16 running via Docker Compose (healthy, accepting connections)
 - [x] Prisma 7.10.1 installed (security patch), client generated, typecheck and db:check pass
 - [x] Server production audit clean (npm audit --omit=dev: 0 vulnerabilities)
-- [ ] 7 moderate dev-tool warnings (minimatch via typescript-eslint, web linting only) reviewed/fixed
+- [x] 7 moderate dev-tool warnings (minimatch via typescript-eslint, web linting only) reviewed; plain `npm audit fix` does not clear them; ACCEPTED, re-check when web tooling updates. Never use `npm audit fix --force`.
 - [x] First migration (20261114054931_init) applied; db:check connects and reads 0 rows
 - [ ] Prisma migration committed to Git
 - [x] Vitest configured and verified
@@ -59,6 +59,9 @@ Update after every development session. Never mark a feature complete unless it 
 
 ## Known Bugs
 None recorded yet.
+
+## Accepted risks
+- 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
 Commit the Prisma work, review npm audit --omit=dev, then build the design system and homepage in web/.
