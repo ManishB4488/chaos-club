@@ -85,3 +85,17 @@ chaos-club/
 - `web/src/components/layout/`: Footer, LegalPage
 - `web/src/app/`: page.tsx (homepage), about/, contact/, privacy/, terms/
 - `AnimatedWordmark.tsx` is no longer used and should be deleted.
+
+## Added in the room rules step (unverified until PROGRESS.md says so)
+- `shared/src/events.ts`: event names, error codes and messages, room and player view types
+- `shared/src/schemas/events.ts`: Zod schemas for every event payload
+- `server/src/rooms/`: RoomManager.ts (all room rules), codes.ts, constants.ts, types.ts
+- `server/src/storage/roomStore.ts`: RoomStore interface and the in-memory version
+- `server/tests/RoomManager.test.ts` and `shared/tests/events.test.ts`
+
+## Added in the socket step (unverified until PROGRESS.md says so)
+- `server/src/app.ts`: builds the whole server (health check, Socket.IO, room gateway) so tests can run it on any free port
+- `server/src/index.ts`: starts the server from the .env settings; shuts down cleanly on Ctrl + C
+- `server/src/socket/roomGateway.ts`: connects Socket.IO to RoomManager (validation, rate limits, private snapshots, timers)
+- `server/src/socket/rateLimiter.ts`: token bucket and per-key limiter
+- `server/tests/roomGateway.test.ts` (real socket clients) and `rateLimiter.test.ts`
