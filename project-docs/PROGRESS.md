@@ -34,8 +34,10 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Vitest configured and verified
 - [x] Prettier verified (npm run format)
 - [x] First Git commit made (18498ba, .env excluded)
-- [ ] Web foundation: theme, fonts, layout, Framer Motion + Lucide (piece 1, written, NOT yet verified)
-- [ ] Design system components: Button, Card, Badge, Avatar (piece 2)
+- [ ] Web foundation: theme, fonts, layout, Framer Motion + Lucide (piece 1: lint, build and browser render verified; still to confirm: phone width, Console errors, background glow)
+- [ ] Design system components: Button, Card, Badge, Avatar (piece 2, written, NOT yet verified; preview at /design in development only, 404 in production)
+- [ ] Modal and Timer components (built when the room screens need them)
+- [ ] Link web to @chaos/shared (needs next.config.ts reviewed) and move avatar/color lists into shared
 - [ ] Homepage sections, including 'Coming soon' game cards and draft footer pages (piece 3)
 - [ ] Homepage Create/Join Room buttons working (needs the room system)
 - [ ] Create Room
@@ -66,4 +68,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify web foundation (piece 1): install libraries, lint, build, view in browser and at phone width. Then piece 2: design system components.
+Verify piece 2 at /design (lint, build, phone width, keyboard focus), confirm piece 1 leftovers, then piece 3: homepage sections.

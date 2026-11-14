@@ -73,3 +73,8 @@ chaos-club/
 - `web/src/app/page.tsx`: temporary themed start page (replaced by the real homepage in piece 3)
 - `web/src/lib/site.ts`: configurable site name, tagline, description
 - `web/src/components/ui/AnimatedWordmark.tsx`: animated title (client component)
+
+## Added in the design system step (unverified until PROGRESS.md says so)
+- `web/src/components/ui/`: Button (+ ButtonLink), Card, Badge, Avatar
+- `web/src/lib/`: cn.ts (class joiner), theme.ts (accent colors), avatars.ts (avatar + player color lists; move to shared later)
+- `web/src/app/design/page.tsx`: development-only preview of the components (404 in production)
