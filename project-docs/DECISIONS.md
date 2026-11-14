@@ -30,7 +30,7 @@ Architecture is never changed silently. Every change is recorded here with the o
 | D-022 | Scoring | (P-7) Scoring rules for all five games are written and approved by the owner BEFORE any game is implemented. |
 | D-023 | Server runtime | (P-8) The server runs TypeScript directly with `tsx` (no build step) in development and, initially, production. Revisit before the first deployment. |
 | D-024 | Naming and env | (P-9) The web package keeps the name `web`. One root `.env` serves the server and Docker; the website reads `web/.env.local` when needed. |
-| D-025 | Prisma | (P-10) Prisma pinned to 7.10.0 with `@prisma/adapter-pg`, `pg`, `dotenv`. Files written by hand (no `prisma init`). `prisma.config.ts` in `server/`; generated client in `server/generated/` (not committed). Do NOT upgrade to Prisma 8 (a release candidate was offered on 2026-11-14) without a new decision. |
+| D-025 | Prisma | (P-10) Prisma pinned to 7.10.1 (upgraded from 7.10.0 on 2026-11-14 to fix audit warnings in 7.10.0's dependencies; same major line) with `@prisma/adapter-pg`, `pg`, `dotenv`. Files written by hand (no `prisma init`). `prisma.config.ts` in `server/`; generated client in `server/generated/` (not committed). Do NOT upgrade to Prisma 8 (a release candidate was offered on 2026-11-14) without a new decision. |
 
 Note: D-023 to D-025 were approved by the owner's delegation ("do whatever is best for the project"). Delegation does not cover deployment or paid services (D-007).
 

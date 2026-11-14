@@ -26,7 +26,9 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Server package: typecheck passes, server starts on port 4000 and loads shared + .env
 - [x] Server /health page confirmed in browser
 - [x] PostgreSQL 16 running via Docker Compose (healthy, accepting connections)
-- [x] Prisma 7.10.0 installed, client generated, typecheck passes
+- [x] Prisma 7.10.1 installed (security patch), client generated, typecheck and db:check pass
+- [x] Server production audit clean (npm audit --omit=dev: 0 vulnerabilities)
+- [ ] 7 moderate dev-tool warnings (minimatch via typescript-eslint, web linting only) reviewed/fixed
 - [x] First migration (20261114054931_init) applied; db:check connects and reads 0 rows
 - [ ] Prisma migration committed to Git
 - [x] Vitest configured and verified
