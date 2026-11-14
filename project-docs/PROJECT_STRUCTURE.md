@@ -66,3 +66,10 @@ chaos-club/
 - `server/generated/`: generated Prisma client (NOT committed; rebuild with `db:generate`)
 - `server/src/lib/prisma.ts`: the shared database client
 - `server/scripts/db-check.ts`: connection check
+
+## Added in the web foundation step (unverified until PROGRESS.md says so)
+- `web/src/app/globals.css`: CHAOS CLUB colors, fonts, animations, reduced-motion rule
+- `web/src/app/layout.tsx`: fonts (Fredoka, Nunito), metadata, viewport
+- `web/src/app/page.tsx`: temporary themed start page (replaced by the real homepage in piece 3)
+- `web/src/lib/site.ts`: configurable site name, tagline, description
+- `web/src/components/ui/AnimatedWordmark.tsx`: animated title (client component)

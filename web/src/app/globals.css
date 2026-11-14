@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* CHAOS CLUB design tokens. Used as classes, e.g. bg-night-900, text-sunny, rounded-card. */
+@theme {
+  /* Backgrounds: deep purple-navy */
+  --color-night-950: #0d0a1f;
+  --color-night-900: #15102e;
+  --color-night-800: #1e1745;
+  --color-night-700: #2a2160;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Text */
+  --color-ink: #f4f1ff;
+  --color-ink-soft: #b9b2dd;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Arcade accents */
+  --color-grape: #8b5cf6;
+  --color-volt: #3b82ff;
+  --color-tangerine: #ff8a3d;
+  --color-bubblegum: #ff4fa3;
+  --color-sunny: #ffd23f;
+
+  --radius-card: 1.5rem;
+  --radius-pill: 9999px;
+
+  --animate-gradient-shift: gradient-shift 6s ease infinite;
+  --animate-float: float 5s ease-in-out infinite;
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Fonts are loaded in layout.tsx (next/font) and referenced here. */
+@theme inline {
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-night-950);
+    background-image:
+      radial-gradient(60rem 40rem at 10% -10%, rgb(139 92 246 / 0.28), transparent 60%),
+      radial-gradient(50rem 36rem at 100% 0%, rgb(255 79 163 / 0.18), transparent 60%);
+    background-repeat: no-repeat;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: rgb(255 79 163 / 0.45);
+  }
+
+  /* Clear keyboard focus on every interactive element. */
+  :focus-visible {
+    outline: 3px solid var(--color-sunny);
+    outline-offset: 3px;
+  }
+}
+
+/* Respect people who ask their device for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
