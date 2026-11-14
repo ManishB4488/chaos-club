@@ -38,6 +38,7 @@ Note: D-023 to D-025 were approved by the owner's delegation ("do whatever is be
 
 | ID | Proposal | Why |
 |---|---|---|
+| P-11 | Room protocol (server-authoritative). Client to server: `room:create`, `room:join`, `room:rejoin`, `room:leave`, `room:kick`, `room:selectGame`, `room:start`. Each uses a Socket.IO acknowledgement that returns `{ ok: true, ... }` or `{ ok: false, error }`. Server to client: `room:state` (a sanitized snapshot built separately for each player) and `room:closed`. On create or join the server issues a random session token that only that player receives; it is kept in `sessionStorage` for reconnecting. Room codes use `crypto.randomInt` over the shared alphabet and retry on collision. Nicknames are unique per room, case-insensitively. If the host leaves, the longest-present connected player becomes host. In the lobby a disconnected player stays listed as disconnected for 60 seconds, then is removed. Rooms with nobody connected are deleted after 10 minutes. Every socket event is validated with the shared Zod schemas and rate limited. | Gives the website and server one clear contract before the lobby is built. |
 
 ## Open questions
 

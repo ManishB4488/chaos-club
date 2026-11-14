@@ -1,9 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   cacheComponents: true,
   partialPrefetching: true,
+  // The shared package ships TypeScript source files, so Next.js must compile it.
+  transpilePackages: ["@chaos/shared"],
   turbopack: {
     rules: {
       "*.css": {

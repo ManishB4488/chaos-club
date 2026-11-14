@@ -28,3 +28,22 @@ export const ROOM_CODE_ALPHABET = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 
 export const NICKNAME_MIN_LENGTH = 2;
 export const NICKNAME_MAX_LENGTH = 16;
+
+/** Avatar choices (drawn by the website; validated by the server). */
+export const AVATAR_IDS = [
+  "ghost",
+  "cat",
+  "dog",
+  "bot",
+  "rocket",
+  "pizza",
+  "bird",
+  "fish",
+  "rabbit",
+  "skull",
+] as const;
+export type AvatarId = (typeof AVATAR_IDS)[number];
+
+/** Player colors. There must always be at least as many as ROOM_MAX_PLAYERS. */
+export const PLAYER_COLORS = ["grape", "volt", "tangerine", "bubblegum", "sunny"] as const;
+export type PlayerColor = (typeof PLAYER_COLORS)[number];

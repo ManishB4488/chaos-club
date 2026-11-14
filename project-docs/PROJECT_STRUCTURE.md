@@ -78,3 +78,10 @@ chaos-club/
 - `web/src/components/ui/`: Button (+ ButtonLink), Card, Badge, Avatar
 - `web/src/lib/`: cn.ts (class joiner), theme.ts (accent colors), avatars.ts (avatar + player color lists; move to shared later)
 - `web/src/app/design/page.tsx`: development-only preview of the components (404 in production)
+
+## Added in the homepage step (unverified until PROGRESS.md says so)
+- `web/src/lib/games.ts`: the five games' names, descriptions, player counts, durations, rules
+- `web/src/components/home/`: Hero, HeroHeading, GameCards, HowItWorks, HowToPlay, game-visuals
+- `web/src/components/layout/`: Footer, LegalPage
+- `web/src/app/`: page.tsx (homepage), about/, contact/, privacy/, terms/
+- `AnimatedWordmark.tsx` is no longer used and should be deleted.

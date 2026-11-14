@@ -34,12 +34,15 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Vitest configured and verified
 - [x] Prettier verified (npm run format)
 - [x] First Git commit made (18498ba, .env excluded)
-- [ ] Web foundation: theme, fonts, layout, Framer Motion + Lucide (piece 1: lint, build and browser render verified; still to confirm: phone width, Console errors, background glow)
-- [ ] Design system components: Button, Card, Badge, Avatar (piece 2, written, NOT yet verified; preview at /design in development only, 404 in production)
+- [x] Web foundation: theme, fonts, layout, Framer Motion + Lucide (verified: lint, build, browser render, background glow, phone width on iPhone 16 size; Console errors not reported)
+- [x] Design system components: Button, Card, Badge, Avatar (verified: lint, build, desktop and phone rendering, Tab focus, press, Console; /design preview is development only)
 - [ ] Modal and Timer components (built when the room screens need them)
 - [ ] Link web to @chaos/shared (needs next.config.ts reviewed) and move avatar/color lists into shared
-- [ ] Homepage sections, including 'Coming soon' game cards and draft footer pages (piece 3)
+- [x] Homepage (hero with example room, Choose Your Chaos cards, How it works, How to play, footer): verified on desktop and phone width
+- [x] Footer pages: About, Contact, Privacy, Terms built and verified. Contact, Privacy and Terms are DRAFTS needing owner review and a real contact email.
 - [ ] Homepage Create/Join Room buttons working (needs the room system)
+- [ ] Web linked to @chaos/shared (avatar and color lists moved into shared)
+- [ ] Web linked to @chaos/shared (avatar and color lists moved into shared)
 - [ ] Create Room
 - [ ] Join Room
 - [ ] Multiplayer lobby (host controls, kick, leave, per-game minimum players)
@@ -64,8 +67,12 @@ Update after every development session. Never mark a feature complete unless it 
 ## Known Bugs
 None recorded yet.
 
+## Notes
+- A leftover `next dev` server was still running on port 3000, so the dev server moved to 3001. Always stop old servers with Ctrl+C before starting new ones.
+- The Network address shown by `next dev` may be a virtual adapter. Use the Wi-Fi IPv4 address from `ipconfig` for phone testing.
+
 ## Accepted risks
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify piece 2 at /design (lint, build, phone width, keyboard focus), confirm piece 1 leftovers, then piece 3: homepage sections.
+Verify the web-to-shared link (tests, typecheck, build, /design and homepage still render). Then the room system, server side first.
