@@ -1,0 +1,26 @@
+# Local development database for CHAOS CLUB.
+# Start:  docker compose up -d
+# Stop:   docker compose down      (your data is kept)
+# Reset:  docker compose down -v   (DELETES all database data)
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: chaos-club-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-chaos}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_dev_password_change_me}
+      POSTGRES_DB: ${POSTGRES_DB:-chaos_club}
+    ports:
+      # 127.0.0.1 means only your own computer can connect, not other devices on your Wi-Fi.
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - chaos_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  chaos_pgdata:
