@@ -45,7 +45,9 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Web linked to @chaos/shared (avatar and color lists moved into shared): verified (11 tests, typecheck, lint, build)
 - [x] Room rules (RoomManager) and shared event contracts: 26 server tests and 17 shared tests pass, typecheck clean
 - [x] Socket.IO room events, validation, rate limiting: 8 real-client tests pass (37 server tests total), typecheck clean, server starts
-- [ ] Server /health after the socket changes, and clean shutdown with Ctrl + C, confirmed by owner
+- [x] Server /health after the socket changes confirmed (shutdown with Ctrl + C still to confirm)
+- [ ] Website room flow, part 1 (written, NOT yet verified): socket client, Create and Join windows, lobby with player list, invite buttons, leave, reconnect after refresh, invite-link join
+- [ ] Website room flow, part 2: host controls (game picker, start, countdown, kick)
 - [ ] Create Room
 - [ ] Join Room
 - [ ] Multiplayer lobby (host controls, kick, leave, per-game minimum players)
@@ -78,4 +80,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Confirm /health and clean shutdown, commit. Then the website side of rooms: read the Next.js docs on dynamic routes with Cache Components, then build the Create/Join windows, the lobby page, invite buttons and reconnect.
+Verify website room flow part 1 with two real browser windows (steps in chat), then build part 2: host controls.

@@ -159,6 +159,15 @@ describe("reconnecting", () => {
     expectError(manager.rejoinRoom(code, "not-the-right-token-at-all", "s9"), "INVALID_SESSION");
   });
 
+  it("treats a repeated rejoin from the same connection as a harmless success", () => {
+    const { manager } = setup();
+    const { code, ids, tokens } = fillRoom(manager, ["A"]);
+    const again = unwrap(manager.rejoinRoom(code, tokens[0] ?? "", "s1"));
+    expect(again.playerId).toBe(ids[0]);
+    expect(again.replacedSocketId).toBeNull();
+    expectError(manager.rejoinRoom(code, "some-other-token-entirely", "s1"), "ALREADY_IN_ROOM");
+  });
+
   it("reports the old socket when the same player reconnects from a new one", () => {
     const { manager } = setup();
     const { code, tokens } = fillRoom(manager, ["A", "B"]);

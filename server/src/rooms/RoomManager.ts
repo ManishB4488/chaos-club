@@ -126,7 +126,17 @@ export class RoomManager {
     sessionToken: string,
     socketId: string,
   ): Result<{ code: string; playerId: string; replacedSocketId: string | null }> {
-    if (this.sockets.has(socketId)) return fail("ALREADY_IN_ROOM");
+    const existing = this.sockets.get(socketId);
+    if (existing) {
+      // The same connection asking again with its own valid token (for example right after
+      // creating the room and opening its page) is fine and changes nothing.
+      const current = this.store.get(existing.code);
+      const self = current?.players.find((p) => p.id === existing.playerId);
+      if (current && self && current.code === code && safeEqual(self.sessionToken, sessionToken)) {
+        return ok({ code, playerId: self.id, replacedSocketId: null });
+      }
+      return fail("ALREADY_IN_ROOM");
+    }
     const room = this.store.get(code);
     if (!room) return fail("ROOM_NOT_FOUND");
     const player = room.players.find((p) => safeEqual(p.sessionToken, sessionToken));

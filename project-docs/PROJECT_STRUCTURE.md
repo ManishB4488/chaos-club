@@ -99,3 +99,10 @@ chaos-club/
 - `server/src/socket/roomGateway.ts`: connects Socket.IO to RoomManager (validation, rate limits, private snapshots, timers)
 - `server/src/socket/rateLimiter.ts`: token bucket and per-key limiter
 - `server/tests/roomGateway.test.ts` (real socket clients) and `rateLimiter.test.ts`
+
+## Added in the website room flow, part 1 (unverified until PROGRESS.md says so)
+- `web/src/lib/`: socket.ts (shared connection), session.ts (tab session and profile), roomClient.ts (room connection store), clipboard.ts
+- `web/src/components/ui/Modal.tsx`: pop-up window on the browser dialog element
+- `web/src/components/room/`: ProfileForm, Lobby, RoomScreen, RoomLoading
+- `web/src/components/home/RoomActions.tsx`: hero buttons plus the Create and Join windows
+- `web/src/app/room/[code]/page.tsx`: the room page

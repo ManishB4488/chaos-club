@@ -1,9 +1,9 @@
 import { Avatar } from "@/components/ui/Avatar";
 import { Badge } from "@/components/ui/Badge";
-import { Button, ButtonLink } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import type { AvatarId, PlayerColor } from "@/lib/avatars";
 import { HeroHeading } from "./HeroHeading";
+import { RoomActions } from "./RoomActions";
 
 const EXAMPLE_PLAYERS: { name: string; avatar: AvatarId; color: PlayerColor; host?: boolean }[] = [
   { name: "Priya", avatar: "rocket", color: "volt", host: true },
@@ -21,20 +21,8 @@ export function Hero() {
           Gather your friends, join a room and find out who is the funniest, smartest and biggest
           liar.
         </p>
-        <div className="flex flex-wrap gap-4">
-          <Button size="lg" disabled>
-            Create a Room
-          </Button>
-          <Button size="lg" variant="secondary" disabled>
-            Join a Room
-          </Button>
-          <ButtonLink href="#games" size="lg" variant="ghost">
-            Explore Games
-          </ButtonLink>
-        </div>
-        <p className="text-sm text-ink-soft">
-          Rooms open in the next update, and the games arrive one at a time.
-        </p>
+        <RoomActions />
+        <p className="text-sm text-ink-soft">The games arrive one at a time, starting with the first two.</p>
       </div>
 
       <Card accent="grape" padding="lg" aria-label="Example room, for illustration only">
