@@ -128,3 +128,12 @@ chaos-club/
 - `web/src/lib/useCountdown.ts`: countdown that follows the server clock
 - `web/src/components/room/Lobby.tsx`: shows the game screen while a game runs
 - Server setting MLT_ROUNDS (default 8) for shorter test games
+
+## Added with the Impostor server module (unverified until PROGRESS.md says so)
+- `content/en/impostor-words.json`: 100 word pairs
+- `shared/src/games/impostor.ts`: actions, steps and the private view
+- `server/src/games/impostor/ImpostorGame.ts`: the rules, scoring and awards
+- `server/src/games/random.ts`: shuffle and category rotation shared by games
+- `server/src/moderation/profanity.ts`: starter word filter
+- `server/src/content/loadImpostorWords.ts`
+- The game is not offered yet: it is only registered when the word file is passed in (screens come first)

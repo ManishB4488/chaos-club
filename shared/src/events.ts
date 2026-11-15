@@ -1,8 +1,9 @@
 import type { AvatarId, GameId, PlayerColor } from "./constants";
+import type { ImpostorView } from "./games/impostor";
 import type { MltView } from "./games/mostLikelyTo";
 
-/** What a player can see of the running game. Only one game exists so far. */
-export type GameView = MltView;
+/** What a player can see of the running game. */
+export type GameView = MltView | ImpostorView;
 
 /** Events the browser sends to the server. */
 export const CLIENT_EVENTS = {
@@ -49,7 +50,11 @@ export type RoomErrorCode =
   | "NOT_A_PARTICIPANT"
   | "ALREADY_VOTED"
   | "CANNOT_VOTE_SELF"
-  | "VOTING_CLOSED";
+  | "VOTING_CLOSED"
+  | "NOT_YOUR_TURN"
+  | "WRONG_STEP"
+  | "CLUE_NOT_ALLOWED"
+  | "ALREADY_DONE";
 
 /** Plain-language messages the website can show. */
 export const ROOM_ERROR_MESSAGES: Record<RoomErrorCode, string> = {
@@ -75,6 +80,10 @@ export const ROOM_ERROR_MESSAGES: Record<RoomErrorCode, string> = {
   ALREADY_VOTED: "You have already voted this round.",
   CANNOT_VOTE_SELF: "You cannot vote for yourself.",
   VOTING_CLOSED: "Voting is closed for this round.",
+  NOT_YOUR_TURN: "It is not your turn.",
+  WRONG_STEP: "You cannot do that right now.",
+  CLUE_NOT_ALLOWED: "That clue is not allowed. Use one word that does not contain your secret word.",
+  ALREADY_DONE: "You have already done that.",
 };
 
 export type PlayerView = {

@@ -1,0 +1,706 @@
+{
+  "version": 1,
+  "status": "APPROVED by owner delegation (2026-11-15). Each pair is two related but different words.",
+  "items": [
+    {
+      "id": "imp-001",
+      "language": "en",
+      "category": "food",
+      "crew": "Pizza",
+      "impostor": "Burger"
+    },
+    {
+      "id": "imp-002",
+      "language": "en",
+      "category": "food",
+      "crew": "Biryani",
+      "impostor": "Pulao"
+    },
+    {
+      "id": "imp-003",
+      "language": "en",
+      "category": "food",
+      "crew": "Samosa",
+      "impostor": "Pakora"
+    },
+    {
+      "id": "imp-004",
+      "language": "en",
+      "category": "food",
+      "crew": "Dosa",
+      "impostor": "Uttapam"
+    },
+    {
+      "id": "imp-005",
+      "language": "en",
+      "category": "food",
+      "crew": "Coffee",
+      "impostor": "Tea"
+    },
+    {
+      "id": "imp-006",
+      "language": "en",
+      "category": "food",
+      "crew": "Chocolate",
+      "impostor": "Caramel"
+    },
+    {
+      "id": "imp-007",
+      "language": "en",
+      "category": "food",
+      "crew": "Pancake",
+      "impostor": "Waffle"
+    },
+    {
+      "id": "imp-008",
+      "language": "en",
+      "category": "food",
+      "crew": "Noodles",
+      "impostor": "Pasta"
+    },
+    {
+      "id": "imp-009",
+      "language": "en",
+      "category": "food",
+      "crew": "Apple",
+      "impostor": "Pear"
+    },
+    {
+      "id": "imp-010",
+      "language": "en",
+      "category": "food",
+      "crew": "Mango",
+      "impostor": "Peach"
+    },
+    {
+      "id": "imp-011",
+      "language": "en",
+      "category": "food",
+      "crew": "Ice cream",
+      "impostor": "Gelato"
+    },
+    {
+      "id": "imp-012",
+      "language": "en",
+      "category": "food",
+      "crew": "Sandwich",
+      "impostor": "Wrap"
+    },
+    {
+      "id": "imp-013",
+      "language": "en",
+      "category": "food",
+      "crew": "Popcorn",
+      "impostor": "Nachos"
+    },
+    {
+      "id": "imp-014",
+      "language": "en",
+      "category": "food",
+      "crew": "Cake",
+      "impostor": "Pie"
+    },
+    {
+      "id": "imp-015",
+      "language": "en",
+      "category": "food",
+      "crew": "Rice",
+      "impostor": "Wheat"
+    },
+    {
+      "id": "imp-016",
+      "language": "en",
+      "category": "food",
+      "crew": "Butter",
+      "impostor": "Cheese"
+    },
+    {
+      "id": "imp-017",
+      "language": "en",
+      "category": "food",
+      "crew": "Lemonade",
+      "impostor": "Smoothie"
+    },
+    {
+      "id": "imp-018",
+      "language": "en",
+      "category": "food",
+      "crew": "Cookie",
+      "impostor": "Brownie"
+    },
+    {
+      "id": "imp-019",
+      "language": "en",
+      "category": "food",
+      "crew": "Soup",
+      "impostor": "Stew"
+    },
+    {
+      "id": "imp-020",
+      "language": "en",
+      "category": "food",
+      "crew": "Sushi",
+      "impostor": "Dumpling"
+    },
+    {
+      "id": "imp-021",
+      "language": "en",
+      "category": "animals",
+      "crew": "Dog",
+      "impostor": "Wolf"
+    },
+    {
+      "id": "imp-022",
+      "language": "en",
+      "category": "animals",
+      "crew": "Cat",
+      "impostor": "Tiger"
+    },
+    {
+      "id": "imp-023",
+      "language": "en",
+      "category": "animals",
+      "crew": "Lion",
+      "impostor": "Leopard"
+    },
+    {
+      "id": "imp-024",
+      "language": "en",
+      "category": "animals",
+      "crew": "Elephant",
+      "impostor": "Rhino"
+    },
+    {
+      "id": "imp-025",
+      "language": "en",
+      "category": "animals",
+      "crew": "Horse",
+      "impostor": "Zebra"
+    },
+    {
+      "id": "imp-026",
+      "language": "en",
+      "category": "animals",
+      "crew": "Monkey",
+      "impostor": "Gorilla"
+    },
+    {
+      "id": "imp-027",
+      "language": "en",
+      "category": "animals",
+      "crew": "Eagle",
+      "impostor": "Hawk"
+    },
+    {
+      "id": "imp-028",
+      "language": "en",
+      "category": "animals",
+      "crew": "Penguin",
+      "impostor": "Seagull"
+    },
+    {
+      "id": "imp-029",
+      "language": "en",
+      "category": "animals",
+      "crew": "Dolphin",
+      "impostor": "Shark"
+    },
+    {
+      "id": "imp-030",
+      "language": "en",
+      "category": "animals",
+      "crew": "Frog",
+      "impostor": "Toad"
+    },
+    {
+      "id": "imp-031",
+      "language": "en",
+      "category": "animals",
+      "crew": "Butterfly",
+      "impostor": "Moth"
+    },
+    {
+      "id": "imp-032",
+      "language": "en",
+      "category": "animals",
+      "crew": "Bee",
+      "impostor": "Wasp"
+    },
+    {
+      "id": "imp-033",
+      "language": "en",
+      "category": "animals",
+      "crew": "Rabbit",
+      "impostor": "Hamster"
+    },
+    {
+      "id": "imp-034",
+      "language": "en",
+      "category": "animals",
+      "crew": "Cow",
+      "impostor": "Buffalo"
+    },
+    {
+      "id": "imp-035",
+      "language": "en",
+      "category": "animals",
+      "crew": "Snake",
+      "impostor": "Lizard"
+    },
+    {
+      "id": "imp-036",
+      "language": "en",
+      "category": "animals",
+      "crew": "Owl",
+      "impostor": "Bat"
+    },
+    {
+      "id": "imp-037",
+      "language": "en",
+      "category": "animals",
+      "crew": "Peacock",
+      "impostor": "Parrot"
+    },
+    {
+      "id": "imp-038",
+      "language": "en",
+      "category": "animals",
+      "crew": "Camel",
+      "impostor": "Llama"
+    },
+    {
+      "id": "imp-039",
+      "language": "en",
+      "category": "animals",
+      "crew": "Spider",
+      "impostor": "Scorpion"
+    },
+    {
+      "id": "imp-040",
+      "language": "en",
+      "category": "animals",
+      "crew": "Octopus",
+      "impostor": "Jellyfish"
+    },
+    {
+      "id": "imp-041",
+      "language": "en",
+      "category": "places",
+      "crew": "Beach",
+      "impostor": "Island"
+    },
+    {
+      "id": "imp-042",
+      "language": "en",
+      "category": "places",
+      "crew": "Mountain",
+      "impostor": "Hill"
+    },
+    {
+      "id": "imp-043",
+      "language": "en",
+      "category": "places",
+      "crew": "Library",
+      "impostor": "Bookshop"
+    },
+    {
+      "id": "imp-044",
+      "language": "en",
+      "category": "places",
+      "crew": "Hospital",
+      "impostor": "Pharmacy"
+    },
+    {
+      "id": "imp-045",
+      "language": "en",
+      "category": "places",
+      "crew": "School",
+      "impostor": "College"
+    },
+    {
+      "id": "imp-046",
+      "language": "en",
+      "category": "places",
+      "crew": "Airport",
+      "impostor": "Railway station"
+    },
+    {
+      "id": "imp-047",
+      "language": "en",
+      "category": "places",
+      "crew": "Museum",
+      "impostor": "Gallery"
+    },
+    {
+      "id": "imp-048",
+      "language": "en",
+      "category": "places",
+      "crew": "Zoo",
+      "impostor": "Aquarium"
+    },
+    {
+      "id": "imp-049",
+      "language": "en",
+      "category": "places",
+      "crew": "Cinema",
+      "impostor": "Theatre"
+    },
+    {
+      "id": "imp-050",
+      "language": "en",
+      "category": "places",
+      "crew": "Market",
+      "impostor": "Mall"
+    },
+    {
+      "id": "imp-051",
+      "language": "en",
+      "category": "places",
+      "crew": "Fountain",
+      "impostor": "Statue"
+    },
+    {
+      "id": "imp-052",
+      "language": "en",
+      "category": "places",
+      "crew": "Desert",
+      "impostor": "Jungle"
+    },
+    {
+      "id": "imp-053",
+      "language": "en",
+      "category": "places",
+      "crew": "River",
+      "impostor": "Lake"
+    },
+    {
+      "id": "imp-054",
+      "language": "en",
+      "category": "places",
+      "crew": "Stadium",
+      "impostor": "Gym"
+    },
+    {
+      "id": "imp-055",
+      "language": "en",
+      "category": "places",
+      "crew": "Castle",
+      "impostor": "Palace"
+    },
+    {
+      "id": "imp-056",
+      "language": "en",
+      "category": "places",
+      "crew": "Bridge",
+      "impostor": "Tunnel"
+    },
+    {
+      "id": "imp-057",
+      "language": "en",
+      "category": "places",
+      "crew": "Farm",
+      "impostor": "Garden"
+    },
+    {
+      "id": "imp-058",
+      "language": "en",
+      "category": "places",
+      "crew": "Hotel",
+      "impostor": "Hostel"
+    },
+    {
+      "id": "imp-059",
+      "language": "en",
+      "category": "places",
+      "crew": "Bakery",
+      "impostor": "Cafe"
+    },
+    {
+      "id": "imp-060",
+      "language": "en",
+      "category": "places",
+      "crew": "Lighthouse",
+      "impostor": "Windmill"
+    },
+    {
+      "id": "imp-061",
+      "language": "en",
+      "category": "objects",
+      "crew": "Pencil",
+      "impostor": "Pen"
+    },
+    {
+      "id": "imp-062",
+      "language": "en",
+      "category": "objects",
+      "crew": "Umbrella",
+      "impostor": "Raincoat"
+    },
+    {
+      "id": "imp-063",
+      "language": "en",
+      "category": "objects",
+      "crew": "Mirror",
+      "impostor": "Window"
+    },
+    {
+      "id": "imp-064",
+      "language": "en",
+      "category": "objects",
+      "crew": "Chair",
+      "impostor": "Sofa"
+    },
+    {
+      "id": "imp-065",
+      "language": "en",
+      "category": "objects",
+      "crew": "Clock",
+      "impostor": "Watch"
+    },
+    {
+      "id": "imp-066",
+      "language": "en",
+      "category": "objects",
+      "crew": "Spoon",
+      "impostor": "Fork"
+    },
+    {
+      "id": "imp-067",
+      "language": "en",
+      "category": "objects",
+      "crew": "Backpack",
+      "impostor": "Suitcase"
+    },
+    {
+      "id": "imp-068",
+      "language": "en",
+      "category": "objects",
+      "crew": "Candle",
+      "impostor": "Lamp"
+    },
+    {
+      "id": "imp-069",
+      "language": "en",
+      "category": "objects",
+      "crew": "Scissors",
+      "impostor": "Knife"
+    },
+    {
+      "id": "imp-070",
+      "language": "en",
+      "category": "objects",
+      "crew": "Pillow",
+      "impostor": "Blanket"
+    },
+    {
+      "id": "imp-071",
+      "language": "en",
+      "category": "objects",
+      "crew": "Towel",
+      "impostor": "Sponge"
+    },
+    {
+      "id": "imp-072",
+      "language": "en",
+      "category": "objects",
+      "crew": "Key",
+      "impostor": "Lock"
+    },
+    {
+      "id": "imp-073",
+      "language": "en",
+      "category": "objects",
+      "crew": "Helmet",
+      "impostor": "Cap"
+    },
+    {
+      "id": "imp-074",
+      "language": "en",
+      "category": "objects",
+      "crew": "Camera",
+      "impostor": "Telescope"
+    },
+    {
+      "id": "imp-075",
+      "language": "en",
+      "category": "objects",
+      "crew": "Bicycle",
+      "impostor": "Scooter"
+    },
+    {
+      "id": "imp-076",
+      "language": "en",
+      "category": "objects",
+      "crew": "Ladder",
+      "impostor": "Stairs"
+    },
+    {
+      "id": "imp-077",
+      "language": "en",
+      "category": "objects",
+      "crew": "Bucket",
+      "impostor": "Jug"
+    },
+    {
+      "id": "imp-078",
+      "language": "en",
+      "category": "objects",
+      "crew": "Headphones",
+      "impostor": "Speaker"
+    },
+    {
+      "id": "imp-079",
+      "language": "en",
+      "category": "objects",
+      "crew": "Notebook",
+      "impostor": "Diary"
+    },
+    {
+      "id": "imp-080",
+      "language": "en",
+      "category": "objects",
+      "crew": "Wallet",
+      "impostor": "Purse"
+    },
+    {
+      "id": "imp-081",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Cricket",
+      "impostor": "Baseball"
+    },
+    {
+      "id": "imp-082",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Football",
+      "impostor": "Rugby"
+    },
+    {
+      "id": "imp-083",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Chess",
+      "impostor": "Ludo"
+    },
+    {
+      "id": "imp-084",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Guitar",
+      "impostor": "Violin"
+    },
+    {
+      "id": "imp-085",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Piano",
+      "impostor": "Harmonium"
+    },
+    {
+      "id": "imp-086",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Drums",
+      "impostor": "Tabla"
+    },
+    {
+      "id": "imp-087",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Singer",
+      "impostor": "Dancer"
+    },
+    {
+      "id": "imp-088",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Movie",
+      "impostor": "Series"
+    },
+    {
+      "id": "imp-089",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Comedy",
+      "impostor": "Horror"
+    },
+    {
+      "id": "imp-090",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Actor",
+      "impostor": "Director"
+    },
+    {
+      "id": "imp-091",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Trailer",
+      "impostor": "Poster"
+    },
+    {
+      "id": "imp-092",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Magic",
+      "impostor": "Circus"
+    },
+    {
+      "id": "imp-093",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Karaoke",
+      "impostor": "Concert"
+    },
+    {
+      "id": "imp-094",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Cartoon",
+      "impostor": "Anime"
+    },
+    {
+      "id": "imp-095",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Superhero",
+      "impostor": "Detective"
+    },
+    {
+      "id": "imp-096",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Swimming",
+      "impostor": "Diving"
+    },
+    {
+      "id": "imp-097",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Marathon",
+      "impostor": "Sprint"
+    },
+    {
+      "id": "imp-098",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Festival",
+      "impostor": "Carnival"
+    },
+    {
+      "id": "imp-099",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Quiz",
+      "impostor": "Riddle"
+    },
+    {
+      "id": "imp-100",
+      "language": "en",
+      "category": "entertainment",
+      "crew": "Tennis",
+      "impostor": "Badminton"
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 import type { GameId } from "@chaos/shared";
+import { ImpostorGame, type ImpostorConfig, type ImpostorWordPair } from "./impostor/ImpostorGame";
 import { MostLikelyToGame, type MltConfig, type MltQuestion } from "./mostLikelyTo/MostLikelyToGame";
 import type { GameContext, GameInstance } from "./types";
 
@@ -9,12 +10,22 @@ export type GameContent = {
   mltQuestions: MltQuestion[];
   /** Overrides for tests, such as shorter timers. */
   mltConfig?: Partial<MltConfig>;
+  /** Word pairs for the Impostor game. The game only exists when these are given. */
+  impostorWords?: ImpostorWordPair[];
+  impostorConfig?: Partial<ImpostorConfig>;
 };
 
 /** Every game that really exists. A game missing here cannot be started. */
 export function createGameFactories(content: GameContent): GameFactories {
-  return {
+  const factories: GameFactories = {
     "most-likely-to": (context) =>
       new MostLikelyToGame({ ...context, questions: content.mltQuestions, config: content.mltConfig }),
   };
+
+  const words = content.impostorWords;
+  if (words) {
+    factories.impostor = (context) =>
+      new ImpostorGame({ ...context, words, config: content.impostorConfig });
+  }
+  return factories;
 }

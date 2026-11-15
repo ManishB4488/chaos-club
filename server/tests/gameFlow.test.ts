@@ -1,5 +1,12 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { CLIENT_EVENTS, SERVER_EVENTS, type Ack, type JoinedPayload, type RoomView } from "@chaos/shared";
+import {
+  CLIENT_EVENTS,
+  SERVER_EVENTS,
+  type Ack,
+  type JoinedPayload,
+  type MltView,
+  type RoomView,
+} from "@chaos/shared";
 import { createGameFactories } from "../src/games/registry";
 import { RoomManager } from "../src/rooms/RoomManager";
 import { sampleQuestions } from "./helpers";
@@ -8,6 +15,12 @@ import { connectClient, mustJoin, profile, runCleanups, send, startServer, waitF
 type JoinedAck = Ack<JoinedPayload>;
 
 afterEach(runCleanups);
+
+/** The room can now run more than one game, so say which one this test expects. */
+function mltView(view: RoomView): MltView {
+  if (view.game?.gameId !== "most-likely-to") throw new Error("Expected a Who's Most Likely To game.");
+  return view.game;
+}
 
 const vote = (targetId: string) => ({
   gameId: "most-likely-to",
@@ -41,13 +54,13 @@ describe("a whole game over real connections", () => {
     const guestSawOneVote = waitFor<RoomView>(guest, SERVER_EVENTS.roomState, (v) => v.game?.votedIds.length === 1);
     expect(await send<Ack>(host, CLIENT_EVENTS.gameAction, vote(joined.playerId))).toMatchObject({ ok: true });
     const partial = await guestSawOneVote;
-    expect(partial.game?.reveal).toBeNull();
+    expect(mltView(partial).reveal).toBeNull();
     expect(JSON.stringify(partial)).not.toContain("targetId");
 
     const guestSawReveal = waitFor<RoomView>(guest, SERVER_EVENTS.roomState, (v) => v.game?.step === "reveal");
     const guestSawFinish = waitFor<RoomView>(guest, SERVER_EVENTS.roomState, (v) => v.game?.step === "finished", 3_000);
     expect(await send<Ack>(guest, CLIENT_EVENTS.gameAction, vote(created.playerId))).toMatchObject({ ok: true });
-    expect((await guestSawReveal).game?.reveal?.votes).toHaveLength(2);
+    expect(mltView(await guestSawReveal).reveal?.votes).toHaveLength(2);
     const finished = await guestSawFinish;
     expect(finished.game?.results?.ranking).toHaveLength(2);
 

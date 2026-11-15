@@ -57,8 +57,8 @@ Update after every development session. Never mark a feature complete unless it 
 - [ ] Socket.IO browser connection
 
 ## Games (do not start until the multiplayer foundation works)
-- [ ] Who's Most Likely To? (2-4 players). Server module VERIFIED (70 server + 20 shared tests, typecheck, build, server start; commit 953c9a4). Screens written, NOT yet verified.
-- [ ] Impostor Word Game (3-4 players)
+- [x] Who's Most Likely To? (2-4 players): server module and screens verified by owner (70 server + 20 shared tests, voting, reveal, results, play again, phone)
+- [ ] Impostor Word Game (3-4 players). Words: 100 pairs written (approved by delegation). Server game module and starter word filter written with tests (NOT yet verified). Screens not started.
 - [ ] Roast Your Friends (2-4 players)
 - [ ] The Fake Answer (2-4 players)
 - [ ] Draw It Wrong (2-4 players)
@@ -82,4 +82,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify the Who's Most Likely To screens with 3 real windows (steps in chat), plus a phone. Then Impostor Word Game (needs word content for owner review).
+Verify the Impostor server module (tests, typecheck). Then build its screens, then switch it on by passing the word file in server/src/index.ts.
