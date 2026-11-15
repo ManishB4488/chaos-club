@@ -217,6 +217,12 @@ describe("leaving and kicking", () => {
 });
 
 describe("choosing and starting a game", () => {
+  it("tells every player which games can be started", () => {
+    const { manager } = setup({ availableGames: ["impostor"] });
+    const { code, ids } = fillRoom(manager, ["A"]);
+    expect(manager.viewFor(code, ids[0] ?? "")?.availableGames).toEqual(["impostor"]);
+  });
+
   it("lets only the host pick a game", () => {
     const { manager } = setup();
     const { code, ids } = fillRoom(manager, ["A", "B"]);

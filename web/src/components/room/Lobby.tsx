@@ -1,25 +1,33 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { Share2, Copy, Link as LinkIcon, LogOut } from "lucide-react";
-import type { RoomView } from "@chaos/shared";
+import { Copy, Link as LinkIcon, LogOut, Share2, UserX } from "lucide-react";
+import type { GameId, RoomView } from "@chaos/shared";
 import { Avatar } from "@/components/ui/Avatar";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { copyText } from "@/lib/clipboard";
 import { SITE_NAME } from "@/lib/site";
+import { GameSection } from "./GameSection";
+
+export type LobbyActions = {
+  leave: () => Promise<void>;
+  selectGame: (gameId: GameId) => Promise<string | null>;
+  start: () => Promise<string | null>;
+  kick: (playerId: string) => Promise<string | null>;
+};
 
 type LobbyProps = {
   room: RoomView;
   /** False while the connection is down and the page is trying to reconnect. */
   online: boolean;
-  onLeave: () => Promise<void>;
+  actions: LobbyActions;
 };
 
 const noopSubscribe = () => () => undefined;
 
-export function Lobby({ room, online, onLeave }: LobbyProps) {
+export function Lobby({ room, online, actions }: LobbyProps) {
   // Browser-only values, read without touching the server render.
   const origin = useSyncExternalStore(noopSubscribe, () => window.location.origin, () => "");
   const canShare = useSyncExternalStore(
@@ -30,6 +38,7 @@ export function Lobby({ room, online, onLeave }: LobbyProps) {
 
   const [notice, setNotice] = useState<string | null>(null);
   const [leaving, setLeaving] = useState(false);
+  const [kickError, setKickError] = useState<string | null>(null);
   const noticeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(
@@ -39,6 +48,7 @@ export function Lobby({ room, online, onLeave }: LobbyProps) {
     [],
   );
 
+  const isHost = room.hostId === room.selfId;
   const inviteUrl = `${origin}/room/${room.code}`;
   const shareText = `Join my ${SITE_NAME} room! Code: ${room.code}`;
 
@@ -71,13 +81,16 @@ export function Lobby({ room, online, onLeave }: LobbyProps) {
 
   async function leave() {
     setLeaving(true);
-    await onLeave();
+    await actions.leave();
   }
 
-  const waitingMessage =
-    room.players.length < 2
-      ? "Waiting for friends to join. Share the code or the link."
-      : "Waiting for the host to pick a game.";
+  async function kick(playerId: string) {
+    setKickError(null);
+    const message = await actions.kick(playerId);
+    if (message) setKickError(message);
+  }
+
+  const canKick = isHost && room.phase === "lobby";
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col gap-6 px-5 py-10">
@@ -129,7 +142,7 @@ export function Lobby({ room, online, onLeave }: LobbyProps) {
         <h2 className="font-display text-2xl font-semibold">Players</h2>
         <ul className="flex flex-col gap-4">
           {room.players.map((player) => (
-            <li key={player.id} className="flex items-center gap-4">
+            <li key={player.id} className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <Avatar
                 avatar={player.avatar}
                 color={player.color}
@@ -138,7 +151,7 @@ export function Lobby({ room, online, onLeave }: LobbyProps) {
                 isHost={player.isHost}
                 status={player.connected ? "connected" : "disconnected"}
               />
-              <span className="min-w-0 flex-1 truncate font-display text-xl font-semibold">
+              <span className="min-w-0 flex-1 basis-32 truncate font-display text-xl font-semibold">
                 {player.nickname}
               </span>
               <span className="flex flex-wrap justify-end gap-2">
@@ -146,11 +159,37 @@ export function Lobby({ room, online, onLeave }: LobbyProps) {
                 {player.id === room.selfId && <Badge tone="volt">You</Badge>}
                 {!player.connected && <Badge>Offline</Badge>}
               </span>
+              {canKick && player.id !== room.selfId && (
+                <Button
+                  size="sm"
+                  variant="danger"
+                  aria-label={`Remove ${player.nickname}`}
+                  onClick={() => kick(player.id)}
+                >
+                  <UserX aria-hidden className="size-4" />
+                  Remove
+                </Button>
+              )}
             </li>
           ))}
         </ul>
-        <p className="text-ink-soft">{waitingMessage}</p>
+        {room.players.length < 2 && room.phase === "lobby" && (
+          <p className="text-ink-soft">Waiting for friends to join. Share the code or the link.</p>
+        )}
+        {kickError && (
+          <p role="alert" className="font-semibold text-bubblegum">
+            {kickError}
+          </p>
+        )}
       </Card>
+
+      <GameSection
+        room={room}
+        isHost={isHost}
+        online={online}
+        onSelect={actions.selectGame}
+        onStart={actions.start}
+      />
 
       <div>
         <Button variant="danger" loading={leaving} onClick={leave}>

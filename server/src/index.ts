@@ -5,11 +5,13 @@ import { env } from "./config/env";
 const server = createGameServer({
   webOrigins: env.WEB_ORIGIN,
   trustProxy: env.TRUST_PROXY,
+  availableGames: env.AVAILABLE_GAMES,
 });
 
 server.httpServer.listen(env.SERVER_PORT, () => {
   console.log(`CHAOS CLUB server listening on http://localhost:${env.SERVER_PORT}`);
   console.log(`Accepting browsers from ${env.WEB_ORIGIN.join(", ")}`);
+  console.log(`Games that can be started: ${env.AVAILABLE_GAMES.join(", ") || "none yet"}`);
   console.log(
     `Shared package OK: ${Object.keys(GAME_PLAYER_LIMITS).length} games, max ${ROOM_MAX_PLAYERS} players per room`,
   );

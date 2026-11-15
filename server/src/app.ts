@@ -2,6 +2,7 @@ import { createServer } from "node:http";
 import cors from "cors";
 import express from "express";
 import { Server } from "socket.io";
+import type { GameId } from "@chaos/shared";
 import { RoomManager } from "./rooms/RoomManager";
 import { createRoomGateway } from "./socket/roomGateway";
 
@@ -10,6 +11,8 @@ export type GameServerOptions = {
   webOrigins: string[];
   trustProxy?: boolean;
   manager?: RoomManager;
+  /** Games that can be started. Ignored when a manager is passed in. */
+  availableGames?: GameId[];
   sweepIntervalMs?: number;
 };
 
@@ -35,8 +38,8 @@ export function createGameServer(options: GameServerOptions) {
     maxHttpBufferSize: 10_000,
   });
 
-  // No games can be started yet, so no game is listed as available.
-  const manager = options.manager ?? new RoomManager({ availableGames: [] });
+  const manager =
+    options.manager ?? new RoomManager({ availableGames: options.availableGames ?? [] });
   const gateway = createRoomGateway(io, manager, {
     trustProxy: options.trustProxy,
     sweepIntervalMs: options.sweepIntervalMs,

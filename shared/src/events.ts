@@ -79,6 +79,8 @@ export type RoomView = {
   selfId: string;
   players: PlayerView[];
   selectedGame: GameId | null;
+  /** Games the server can currently start. Games not listed are not ready yet. */
+  availableGames: GameId[];
   /** The fewest connected players the selected game needs, or null if no game is selected. */
   minPlayersForGame: number | null;
   maxPlayers: number;

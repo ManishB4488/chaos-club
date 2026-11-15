@@ -1,6 +1,7 @@
 import {
   CLIENT_EVENTS,
   SERVER_EVENTS,
+  type GameId,
   type JoinedPayload,
   type RoomView,
 } from "@chaos/shared";
@@ -148,6 +149,16 @@ async function leaveActiveRoom(): Promise<void> {
   if (code) clearSession(code);
 }
 
+/** Sends a host or player action. Returns an error message to show, or null when it worked. */
+async function sendAction(event: string, payload?: unknown): Promise<string | null> {
+  const ack = await request(event, payload);
+  return ack.ok ? null : ack.message;
+}
+
+const selectGame = (gameId: GameId) => sendAction(CLIENT_EVENTS.selectGame, { gameId });
+const startGame = () => sendAction(CLIENT_EVENTS.startGame);
+const kickPlayer = (playerId: string) => sendAction(CLIENT_EVENTS.kickPlayer, { playerId });
+
 export const roomClient = {
   subscribe,
   getSnapshot,
@@ -156,4 +167,7 @@ export const roomClient = {
   closeRoom,
   joinActiveRoom,
   leaveActiveRoom,
+  selectGame,
+  startGame,
+  kickPlayer,
 };

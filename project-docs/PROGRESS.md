@@ -46,8 +46,8 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Room rules (RoomManager) and shared event contracts: 26 server tests and 17 shared tests pass, typecheck clean
 - [x] Socket.IO room events, validation, rate limiting: 8 real-client tests pass (37 server tests total), typecheck clean, server starts
 - [x] Server /health after the socket changes confirmed (shutdown with Ctrl + C still to confirm)
-- [ ] Website room flow, part 1 (written, NOT yet verified): socket client, Create and Join windows, lobby with player list, invite buttons, leave, reconnect after refresh, invite-link join
-- [ ] Website room flow, part 2: host controls (game picker, start, countdown, kick)
+- [x] Website room flow, part 1: lint, build and 38 server + 17 shared tests pass; create, join, lobby, live updates, copy and share confirmed in Chrome and Brave. Still to confirm individually: refresh reconnect, invite-link join, Offline badge, Leave, wrong code.
+- [ ] Website room flow, part 2 (written, NOT yet verified): game picker, start button, countdown, kick buttons, available-games setting
 - [ ] Create Room
 - [ ] Join Room
 - [ ] Multiplayer lobby (host controls, kick, leave, per-game minimum players)
@@ -80,4 +80,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify website room flow part 1 with two real browser windows (steps in chat), then build part 2: host controls.
+Verify part 2 with real windows (steps in chat), then phone testing over Wi-Fi, then a four-window test. After that the multiplayer foundation is done and Who's Most Likely To? can start once the scoring rules are approved (P-7 / D-022).

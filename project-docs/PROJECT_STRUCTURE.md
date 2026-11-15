@@ -106,3 +106,9 @@ chaos-club/
 - `web/src/components/room/`: ProfileForm, Lobby, RoomScreen, RoomLoading
 - `web/src/components/home/RoomActions.tsx`: hero buttons plus the Create and Join windows
 - `web/src/app/room/[code]/page.tsx`: the room page
+
+## Added in the website room flow, part 2 (unverified until PROGRESS.md says so)
+- `web/src/components/room/GameSection.tsx`: game picker, start button, countdown, started message
+- `web/src/components/room/Lobby.tsx`: now includes kick buttons and the game section
+- `server/src/config/env.ts`: new AVAILABLE_GAMES setting (empty by default; testing only)
+- `shared/src/events.ts`: RoomView now includes availableGames

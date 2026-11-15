@@ -66,7 +66,18 @@ export function RoomScreen({ code }: { code: string }) {
       );
 
     case "in-room":
-      return <Lobby room={state.room} online={state.online} onLeave={leave} />;
+      return (
+        <Lobby
+          room={state.room}
+          online={state.online}
+          actions={{
+            leave,
+            selectGame: roomClient.selectGame,
+            start: roomClient.startGame,
+            kick: roomClient.kickPlayer,
+          }}
+        />
+      );
 
     case "kicked":
       return (

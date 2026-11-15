@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { z } from "zod";
+import { GAME_IDS } from "@chaos/shared";
 
 // Load the shared .env file from the project root (if it exists).
 const envFile = resolve(import.meta.dirname, "../../../.env");
@@ -26,6 +27,17 @@ const envSchema = z.object({
     .enum(["true", "false"])
     .default("false")
     .transform((value) => value === "true"),
+  // Games that can be started. Leave empty until a game exists. Used for testing the start countdown.
+  AVAILABLE_GAMES: z
+    .string()
+    .default("")
+    .transform((value) =>
+      value
+        .split(",")
+        .map((id) => id.trim())
+        .filter(Boolean),
+    )
+    .pipe(z.array(z.enum(GAME_IDS))),
   DATABASE_URL: z.string().min(1).optional(),
 });
 

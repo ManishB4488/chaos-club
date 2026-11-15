@@ -305,6 +305,7 @@ export class RoomManager {
         connected: p.connected,
       })),
       selectedGame: game,
+      availableGames: [...this.availableGames],
       minPlayersForGame: game ? GAME_PLAYER_LIMITS[game].min : null,
       maxPlayers: ROOM_MAX_PLAYERS,
       countdownEndsAt: room.countdownEndsAt,
