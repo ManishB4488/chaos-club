@@ -26,6 +26,8 @@ const envSchema = z.object({
     .enum(["true", "false"])
     .default("false")
     .transform((value) => value === "true"),
+  // How many questions a Who's Most Likely To game has. 8 is the real value; use a smaller one only for testing.
+  MLT_ROUNDS: z.coerce.number().int().min(1).max(20).default(8),
   DATABASE_URL: z.string().min(1).optional(),
 });
 

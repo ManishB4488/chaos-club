@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { GameId, RoomView } from "@chaos/shared";
 import { ACCENT_BG, GAME_ICONS } from "@/components/home/game-visuals";
 import { Badge } from "@/components/ui/Badge";
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/cn";
 import { GAMES, playersLabel } from "@/lib/games";
+import { useCountdown } from "@/lib/useCountdown";
 
 type GameSectionProps = {
   room: RoomView;
@@ -17,32 +18,10 @@ type GameSectionProps = {
   onStart: () => Promise<string | null>;
 };
 
-/** Whole seconds left until the server clock reaches endsAt. Null when there is no countdown. */
-function useCountdown(endsAt: number | null, serverTime: number): number | null {
-  const [seconds, setSeconds] = useState<number | null>(null);
-
-  useEffect(() => {
-    if (endsAt === null) return;
-    // The browser clock may differ from the server clock, so measure the difference once.
-    const offset = serverTime - Date.now();
-    const tick = () => {
-      setSeconds(Math.max(0, Math.ceil((endsAt - (Date.now() + offset)) / 1_000)));
-    };
-    const first = setTimeout(tick, 0);
-    const interval = setInterval(tick, 250);
-    return () => {
-      clearTimeout(first);
-      clearInterval(interval);
-    };
-  }, [endsAt, serverTime]);
-
-  return endsAt === null ? null : seconds;
-}
-
 export function GameSection({ room, isHost, online, onSelect, onStart }: GameSectionProps) {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState<"select" | "start" | null>(null);
-  const secondsLeft = useCountdown(room.countdownEndsAt, room.serverTime);
+  const { seconds: secondsLeft } = useCountdown(room.countdownEndsAt, room.serverTime);
 
   const selected = GAMES.find((game) => game.id === room.selectedGame) ?? null;
   const connectedCount = room.players.filter((player) => player.connected).length;
@@ -74,13 +53,11 @@ export function GameSection({ room, isHost, online, onSelect, onStart }: GameSec
     );
   }
 
-  if (room.phase === "in-game" && selected) {
+  if (room.phase === "in-game") {
+    // The game screens take over. This only shows for a moment while the game is being set up.
     return (
-      <Card accent="sunny" padding="lg" className="flex flex-col gap-2">
-        <h2 className="font-display text-2xl font-semibold">{selected.name} has started</h2>
-        <p className="text-ink-soft">
-          Everyone is in the game phase. The game screens themselves are built in the next stages.
-        </p>
+      <Card padding="lg">
+        <p className="text-ink-soft">Setting up the game...</p>
       </Card>
     );
   }

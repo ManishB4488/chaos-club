@@ -75,6 +75,13 @@ export function RoomScreen({ code }: { code: string }) {
             selectGame: roomClient.selectGame,
             start: roomClient.startGame,
             kick: roomClient.kickPlayer,
+            vote: roomClient.voteInMostLikelyTo,
+            backToLobby: roomClient.returnToLobby,
+            // Play again: back to the lobby, then straight into the same game.
+            playAgain: async () => {
+              const message = await roomClient.returnToLobby();
+              return message ?? roomClient.startGame();
+            },
           }}
         />
       );

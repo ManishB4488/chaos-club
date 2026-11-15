@@ -106,6 +106,7 @@ export class MostLikelyToGame implements GameInstance {
   private step: MltView["step"] = "voting";
   private round = 0;
   private stepEndsAt: number | null = null;
+  private stepDurationMs: number | null = null;
   private reveal: MltReveal | null = null;
   private results: MltView["results"] = null;
 
@@ -177,6 +178,7 @@ export class MostLikelyToGame implements GameInstance {
       question: question?.text ?? null,
       category: question?.category ?? null,
       stepEndsAt: this.stepEndsAt,
+      stepDurationMs: this.stepDurationMs,
       participants: this.participants.map((p) => ({ ...p })),
       votedIds: this.participants.filter((p) => this.votes.has(p.id)).map((p) => p.id),
       myVote: this.votes.get(playerId) ?? null,
@@ -205,6 +207,7 @@ export class MostLikelyToGame implements GameInstance {
     this.reveal = null;
     this.step = "voting";
     this.stepEndsAt = this.now() + this.config.voteMs;
+    this.stepDurationMs = this.config.voteMs;
   }
 
   private closeVoting(): void {
@@ -242,6 +245,7 @@ export class MostLikelyToGame implements GameInstance {
     this.reveal = { votes, counts, roundStarIds, pointsGained };
     this.step = "reveal";
     this.stepEndsAt = this.now() + this.config.revealMs;
+    this.stepDurationMs = this.config.revealMs;
   }
 
   private advance(): void {
@@ -286,6 +290,7 @@ export class MostLikelyToGame implements GameInstance {
 
     this.step = "finished";
     this.stepEndsAt = null;
+    this.stepDurationMs = null;
     this.reveal = null;
     this.results = { ranking, awards, endedEarly };
   }

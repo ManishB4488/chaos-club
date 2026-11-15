@@ -122,3 +122,9 @@ chaos-club/
 - `server/src/rooms/RoomManager.ts`: now runs games (actions, tick, early end, back to lobby)
 - `content/en/most-likely-to.json`: the 110 approved questions
 - Tests: mostLikelyToGame, content, gameFlow (real sockets), plus new RoomManager tests
+
+## Added with the Who's Most Likely To screens (unverified until PROGRESS.md says so)
+- `web/src/components/games/mostLikelyTo/`: MostLikelyToScreen (picks the step), VotingView, RevealView, ResultsView, Scoreboard, TimerBar
+- `web/src/lib/useCountdown.ts`: countdown that follows the server clock
+- `web/src/components/room/Lobby.tsx`: shows the game screen while a game runs
+- Server setting MLT_ROUNDS (default 8) for shorter test games

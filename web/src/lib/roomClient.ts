@@ -158,6 +158,9 @@ async function sendAction(event: string, payload?: unknown): Promise<string | nu
 const selectGame = (gameId: GameId) => sendAction(CLIENT_EVENTS.selectGame, { gameId });
 const startGame = () => sendAction(CLIENT_EVENTS.startGame);
 const kickPlayer = (playerId: string) => sendAction(CLIENT_EVENTS.kickPlayer, { playerId });
+const returnToLobby = () => sendAction(CLIENT_EVENTS.returnToLobby);
+const voteInMostLikelyTo = (targetId: string) =>
+  sendAction(CLIENT_EVENTS.gameAction, { gameId: "most-likely-to", action: { type: "vote", targetId } });
 
 export const roomClient = {
   subscribe,
@@ -170,4 +173,6 @@ export const roomClient = {
   selectGame,
   startGame,
   kickPlayer,
+  returnToLobby,
+  voteInMostLikelyTo,
 };

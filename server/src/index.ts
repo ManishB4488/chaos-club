@@ -4,7 +4,10 @@ import { env } from "./config/env";
 import { loadMostLikelyToQuestions } from "./content/loadQuestions";
 import { createGameFactories } from "./games/registry";
 
-const gameFactories = createGameFactories({ mltQuestions: loadMostLikelyToQuestions() });
+const gameFactories = createGameFactories({
+  mltQuestions: loadMostLikelyToQuestions(),
+  mltConfig: { rounds: env.MLT_ROUNDS },
+});
 
 const server = createGameServer({
   webOrigins: env.WEB_ORIGIN,

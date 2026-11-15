@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { copyText } from "@/lib/clipboard";
 import { SITE_NAME } from "@/lib/site";
+import { MostLikelyToScreen } from "@/components/games/mostLikelyTo/MostLikelyToScreen";
 import { GameSection } from "./GameSection";
 
 export type LobbyActions = {
@@ -16,6 +17,9 @@ export type LobbyActions = {
   selectGame: (gameId: GameId) => Promise<string | null>;
   start: () => Promise<string | null>;
   kick: (playerId: string) => Promise<string | null>;
+  vote: (targetId: string) => Promise<string | null>;
+  playAgain: () => Promise<string | null>;
+  backToLobby: () => Promise<string | null>;
 };
 
 type LobbyProps = {
@@ -103,6 +107,28 @@ export function Lobby({ room, online, actions }: LobbyProps) {
         </div>
       )}
 
+      {room.game ? (
+        <>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <span className="text-ink-soft">
+              Room <span className="font-display font-bold tracking-widest text-ink">{room.code}</span>
+            </span>
+            <Badge tone="volt">
+              {room.players.filter((player) => player.connected).length} online
+            </Badge>
+          </div>
+          <MostLikelyToScreen
+            room={room}
+            game={room.game}
+            actions={{
+              vote: actions.vote,
+              playAgain: actions.playAgain,
+              backToLobby: actions.backToLobby,
+            }}
+          />
+        </>
+      ) : (
+        <>
       <Card accent="grape" padding="lg" className="flex flex-col gap-5">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
@@ -190,6 +216,9 @@ export function Lobby({ room, online, actions }: LobbyProps) {
         onSelect={actions.selectGame}
         onStart={actions.start}
       />
+
+        </>
+      )}
 
       <div>
         <Button variant="danger" loading={leaving} onClick={leave}>

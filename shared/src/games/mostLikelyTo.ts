@@ -60,6 +60,8 @@ export type MltView = {
   category: MltCategory | null;
   /** Server clock time (ms) when this step ends, or null. */
   stepEndsAt: number | null;
+  /** How long this step lasts in total (ms), so a timer bar can be drawn. */
+  stepDurationMs: number | null;
   participants: MltParticipant[];
   /** Who has already voted this round. Never says who they voted for. */
   votedIds: string[];

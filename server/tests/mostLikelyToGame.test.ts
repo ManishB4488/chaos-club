@@ -55,6 +55,7 @@ describe("starting", () => {
     expect(view.question).toMatch(/Who is most likely to/);
     expect(view.votedIds).toEqual([]);
     expect(view.allowSelfVote).toBe(false);
+    expect(view.stepDurationMs).toBe(10_000);
     expect(view.scores).toEqual({ a: 0, b: 0, c: 0 });
   });
 
