@@ -15,7 +15,7 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] DECISIONS.md created
 - [x] Architecture proposals P-1 to P-7 approved
 - [x] Proposals P-8, P-9 and P-10 approved (by owner delegation)
-- [ ] Scoring rules proposed and approved (required before implementing any game)
+- [x] Scoring rules approved (D-026), content approved (D-027)
 
 ## Phase 1: Foundation
 - [x] Prerequisites verified (Node 24.11.1, npm 11.6.2, Git 2.52.0, Docker 29.9.2, Compose 5.6.1)
@@ -47,7 +47,9 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Socket.IO room events, validation, rate limiting: 8 real-client tests pass (37 server tests total), typecheck clean, server starts
 - [x] Server /health after the socket changes confirmed (shutdown with Ctrl + C still to confirm)
 - [x] Website room flow, part 1: lint, build and 38 server + 17 shared tests pass; create, join, lobby, live updates, copy and share confirmed in Chrome and Brave. Still to confirm individually: refresh reconnect, invite-link join, Offline badge, Leave, wrong code.
-- [ ] Website room flow, part 2 (written, NOT yet verified): game picker, start button, countdown, kick buttons, available-games setting
+- [x] Website room flow, part 2: game picker, start button, countdown, kick buttons, available-games setting. Verified: 39 server + 17 shared tests, typecheck, lint, build; countdown and game phase worked in two real windows.
+- [x] Phone test over Wi-Fi: homepage, game server health page and joining a room from a real phone all worked (website dev server reads WEB_ORIGIN for allowedDevOrigins)
+- [x] Four-window test with four separate sessions (normal, incognito, second browser, real phone): worked, including full room, kick and rejoin, host handover, phone lock and reconnect, refresh
 - [ ] Create Room
 - [ ] Join Room
 - [ ] Multiplayer lobby (host controls, kick, leave, per-game minimum players)
@@ -55,7 +57,7 @@ Update after every development session. Never mark a feature complete unless it 
 - [ ] Socket.IO browser connection
 
 ## Games (do not start until the multiplayer foundation works)
-- [ ] Who's Most Likely To? (2-4 players)
+- [ ] Who's Most Likely To? (2-4 players). Server game module written with tests (NOT yet verified); screens not started.
 - [ ] Impostor Word Game (3-4 players)
 - [ ] Roast Your Friends (2-4 players)
 - [ ] The Fake Answer (2-4 players)
@@ -80,4 +82,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify part 2 with real windows (steps in chat), then phone testing over Wi-Fi, then a four-window test. After that the multiplayer foundation is done and Who's Most Likely To? can start once the scoring rules are approved (P-7 / D-022).
+Verify the Who's Most Likely To server module (tests, typecheck, server start). Then build its screens: question and secret voting, vote reveal, final results with awards, back to lobby.

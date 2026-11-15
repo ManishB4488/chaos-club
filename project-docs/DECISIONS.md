@@ -33,6 +33,9 @@ Architecture is never changed silently. Every change is recorded here with the o
 | D-025 | Prisma | (P-10) Prisma pinned to 7.10.1 (upgraded from 7.10.0 on 2026-11-14 to fix audit warnings in 7.10.0's dependencies; same major line) with `@prisma/adapter-pg`, `pg`, `dotenv`. Files written by hand (no `prisma init`). `prisma.config.ts` in `server/`; generated client in `server/generated/` (not committed). Do NOT upgrade to Prisma 8 (a release candidate was offered on 2026-11-14) without a new decision. |
 
 Note: D-023 to D-025 were approved by the owner's delegation ("do whatever is best for the project"). Delegation does not cover deployment or paid services (D-007).
+| D-026 | Scoring | Scoring rules for all five games in SCORING_RULES.md are approved, including all six open decisions as proposed (2 player Most Likely To allows voting for yourself; 2 player Roast uses 1 to 3 stars; round counts and timers; Impostor has one round per player; a game ends early if too few players stay connected for 60 seconds; Roast blocks slurs, sexual content, threats and personal information but allows mild teasing). Approved by owner delegation; revisit after playtesting. |
+| D-027 | Content | The 110 Who's Most Likely To questions (content/en/most-likely-to.json) are approved as drafted, by owner delegation. |
+| D-028 | Game engine | Each game is a server module with a common interface (actions in, private views out, timers moved along by a server tick of 4 times a second). Which games can be started is decided by which game modules exist, not by a setting. The question file is read from `content/en/` when the server starts; loading content through the database and admin panel comes later. The testing setting AVAILABLE_GAMES is removed. |
 
 ## Proposed: awaiting owner approval
 

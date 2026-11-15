@@ -7,7 +7,14 @@ import {
   type RoomErrorCode,
 } from "@chaos/shared";
 import { generateRoomCode } from "../src/rooms/codes";
-import { DISCONNECT_GRACE_MS, EMPTY_ROOM_TTL_MS, START_COUNTDOWN_MS } from "../src/rooms/constants";
+import {
+  BELOW_MIN_GRACE_MS,
+  DISCONNECT_GRACE_MS,
+  EMPTY_ROOM_TTL_MS,
+  START_COUNTDOWN_MS,
+} from "../src/rooms/constants";
+import { createGameFactories } from "../src/games/registry";
+import { sampleQuestions } from "./helpers";
 import { RoomManager, type RoomManagerOptions } from "../src/rooms/RoomManager";
 import type { PlayerProfile, Result } from "../src/rooms/types";
 
@@ -331,5 +338,90 @@ describe("secrets", () => {
     expectError(manager.start("ghost"), "NOT_IN_ROOM");
     expectError(manager.kick("ghost", "x"), "NOT_IN_ROOM");
     expectError(manager.selectGame("ghost", "roast"), "NOT_IN_ROOM");
+  });
+});
+
+describe("running a game inside a room", () => {
+  function gameSetup(mltConfig = { rounds: 1, voteMs: 1_000, revealMs: 500 }) {
+    const { manager, advance } = setup({
+      gameFactories: createGameFactories({ mltQuestions: sampleQuestions(), mltConfig }),
+    });
+    const room = fillRoom(manager, ["A", "B"]);
+    unwrap(manager.selectGame("s1", "most-likely-to"));
+    unwrap(manager.start("s1"));
+    manager.completeCountdown(room.code);
+    return { manager, advance, ...room };
+  }
+
+  const voteFor = (targetId: string) => ({ type: "vote", targetId });
+
+  it("offers exactly the games that exist, and starts one when the countdown ends", () => {
+    const { manager, code, ids } = gameSetup();
+    const view = manager.viewFor(code, ids[0] ?? "");
+    expect(view?.availableGames).toEqual(["most-likely-to"]);
+    expect(view?.phase).toBe("in-game");
+    expect(view?.game?.gameId).toBe("most-likely-to");
+  });
+
+  it("passes votes to the game and keeps them secret from the others", () => {
+    const { manager, code, ids } = gameSetup();
+    unwrap(manager.gameAction("s1", "most-likely-to", voteFor(ids[1] ?? "")));
+    const seenByOther = manager.viewFor(code, ids[1] ?? "");
+    expect(seenByOther?.game?.votedIds).toEqual([ids[0]]);
+    expect(JSON.stringify(seenByOther)).not.toContain("targetId");
+    unwrap(manager.gameAction("s2", "most-likely-to", voteFor(ids[0] ?? "")));
+    expect(manager.viewFor(code, ids[0] ?? "")?.game?.step).toBe("reveal");
+  });
+
+  it("refuses game actions when no matching game is running", () => {
+    const { manager } = setup({ availableGames: ["most-likely-to"] });
+    fillRoom(manager, ["A", "B"]);
+    expectError(manager.gameAction("s1", "most-likely-to", voteFor("x")), "NO_GAME_RUNNING");
+
+    const running = gameSetup();
+    expectError(running.manager.gameAction("s1", "impostor", voteFor("x")), "NO_GAME_RUNNING");
+    expectError(running.manager.gameAction("ghost", "most-likely-to", voteFor("x")), "NOT_IN_ROOM");
+  });
+
+  it("only lets the host go back to the lobby, and only when the game is over", () => {
+    const { manager, advance, code, ids } = gameSetup();
+    expectError(manager.returnToLobby("s1"), "ROOM_LOCKED");
+
+    unwrap(manager.gameAction("s1", "most-likely-to", voteFor(ids[1] ?? "")));
+    unwrap(manager.gameAction("s2", "most-likely-to", voteFor(ids[0] ?? "")));
+    advance(500);
+    manager.tick();
+    expect(manager.viewFor(code, ids[0] ?? "")?.game?.step).toBe("finished");
+
+    expectError(manager.returnToLobby("s2"), "NOT_HOST");
+    unwrap(manager.returnToLobby("s1"));
+    const view = manager.viewFor(code, ids[0] ?? "");
+    expect(view?.phase).toBe("lobby");
+    expect(view?.game).toBeNull();
+    expect(view?.selectedGame).toBe("most-likely-to");
+  });
+
+  it("does not wait for a player who is offline", () => {
+    const { manager, code, ids } = gameSetup({ rounds: 1, voteMs: 600_000, revealMs: 500 });
+    manager.disconnect("s2");
+    unwrap(manager.gameAction("s1", "most-likely-to", voteFor(ids[1] ?? "")));
+    expect(manager.viewFor(code, ids[0] ?? "")?.game?.step).toBe("reveal");
+  });
+
+  it("ends the game early if too few players stay connected for a minute", () => {
+    const { manager, advance, code, ids } = gameSetup({ rounds: 1, voteMs: 600_000, revealMs: 500 });
+    manager.disconnect("s2");
+    // The real server checks four times a second, so the one-minute clock starts straight away.
+    manager.tick();
+
+    advance(BELOW_MIN_GRACE_MS - 1_000);
+    expect(manager.tick()).toEqual([]);
+    expect(manager.viewFor(code, ids[0] ?? "")?.game?.step).toBe("voting");
+
+    advance(2_000);
+    expect(manager.tick()).toEqual([code]);
+    const game = manager.viewFor(code, ids[0] ?? "")?.game;
+    expect(game?.step).toBe("finished");
+    expect(game?.results?.endedEarly).toBe(true);
   });
 });

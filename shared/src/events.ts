@@ -1,4 +1,8 @@
 import type { AvatarId, GameId, PlayerColor } from "./constants";
+import type { MltView } from "./games/mostLikelyTo";
+
+/** What a player can see of the running game. Only one game exists so far. */
+export type GameView = MltView;
 
 /** Events the browser sends to the server. */
 export const CLIENT_EVENTS = {
@@ -9,6 +13,8 @@ export const CLIENT_EVENTS = {
   kickPlayer: "room:kick",
   selectGame: "room:selectGame",
   startGame: "room:start",
+  gameAction: "game:action",
+  returnToLobby: "room:returnToLobby",
 } as const;
 
 /** Events the server sends to browsers. */
@@ -38,7 +44,12 @@ export type RoomErrorCode =
   | "NOT_ENOUGH_PLAYERS"
   | "TOO_MANY_PLAYERS"
   | "RATE_LIMITED"
-  | "SERVER_BUSY";
+  | "SERVER_BUSY"
+  | "NO_GAME_RUNNING"
+  | "NOT_A_PARTICIPANT"
+  | "ALREADY_VOTED"
+  | "CANNOT_VOTE_SELF"
+  | "VOTING_CLOSED";
 
 /** Plain-language messages the website can show. */
 export const ROOM_ERROR_MESSAGES: Record<RoomErrorCode, string> = {
@@ -59,6 +70,11 @@ export const ROOM_ERROR_MESSAGES: Record<RoomErrorCode, string> = {
   TOO_MANY_PLAYERS: "There are too many players in the room for that game.",
   RATE_LIMITED: "Slow down a little and try again.",
   SERVER_BUSY: "The server is busy. Please try again in a moment.",
+  NO_GAME_RUNNING: "There is no game running right now.",
+  NOT_A_PARTICIPANT: "You are not part of this game.",
+  ALREADY_VOTED: "You have already voted this round.",
+  CANNOT_VOTE_SELF: "You cannot vote for yourself.",
+  VOTING_CLOSED: "Voting is closed for this round.",
 };
 
 export type PlayerView = {
@@ -81,6 +97,8 @@ export type RoomView = {
   selectedGame: GameId | null;
   /** Games the server can currently start. Games not listed are not ready yet. */
   availableGames: GameId[];
+  /** The running game as this player may see it, or null in the lobby. */
+  game: GameView | null;
   /** The fewest connected players the selected game needs, or null if no game is selected. */
   minPlayersForGame: number | null;
   maxPlayers: number;

@@ -5,6 +5,7 @@ import {
   ROOM_ERROR_MESSAGES,
   SERVER_EVENTS,
   createRoomSchema,
+  gameActionSchema,
   joinRoomSchema,
   kickPlayerSchema,
   rejoinRoomSchema,
@@ -19,6 +20,8 @@ import { KeyedLimiter, TokenBucket } from "./rateLimiter";
 export type GatewayOptions = {
   now?: () => number;
   sweepIntervalMs?: number;
+  /** How often running games are moved along. */
+  tickIntervalMs?: number;
   trustProxy?: boolean;
 };
 
@@ -166,6 +169,20 @@ export function createRoomGateway(io: Server, manager: RoomManager, options: Gat
       countdownTimers.add(timer);
     });
 
+    listen(CLIENT_EVENTS.gameAction, gameActionSchema, false, (input, reply) => {
+      const result = manager.gameAction(socket.id, input.gameId, input.action);
+      if (!result.ok) return reply(failure(result.error));
+      reply({ ok: true });
+      broadcast(result.value.code);
+    });
+
+    listen<void>(CLIENT_EVENTS.returnToLobby, null, false, (_input, reply) => {
+      const result = manager.returnToLobby(socket.id);
+      if (!result.ok) return reply(failure(result.error));
+      reply({ ok: true });
+      broadcast(result.value.code);
+    });
+
     socket.on("disconnect", () => {
       const result = manager.disconnect(socket.id);
       if (result) broadcast(result.code);
@@ -180,9 +197,16 @@ export function createRoomGateway(io: Server, manager: RoomManager, options: Gat
   }, options.sweepIntervalMs ?? 5_000);
   sweepTimer.unref();
 
+  // Several times a second: move running games along (timers, reveals, early endings).
+  const tickTimer = setInterval(() => {
+    for (const code of manager.tick()) broadcast(code);
+  }, options.tickIntervalMs ?? 250);
+  tickTimer.unref();
+
   return {
     close(): void {
       clearInterval(sweepTimer);
+      clearInterval(tickTimer);
       for (const timer of countdownTimers) clearTimeout(timer);
       countdownTimers.clear();
     },

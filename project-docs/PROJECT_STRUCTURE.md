@@ -112,3 +112,13 @@ chaos-club/
 - `web/src/components/room/Lobby.tsx`: now includes kick buttons and the game section
 - `server/src/config/env.ts`: new AVAILABLE_GAMES setting (empty by default; testing only)
 - `shared/src/events.ts`: RoomView now includes availableGames
+
+## Added with the Who's Most Likely To server module (unverified until PROGRESS.md says so)
+- `shared/src/games/mostLikelyTo.ts`: vote action, view and result types for the game
+- `server/src/games/types.ts`: the interface every game module follows
+- `server/src/games/mostLikelyTo/MostLikelyToGame.ts`: the game rules, scoring and awards
+- `server/src/games/registry.ts`: which games exist
+- `server/src/content/loadQuestions.ts`: reads and checks the question file
+- `server/src/rooms/RoomManager.ts`: now runs games (actions, tick, early end, back to lobby)
+- `content/en/most-likely-to.json`: the 110 approved questions
+- Tests: mostLikelyToGame, content, gameFlow (real sockets), plus new RoomManager tests

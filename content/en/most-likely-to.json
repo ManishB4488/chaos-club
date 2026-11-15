@@ -1,0 +1,776 @@
+{
+  "version": 1,
+  "status": "APPROVED by owner delegation (2026-11-15). Edit freely; the server checks this file when it starts.",
+  "items": [
+    {
+      "id": "mlt-001",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to start a group chat argument over nothing?"
+    },
+    {
+      "id": "mlt-002",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to cry at a commercial?"
+    },
+    {
+      "id": "mlt-003",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to leave a party early without telling anyone?"
+    },
+    {
+      "id": "mlt-004",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to say \"I'm fine\" when they are clearly not fine?"
+    },
+    {
+      "id": "mlt-005",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to hold a grudge over a borrowed pen?"
+    },
+    {
+      "id": "mlt-006",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to write a ten paragraph message and never send it?"
+    },
+    {
+      "id": "mlt-007",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to make a dramatic entrance into a quiet room?"
+    },
+    {
+      "id": "mlt-008",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to turn a small hiccup into a full soap opera?"
+    },
+    {
+      "id": "mlt-009",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to leave a group chat and rejoin an hour later?"
+    },
+    {
+      "id": "mlt-010",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to go silent for a day because of a one letter reply?"
+    },
+    {
+      "id": "mlt-011",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to retell the same story with a bigger ending each time?"
+    },
+    {
+      "id": "mlt-012",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to give a birthday speech that nobody asked for?"
+    },
+    {
+      "id": "mlt-013",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to storm out and then come back for their jacket?"
+    },
+    {
+      "id": "mlt-014",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to post a cryptic status and then say it is not about anyone?"
+    },
+    {
+      "id": "mlt-015",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to cry laughing and then pretend it never happened?"
+    },
+    {
+      "id": "mlt-016",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to be late and blame the weather every single time?"
+    },
+    {
+      "id": "mlt-017",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to fall out with a friend over a board game?"
+    },
+    {
+      "id": "mlt-018",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to answer a voice note with a longer voice note?"
+    },
+    {
+      "id": "mlt-019",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to say \"no offense\" right before saying something offensive?"
+    },
+    {
+      "id": "mlt-020",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to make a playlist for a breakup that has not happened yet?"
+    },
+    {
+      "id": "mlt-021",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to get emotional at the wedding of a stranger?"
+    },
+    {
+      "id": "mlt-022",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "drama",
+      "text": "Who is most likely to say \"we need to talk\" and then ask what is for dinner?"
+    },
+    {
+      "id": "mlt-023",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to sneak snacks into a cinema?"
+    },
+    {
+      "id": "mlt-024",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to eat the last slice and blame someone else?"
+    },
+    {
+      "id": "mlt-025",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to pretend to be asleep to avoid washing the dishes?"
+    },
+    {
+      "id": "mlt-026",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to read a message over your shoulder and say nothing?"
+    },
+    {
+      "id": "mlt-027",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to win a game by quietly changing the rules?"
+    },
+    {
+      "id": "mlt-028",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to keep a secret for years and reveal it at the worst moment?"
+    },
+    {
+      "id": "mlt-029",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to pretend they have read a book they never opened?"
+    },
+    {
+      "id": "mlt-030",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to say \"I am five minutes away\" while still in bed?"
+    },
+    {
+      "id": "mlt-031",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to take credit for someone else's idea?"
+    },
+    {
+      "id": "mlt-032",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to fake a phone call to escape a boring conversation?"
+    },
+    {
+      "id": "mlt-033",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to hide a mess by shoving it into a cupboard?"
+    },
+    {
+      "id": "mlt-034",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to laugh along at a joke they did not understand?"
+    },
+    {
+      "id": "mlt-035",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to rehearse an excuse before it is needed?"
+    },
+    {
+      "id": "mlt-036",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to open a present early and wrap it again?"
+    },
+    {
+      "id": "mlt-037",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to hear every word of a conversation across the room?"
+    },
+    {
+      "id": "mlt-038",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to lie about their age to get a cheaper ticket?"
+    },
+    {
+      "id": "mlt-039",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to claim they never eat sweets while hiding a chocolate stash?"
+    },
+    {
+      "id": "mlt-040",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to pretend to know the way and get everyone lost?"
+    },
+    {
+      "id": "mlt-041",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to borrow something and quietly keep it forever?"
+    },
+    {
+      "id": "mlt-042",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to plan a surprise party and spoil it themselves?"
+    },
+    {
+      "id": "mlt-043",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to blame the wifi for everything?"
+    },
+    {
+      "id": "mlt-044",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "sneaky",
+      "text": "Who is most likely to turn up with a \"cousin\" nobody has ever met?"
+    },
+    {
+      "id": "mlt-045",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who would accidentally text their crush to the family group?"
+    },
+    {
+      "id": "mlt-046",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to sleep through their own wedding?"
+    },
+    {
+      "id": "mlt-047",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to walk into a glass door and pretend it was on purpose?"
+    },
+    {
+      "id": "mlt-048",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to drop their phone in the toilet?"
+    },
+    {
+      "id": "mlt-049",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to wear their shirt inside out all day?"
+    },
+    {
+      "id": "mlt-050",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to get locked out of their own home in pajamas?"
+    },
+    {
+      "id": "mlt-051",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to send a message to the wrong person?"
+    },
+    {
+      "id": "mlt-052",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to trip over nothing at the worst possible moment?"
+    },
+    {
+      "id": "mlt-053",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to leave their wallet at a restaurant and go back for it twice?"
+    },
+    {
+      "id": "mlt-054",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to set off the smoke alarm while making toast?"
+    },
+    {
+      "id": "mlt-055",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to wave back at someone who was not waving at them?"
+    },
+    {
+      "id": "mlt-056",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to join a video call with the camera on by mistake?"
+    },
+    {
+      "id": "mlt-057",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to put salt in the tea instead of sugar?"
+    },
+    {
+      "id": "mlt-058",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to miss their stop and keep riding?"
+    },
+    {
+      "id": "mlt-059",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to lose their glasses while wearing them?"
+    },
+    {
+      "id": "mlt-060",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to get lost in a place they have visited ten times?"
+    },
+    {
+      "id": "mlt-061",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to spill a drink on the one person they wanted to impress?"
+    },
+    {
+      "id": "mlt-062",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to forget their own phone number?"
+    },
+    {
+      "id": "mlt-063",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to step in a puddle on the only dry day of the year?"
+    },
+    {
+      "id": "mlt-064",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to call their boss \"mum\" by accident?"
+    },
+    {
+      "id": "mlt-065",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to leave the house wearing two different shoes?"
+    },
+    {
+      "id": "mlt-066",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "accident",
+      "text": "Who is most likely to give themselves a haircut and regret it immediately?"
+    },
+    {
+      "id": "mlt-067",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to become a millionaire and forget their friends?"
+    },
+    {
+      "id": "mlt-068",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to become famous for something completely silly?"
+    },
+    {
+      "id": "mlt-069",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to win a talent show with a talent nobody knew they had?"
+    },
+    {
+      "id": "mlt-070",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to start a company that sells something strange?"
+    },
+    {
+      "id": "mlt-071",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to become a famous chef by accident?"
+    },
+    {
+      "id": "mlt-072",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to write a book nobody can put down?"
+    },
+    {
+      "id": "mlt-073",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to be interviewed on TV about a tiny local event?"
+    },
+    {
+      "id": "mlt-074",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to become the boss of everyone they know?"
+    },
+    {
+      "id": "mlt-075",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to invent a gadget nobody needs but everyone buys?"
+    },
+    {
+      "id": "mlt-076",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to get a statue of themselves in their home town?"
+    },
+    {
+      "id": "mlt-077",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to go viral for sneezing at the wrong moment?"
+    },
+    {
+      "id": "mlt-078",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to give an award speech that lasts twenty minutes?"
+    },
+    {
+      "id": "mlt-079",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to have a fan club of exactly three people?"
+    },
+    {
+      "id": "mlt-080",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to become a judge on a reality show?"
+    },
+    {
+      "id": "mlt-081",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to own a private island and never visit it?"
+    },
+    {
+      "id": "mlt-082",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to win the lottery and tell nobody?"
+    },
+    {
+      "id": "mlt-083",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to open a cafe named after their pet?"
+    },
+    {
+      "id": "mlt-084",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to release a song that becomes a surprise hit?"
+    },
+    {
+      "id": "mlt-085",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to get a job they only applied for as a joke?"
+    },
+    {
+      "id": "mlt-086",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to give excellent advice and never follow it?"
+    },
+    {
+      "id": "mlt-087",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to be remembered for one legendary story?"
+    },
+    {
+      "id": "mlt-088",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "success",
+      "text": "Who is most likely to retire at thirty and be bored by thirty-one?"
+    },
+    {
+      "id": "mlt-089",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who would survive the longest in a zombie apocalypse?"
+    },
+    {
+      "id": "mlt-090",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to make friends with the zombies?"
+    },
+    {
+      "id": "mlt-091",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to survive on a desert island by being bossy?"
+    },
+    {
+      "id": "mlt-092",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to forget the most important thing on a camping trip?"
+    },
+    {
+      "id": "mlt-093",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to scream at a harmless moth?"
+    },
+    {
+      "id": "mlt-094",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to win hide and seek by falling asleep in the hiding place?"
+    },
+    {
+      "id": "mlt-095",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to find the way out of an escape room first?"
+    },
+    {
+      "id": "mlt-096",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to panic first when the power goes out?"
+    },
+    {
+      "id": "mlt-097",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to cook a surprisingly good meal over a campfire?"
+    },
+    {
+      "id": "mlt-098",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to adopt a stray animal on a hike?"
+    },
+    {
+      "id": "mlt-099",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to stay calm while everyone else panics?"
+    },
+    {
+      "id": "mlt-100",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to survive a whole week without their phone?"
+    },
+    {
+      "id": "mlt-101",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to get lost in a forest while holding a map?"
+    },
+    {
+      "id": "mlt-102",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to give up first on a long hike and ask for a piggyback?"
+    },
+    {
+      "id": "mlt-103",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to make a new friend on a long train ride?"
+    },
+    {
+      "id": "mlt-104",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to talk their way out of trouble?"
+    },
+    {
+      "id": "mlt-105",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to run away from a friendly dog?"
+    },
+    {
+      "id": "mlt-106",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to wake up first on a trip and then wake everyone else?"
+    },
+    {
+      "id": "mlt-107",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to be chosen as the leader of a team stuck in a lift?"
+    },
+    {
+      "id": "mlt-108",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to survive a rainy day with only a board game?"
+    },
+    {
+      "id": "mlt-109",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to try the weirdest food on the menu?"
+    },
+    {
+      "id": "mlt-110",
+      "kind": "MOST_LIKELY_TO",
+      "language": "en",
+      "category": "survival",
+      "text": "Who is most likely to lose a staring contest because they cannot stop laughing?"
+    }
+  ]
+}

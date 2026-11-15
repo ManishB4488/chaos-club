@@ -28,3 +28,10 @@ export type JoinRoomInput = z.infer<typeof joinRoomSchema>;
 export type RejoinRoomInput = z.infer<typeof rejoinRoomSchema>;
 export type KickPlayerInput = z.infer<typeof kickPlayerSchema>;
 export type SelectGameInput = z.infer<typeof selectGameSchema>;
+
+/** Wrapper for any in-game action. Each game checks its own `action` shape. */
+export const gameActionSchema = z.strictObject({
+  gameId: z.enum(GAME_IDS),
+  action: z.unknown(),
+});
+export type GameActionInput = z.infer<typeof gameActionSchema>;

@@ -8,3 +8,5 @@ export const START_COUNTDOWN_MS = 5_000;
 export const MAX_ROOMS = 1_000;
 /** How many times to retry when a random room code is already taken. */
 export const CODE_ATTEMPTS = 20;
+/** If a running game has too few connected players for this long, it ends early. */
+export const BELOW_MIN_GRACE_MS = 60_000;

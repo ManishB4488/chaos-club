@@ -8,9 +8,12 @@ import {
   type RoomPhase,
   type RoomView,
 } from "@chaos/shared";
+import type { GameFactories } from "../games/registry";
+import type { GameInstance } from "../games/types";
 import { InMemoryRoomStore, type RoomStore } from "../storage/roomStore";
 import { generateRoomCode } from "./codes";
 import {
+  BELOW_MIN_GRACE_MS,
   CODE_ATTEMPTS,
   DISCONNECT_GRACE_MS,
   EMPTY_ROOM_TTL_MS,
@@ -25,7 +28,10 @@ export type RoomManagerOptions = {
   generateCode?: () => string;
   generateId?: () => string;
   generateToken?: () => string;
-  /** Games that can actually be started. Empty until the game modules exist. */
+  /** The games that really exist. Their ids are the games that can be started. */
+  gameFactories?: GameFactories;
+  random?: () => number;
+  /** Overrides which games can be started. Only for tests of the room rules. */
   availableGames?: readonly GameId[];
   maxRooms?: number;
   countdownMs?: number;
@@ -54,6 +60,8 @@ export class RoomManager {
   private readonly generateId: () => string;
   private readonly generateToken: () => string;
   private readonly availableGames: readonly GameId[];
+  private readonly gameFactories: GameFactories;
+  private readonly random: () => number;
   private readonly maxRooms: number;
   private readonly countdownMs: number;
   /** socket id -> which player that socket is. */
@@ -65,7 +73,9 @@ export class RoomManager {
     this.generateCode = options.generateCode ?? generateRoomCode;
     this.generateId = options.generateId ?? (() => randomUUID());
     this.generateToken = options.generateToken ?? (() => randomBytes(32).toString("base64url"));
-    this.availableGames = options.availableGames ?? [];
+    this.gameFactories = options.gameFactories ?? {};
+    this.random = options.random ?? Math.random;
+    this.availableGames = options.availableGames ?? (Object.keys(this.gameFactories) as GameId[]);
     this.maxRooms = options.maxRooms ?? MAX_ROOMS;
     this.countdownMs = options.countdownMs ?? START_COUNTDOWN_MS;
   }
@@ -91,6 +101,8 @@ export class RoomManager {
       countdownEndsAt: null,
       createdAt: this.now(),
       emptySince: null,
+      game: null,
+      belowMinSince: null,
     };
     this.store.set(room);
     this.sockets.set(socketId, { code, playerId: player.id });
@@ -237,7 +249,66 @@ export class RoomManager {
     }
     room.phase = "in-game";
     room.countdownEndsAt = null;
+    room.belowMinSince = null;
+    room.game = this.createGameInstance(room);
     return "in-game";
+  }
+
+  // ---------- during a game ----------
+
+  /** Passes a player's action to the running game. The game checks and applies it. */
+  gameAction(socketId: string, gameId: GameId, action: unknown): Result<{ code: string }> {
+    const located = this.locate(socketId);
+    if (!located) return fail("NOT_IN_ROOM");
+    const { room, player } = located;
+    if (room.phase !== "in-game" || !room.game || room.game.id !== gameId) {
+      return fail("NO_GAME_RUNNING");
+    }
+    const result = room.game.handleAction(player.id, action);
+    return result.ok ? ok({ code: room.code }) : result;
+  }
+
+  /** After a game is over, the host can bring everyone back to the lobby (also used for a rematch). */
+  returnToLobby(socketId: string): Result<{ code: string }> {
+    const located = this.locate(socketId);
+    if (!located) return fail("NOT_IN_ROOM");
+    const { room, player } = located;
+    if (room.hostId !== player.id) return fail("NOT_HOST");
+    if (room.phase !== "in-game" || (room.game && !room.game.isFinished())) return fail("ROOM_LOCKED");
+
+    room.phase = "lobby";
+    room.game = null;
+    room.countdownEndsAt = null;
+    room.belowMinSince = null;
+    return ok({ code: room.code });
+  }
+
+  /** Run several times a second. Moves running games along and ends games that lost too many players. */
+  tick(): string[] {
+    const changed: string[] = [];
+    const now = this.now();
+    for (const room of this.store.list()) {
+      const game = room.game;
+      if (room.phase !== "in-game" || !game || game.isFinished()) {
+        room.belowMinSince = null;
+        continue;
+      }
+      let dirty = game.tick(now);
+      if (game.isFinished()) {
+        room.belowMinSince = null;
+      } else if (this.connectedCount(room) < GAME_PLAYER_LIMITS[game.id].min) {
+        room.belowMinSince ??= now;
+        if (now - room.belowMinSince >= BELOW_MIN_GRACE_MS) {
+          game.forceFinish();
+          room.belowMinSince = null;
+          dirty = true;
+        }
+      } else {
+        room.belowMinSince = null;
+      }
+      if (dirty) changed.push(room.code);
+    }
+    return changed;
   }
 
   // ---------- housekeeping ----------
@@ -306,6 +377,7 @@ export class RoomManager {
       })),
       selectedGame: game,
       availableGames: [...this.availableGames],
+      game: room.game ? room.game.viewFor(playerId) : null,
       minPlayersForGame: game ? GAME_PLAYER_LIMITS[game].min : null,
       maxPlayers: ROOM_MAX_PLAYERS,
       countdownEndsAt: room.countdownEndsAt,
@@ -327,6 +399,23 @@ export class RoomManager {
   }
 
   // ---------- internals ----------
+
+  private createGameInstance(room: Room): GameInstance | null {
+    const gameId = room.selectedGame;
+    const factory = gameId ? this.gameFactories[gameId] : undefined;
+    if (!factory) return null;
+    return factory({
+      players: room.players.map((p) => ({
+        id: p.id,
+        nickname: p.nickname,
+        avatar: p.avatar,
+        color: p.color,
+      })),
+      now: this.now,
+      random: this.random,
+      isConnected: (playerId) => room.players.some((p) => p.id === playerId && p.connected),
+    });
+  }
 
   private locate(socketId: string): Located | null {
     const ref = this.sockets.get(socketId);

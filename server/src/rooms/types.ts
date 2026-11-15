@@ -1,4 +1,5 @@
 import type { AvatarId, GameId, PlayerColor, RoomErrorCode, RoomPhase } from "@chaos/shared";
+import type { GameInstance } from "../games/types";
 
 export type PlayerProfile = {
   nickname: string;
@@ -26,6 +27,10 @@ export type Room = {
   createdAt: number;
   /** When the last connected player left, or null while someone is connected. */
   emptySince: number | null;
+  /** The running game, or null in the lobby. */
+  game: GameInstance | null;
+  /** When the room first had too few connected players for its game, or null. */
+  belowMinSince: number | null;
 };
 
 export type Result<T> = { ok: true; value: T } | { ok: false; error: RoomErrorCode };
