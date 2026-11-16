@@ -11,6 +11,8 @@ if (existsSync(envFile)) {
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   SERVER_PORT: z.coerce.number().int().min(1).max(65535).default(4000),
+  // Hosting services (Railway, Render and others) tell the program which port to use through PORT.
+  PORT: z.coerce.number().int().min(1).max(65535).optional(),
   // One or more website addresses, separated by commas.
   WEB_ORIGIN: z
     .string()
@@ -41,4 +43,8 @@ if (!parsed.success) {
   process.exit(1);
 }
 
-export const env = parsed.data;
+export const env = {
+  ...parsed.data,
+  /** The port to listen on: PORT if the host gave one, otherwise SERVER_PORT. */
+  port: parsed.data.PORT ?? parsed.data.SERVER_PORT,
+};

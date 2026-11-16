@@ -142,3 +142,9 @@ chaos-club/
 - `web/src/components/games/impostor/`: ImpostorScreen, CluePanel, VotePanel, ResultPanels
 - `web/src/components/games/ScoreboardCard.tsx`: scoreboard used by the Impostor screens
 - `server/src/index.ts`: the Impostor game is now switched on by passing in its word file
+
+## Added for single-program production mode (unverified until PROGRESS.md says so)
+- `server/src/combined.ts`: starts the website and the game server together
+- `server/src/app.ts`: optional fallbackHandler that serves the website
+- `server/src/config/env.ts`: PORT support
+- `web/src/lib/socket.ts`: production connects to the page's own address

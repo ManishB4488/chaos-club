@@ -50,6 +50,8 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Website room flow, part 2: game picker, start button, countdown, kick buttons, available-games setting. Verified: 39 server + 17 shared tests, typecheck, lint, build; countdown and game phase worked in two real windows.
 - [x] Phone test over Wi-Fi: homepage, game server health page and joining a room from a real phone all worked (website dev server reads WEB_ORIGIN for allowedDevOrigins)
 - [x] Four-window test with four separate sessions (normal, incognito, second browser, real phone): worked, including full room, kick and rejoin, host handover, phone lock and reconnect, refresh
+- [ ] Single-program production mode (website + game server on one address): written, NOT yet verified
+- [ ] Deployment to a host (needs owner sign-ups; guide to be written after local verification)
 - [ ] Create Room
 - [ ] Join Room
 - [ ] Multiplayer lobby (host controls, kick, leave, per-game minimum players)
@@ -82,4 +84,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Owner plays the Impostor game with 3 to 4 real windows (steps in chat). Then Roast Your Friends (needs prompt content, moderation list expansion, report button).
+Verify the single-program mode locally (build:prod, start:prod, play a game on one address, phone). Then write the deploy guide for the chosen host. After that: Roast Your Friends.

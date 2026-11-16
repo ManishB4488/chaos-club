@@ -3,10 +3,17 @@ import type { Ack } from "@chaos/shared";
 
 let socket: Socket | null = null;
 
-/** Where the game server lives. On a phone this follows the address of the page, so no setup is needed. */
+/**
+ * Where the game server lives.
+ * - Production: the website and the game server are one program, so use the page's own address.
+ * - Development: the game server is a separate program on port 4000 of the same machine, so this
+ *   also works from a phone without any setup.
+ * - NEXT_PUBLIC_SERVER_URL overrides both.
+ */
 function serverUrl(): string {
   const configured = process.env.NEXT_PUBLIC_SERVER_URL;
   if (configured) return configured;
+  if (process.env.NODE_ENV === "production") return window.location.origin;
   return `${window.location.protocol}//${window.location.hostname}:4000`;
 }
 

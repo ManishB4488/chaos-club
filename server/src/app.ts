@@ -1,4 +1,4 @@
-import { createServer } from "node:http";
+import { createServer, type IncomingMessage, type ServerResponse } from "node:http";
 import cors from "cors";
 import express from "express";
 import { Server } from "socket.io";
@@ -15,6 +15,8 @@ export type GameServerOptions = {
   gameFactories?: GameFactories;
   sweepIntervalMs?: number;
   tickIntervalMs?: number;
+  /** Handles every request that is not /health or the live connection. Used to serve the website. */
+  fallbackHandler?: (req: IncomingMessage, res: ServerResponse) => void;
 };
 
 /** Builds the whole server without starting it, so tests can run it on any free port. */
@@ -31,6 +33,11 @@ export function createGameServer(options: GameServerOptions) {
       uptimeSeconds: Math.round(process.uptime()),
     });
   });
+
+  const fallback = options.fallbackHandler;
+  if (fallback) {
+    app.use((req, res) => fallback(req, res));
+  }
 
   const httpServer = createServer(app);
   const io = new Server(httpServer, {

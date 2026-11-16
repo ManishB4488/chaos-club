@@ -17,8 +17,8 @@ const server = createGameServer({
   gameFactories,
 });
 
-server.httpServer.listen(env.SERVER_PORT, () => {
-  console.log(`CHAOS CLUB server listening on http://localhost:${env.SERVER_PORT}`);
+server.httpServer.listen(env.port, () => {
+  console.log(`CHAOS CLUB server listening on http://localhost:${env.port}`);
   console.log(`Accepting browsers from ${env.WEB_ORIGIN.join(", ")}`);
   console.log(`Games that can be started: ${Object.keys(gameFactories).join(", ") || "none yet"}`);
   console.log(
