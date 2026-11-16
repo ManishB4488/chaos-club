@@ -137,3 +137,8 @@ chaos-club/
 - `server/src/moderation/profanity.ts`: starter word filter
 - `server/src/content/loadImpostorWords.ts`
 - The game is not offered yet: it is only registered when the word file is passed in (screens come first)
+
+## Added with the Impostor screens (unverified until PROGRESS.md says so)
+- `web/src/components/games/impostor/`: ImpostorScreen, CluePanel, VotePanel, ResultPanels
+- `web/src/components/games/ScoreboardCard.tsx`: scoreboard used by the Impostor screens
+- `server/src/index.ts`: the Impostor game is now switched on by passing in its word file

@@ -2,6 +2,7 @@ import {
   CLIENT_EVENTS,
   SERVER_EVENTS,
   type GameId,
+  type ImpostorAction,
   type JoinedPayload,
   type RoomView,
 } from "@chaos/shared";
@@ -159,6 +160,8 @@ const selectGame = (gameId: GameId) => sendAction(CLIENT_EVENTS.selectGame, { ga
 const startGame = () => sendAction(CLIENT_EVENTS.startGame);
 const kickPlayer = (playerId: string) => sendAction(CLIENT_EVENTS.kickPlayer, { playerId });
 const returnToLobby = () => sendAction(CLIENT_EVENTS.returnToLobby);
+const impostorAction = (action: ImpostorAction) =>
+  sendAction(CLIENT_EVENTS.gameAction, { gameId: "impostor", action });
 const voteInMostLikelyTo = (targetId: string) =>
   sendAction(CLIENT_EVENTS.gameAction, { gameId: "most-likely-to", action: { type: "vote", targetId } });
 
@@ -175,4 +178,5 @@ export const roomClient = {
   kickPlayer,
   returnToLobby,
   voteInMostLikelyTo,
+  impostorAction,
 };

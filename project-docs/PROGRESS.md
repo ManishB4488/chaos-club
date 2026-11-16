@@ -58,7 +58,7 @@ Update after every development session. Never mark a feature complete unless it 
 
 ## Games (do not start until the multiplayer foundation works)
 - [x] Who's Most Likely To? (2-4 players): server module and screens verified by owner (70 server + 20 shared tests, voting, reveal, results, play again, phone)
-- [ ] Impostor Word Game (3-4 players). Words: 100 pairs written (approved by delegation). Server game module and starter word filter written with tests (NOT yet verified). Screens not started.
+- [ ] Impostor Word Game (3-4 players). Words approved; server module VERIFIED (95 server + 23 shared tests, typecheck, build). Screens written and the game switched on: NOT yet verified with real windows.
 - [ ] Roast Your Friends (2-4 players)
 - [ ] The Fake Answer (2-4 players)
 - [ ] Draw It Wrong (2-4 players)
@@ -82,4 +82,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify the Impostor server module (tests, typecheck). Then build its screens, then switch it on by passing the word file in server/src/index.ts.
+Owner plays the Impostor game with 3 to 4 real windows (steps in chat). Then Roast Your Friends (needs prompt content, moderation list expansion, report button).
