@@ -8,6 +8,15 @@ export type GamePlayer = {
   color: PlayerColor;
 };
 
+/** A player's report that some content is not okay. Kept for review (the admin panel comes later). */
+export type ContentReportEntry = {
+  game: GameId;
+  text: string;
+  reason: string | null;
+  roomCode: string;
+  createdAt: number;
+};
+
 /** Everything a game is given when a room starts it. */
 export type GameContext = {
   /** The players who take part. Fixed for the whole game. */
@@ -16,6 +25,8 @@ export type GameContext = {
   random: () => number;
   /** Whether a player is connected right now. */
   isConnected: (playerId: string) => boolean;
+  /** Lets a game pass on a player's report. */
+  reportContent?: (entry: Omit<ContentReportEntry, "roomCode" | "createdAt">) => void;
 };
 
 /**

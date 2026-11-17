@@ -3,3 +3,4 @@ export * from "./schemas";
 export * from "./events";
 export * from "./games/mostLikelyTo";
 export * from "./games/impostor";
+export * from "./games/roast";

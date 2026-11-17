@@ -148,3 +148,11 @@ chaos-club/
 - `server/src/app.ts`: optional fallbackHandler that serves the website
 - `server/src/config/env.ts`: PORT support
 - `web/src/lib/socket.ts`: production connects to the page's own address
+
+## Added with the Roast server module (unverified until PROGRESS.md says so)
+- `content/en/roast-prompts.json`: 110 prompts
+- `shared/src/games/roast.ts`: actions, steps and private view
+- `server/src/games/roast/RoastGame.ts`: the rules, scoring, awards and reports
+- `server/src/content/loadRoastPrompts.ts`
+- `server/src/rooms/RoomManager.ts`: keeps content reports (listReports)
+- The game is not offered yet: it is only registered when the prompt file is passed in

@@ -1,9 +1,10 @@
 import type { AvatarId, GameId, PlayerColor } from "./constants";
 import type { ImpostorView } from "./games/impostor";
 import type { MltView } from "./games/mostLikelyTo";
+import type { RoastView } from "./games/roast";
 
 /** What a player can see of the running game. */
-export type GameView = MltView | ImpostorView;
+export type GameView = MltView | ImpostorView | RoastView;
 
 /** Events the browser sends to the server. */
 export const CLIENT_EVENTS = {
@@ -54,7 +55,9 @@ export type RoomErrorCode =
   | "NOT_YOUR_TURN"
   | "WRONG_STEP"
   | "CLUE_NOT_ALLOWED"
-  | "ALREADY_DONE";
+  | "ALREADY_DONE"
+  | "CONTENT_NOT_ALLOWED"
+  | "ANSWER_NOT_FOUND";
 
 /** Plain-language messages the website can show. */
 export const ROOM_ERROR_MESSAGES: Record<RoomErrorCode, string> = {
@@ -84,6 +87,8 @@ export const ROOM_ERROR_MESSAGES: Record<RoomErrorCode, string> = {
   WRONG_STEP: "You cannot do that right now.",
   CLUE_NOT_ALLOWED: "That clue is not allowed. Use one word that does not contain your secret word.",
   ALREADY_DONE: "You have already done that.",
+  CONTENT_NOT_ALLOWED: "That is not allowed here. Please keep it friendly and try again.",
+  ANSWER_NOT_FOUND: "That answer does not exist.",
 };
 
 export type PlayerView = {

@@ -1,0 +1,122 @@
+# Roast Your Friends: prompt review (copy)
+
+110 original prompts. `{name}` becomes one player's nickname during the game (each player takes turns being the target). All are meant to be friendly teasing: no sexual content, nothing about bodies, religion, politics or personal traits.
+
+Review: reply with IDs to remove or reword, for example `remove roast-014`.
+
+
+## About a player (uses their name)
+
+- `roast-001` {name} gets arrested. What is the most likely reason?
+- `roast-002` {name} becomes invisible for one day. What do they do first?
+- `roast-003` What would {name} name their autobiography?
+- `roast-004` {name} gets one superpower, but it is useless. What is it?
+- `roast-005` What is the worst thing {name} could say in a job interview?
+- `roast-006` {name} is stuck in a lift with a celebrity. What do they say?
+- `roast-007` What would be {name}'s villain origin story?
+- `roast-008` {name} opens a restaurant. What is the weirdest dish on the menu?
+- `roast-009` What is {name} secretly searching for online at 3 a.m.?
+- `roast-010` {name} wins the lottery. What is the first silly thing they buy?
+- `roast-011` What would {name} put on a very honest business card?
+- `roast-012` {name} becomes the ruler of a tiny island. What is their first law?
+- `roast-013` What does {name} do when the wifi goes down?
+- `roast-014` {name} starts a YouTube channel. What is it about?
+- `roast-015` What is the one thing that would make {name} cry in a movie?
+- `roast-016` {name} gets a pet dragon. What do they name it?
+- `roast-017` What would {name} do as mayor for a day?
+- `roast-018` {name} gets lost in a jungle. What is the first thing they do?
+- `roast-019` What would {name}'s reality show be called?
+- `roast-020` {name} is secretly a spy. What is their cover story?
+- `roast-021` What is {name}'s signature dance move called?
+- `roast-022` {name} starts a diary. What is the first line?
+- `roast-023` What would {name} say to a talking cat?
+- `roast-024` {name} is a contestant on a cooking show. What goes wrong?
+- `roast-025` What is {name} famous for in twenty years?
+- `roast-026` {name} invents a new holiday. What do people do on it?
+- `roast-027` What would {name} bring to a desert island, other than the obvious?
+- `roast-028` {name} joins the circus. What is their act?
+- `roast-029` What is the title of {name}'s first rap album?
+- `roast-030` {name} becomes a wizard. What is their most embarrassing spell?
+- `roast-031` What would {name} do with a time machine?
+- `roast-032` {name} gets a text from the future. What does it say?
+- `roast-033` What does {name} whisper to their plants?
+- `roast-034` {name} is the last person on Earth for one hour. What do they do?
+- `roast-035` What would {name}'s nickname be in a pirate crew?
+- `roast-036` {name} runs for school president. What is their campaign promise?
+- `roast-037` {name} becomes a superhero. What is their catchphrase?
+- `roast-038` What would {name} complain about on a holiday in paradise?
+- `roast-039` {name} adopts a mysterious creature. What is it?
+- `roast-040` What does {name} do the second the teacher leaves the room?
+- `roast-041` {name} is asked to give a TED talk. What is the title?
+- `roast-042` What is {name}'s weirdest talent?
+- `roast-043` {name} gets a free ticket to anywhere. Where do they go and what goes wrong?
+- `roast-044` What is {name}'s favourite kind of trouble?
+- `roast-045` {name} starts a band. What is the band called?
+- `roast-046` What would {name} do if they woke up as a pigeon?
+- `roast-047` {name} designs a new emoji. What does it show?
+- `roast-048` What would {name} sell on a late night shopping channel?
+- `roast-049` {name} is in a horror movie. What is the first mistake they make?
+- `roast-050` What is the most {name} thing to do at a wedding?
+- `roast-051` {name} gets one wish from a genie and wastes it. What is it?
+- `roast-052` What would {name} say when winning an award for doing nothing?
+- `roast-053` {name} gets a very honest fortune cookie. What does it say?
+- `roast-054` What is {name}'s secret talent that nobody asked for?
+- `roast-055` {name} becomes a pirate. What is their ship called?
+- `roast-056` What is {name} most likely to shout at a video game?
+- `roast-057` {name} travels back to the stone age. How do they annoy everyone?
+- `roast-058` What would {name} text to the wrong group chat?
+- `roast-059` {name} writes a very short book. What is it called?
+- `roast-060` What would {name} do on their first day as a robot butler?
+
+## General
+
+- `roast-061` What is the worst possible thing to say during a job interview?
+- `roast-062` What is the most embarrassing superpower?
+- `roast-063` What would be the worst name for a pet goldfish?
+- `roast-064` What is the worst thing to hear your pilot say?
+- `roast-065` What should never be served at a birthday party?
+- `roast-066` What is the worst thing to find in your sandwich?
+- `roast-067` What is the worst advice anyone has ever given?
+- `roast-068` What is the best excuse for being late to school?
+- `roast-069` What do aliens think humans do all day?
+- `roast-070` What is the worst name for a superhero?
+- `roast-071` What is the most useless invention ever?
+- `roast-072` What would be a terrible slogan for a bank?
+- `roast-073` What is the worst thing to say on a first date?
+- `roast-074` What is the strangest thing to bring to a picnic?
+- `roast-075` What is a terrible name for a bakery?
+- `roast-076` What do pigeons gossip about?
+- `roast-077` What should be on the menu at a restaurant for ghosts?
+- `roast-078` What is the worst thing to say to a lifeguard?
+- `roast-079` What would a dog write in its diary?
+- `roast-080` What is the worst thing to hear when the lights go out?
+- `roast-081` What is the worst theme for a wedding cake?
+- `roast-082` What is the strangest thing a teacher could say on the first day of school?
+- `roast-083` What would be the worst ice cream flavour?
+- `roast-084` What is the worst gift to give your best friend?
+- `roast-085` What do cows talk about when nobody is listening?
+- `roast-086` What is the worst place to hide during hide and seek?
+- `roast-087` What is a terrible name for a rock band?
+- `roast-088` What would be the worst thing to find in the fridge at midnight?
+- `roast-089` What is a bad idea for a school project?
+- `roast-090` What is the worst way to wake someone up?
+- `roast-091` What would be the worst use of a time machine?
+- `roast-092` What is the worst thing to put on a pizza?
+- `roast-093` What is the most awkward thing to say in a lift?
+- `roast-094` What would be a terrible name for a pet tiger?
+- `roast-095` What is the worst thing to forget on the day of an exam?
+- `roast-096` What does the moon think about all night?
+- `roast-097` What would be a terrible catchphrase for a news reader?
+- `roast-098` What is the worst thing to yell at a cricket match?
+- `roast-099` What would make the worst theme park ride?
+- `roast-100` What is the most suspicious thing a neighbour could say?
+- `roast-101` What is a terrible title for a movie?
+- `roast-102` What would be the worst flavour of toothpaste?
+- `roast-103` What is the worst thing a robot could say when it wakes up?
+- `roast-104` What is the least helpful thing a map could say?
+- `roast-105` What is a bad name for a ship?
+- `roast-106` What is the worst thing to say to a stranger on a train?
+- `roast-107` What would be the worst superhero sidekick?
+- `roast-108` What is the worst thing to say right before a magic trick?
+- `roast-109` What is the strangest rule a school could have?
+- `roast-110` What is a terrible thing to write on a birthday card?

@@ -425,3 +425,37 @@ describe("running a game inside a room", () => {
     expect(game?.results?.endedEarly).toBe(true);
   });
 });
+
+describe("reports from a game", () => {
+  it("keeps a player's report, with the room code, for later review", () => {
+    const roastPrompts = [
+      { id: "r1", category: "general" as const, text: "What is the worst name for a superhero?" },
+      { id: "r2", category: "general" as const, text: "What is the worst thing to say on a first date?" },
+    ];
+    const { manager } = setup({
+      gameFactories: createGameFactories({
+        mltQuestions: sampleQuestions(),
+        roastPrompts,
+        roastConfig: { rounds: 1, writingMs: 600_000, votingMs: 600_000, revealMs: 500 },
+      }),
+    });
+    const room = fillRoom(manager, ["A", "B", "C"]);
+    unwrap(manager.selectGame("s1", "roast"));
+    unwrap(manager.start("s1"));
+    manager.completeCountdown(room.code);
+
+    ["s1", "s2", "s3"].forEach((socket, i) =>
+      unwrap(manager.gameAction(socket, "roast", { type: "submit", text: `answer ${i}` })),
+    );
+    const view = manager.viewFor(room.code, room.ids[0] ?? "");
+    const game = view?.game;
+    expect(game?.gameId).toBe("roast");
+    if (game?.gameId !== "roast") return;
+    const target = game.answers.find((a) => !a.mine);
+    unwrap(manager.gameAction("s1", "roast", { type: "report", answerId: target?.id ?? "", reason: "rude" }));
+
+    const reports = manager.listReports();
+    expect(reports).toHaveLength(1);
+    expect(reports[0]).toMatchObject({ game: "roast", text: target?.text, reason: "rude", roomCode: room.code });
+  });
+});

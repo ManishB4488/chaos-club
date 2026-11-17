@@ -9,7 +9,7 @@ import {
   type RoomView,
 } from "@chaos/shared";
 import type { GameFactories } from "../games/registry";
-import type { GameInstance } from "../games/types";
+import type { ContentReportEntry, GameInstance } from "../games/types";
 import { InMemoryRoomStore, type RoomStore } from "../storage/roomStore";
 import { generateRoomCode } from "./codes";
 import {
@@ -66,6 +66,8 @@ export class RoomManager {
   private readonly countdownMs: number;
   /** socket id -> which player that socket is. */
   private readonly sockets = new Map<string, { code: string; playerId: string }>();
+  /** Reports players have made about content. Kept in memory for now; the admin panel will read them later. */
+  private readonly reports: ContentReportEntry[] = [];
 
   constructor(options: RoomManagerOptions = {}) {
     this.store = options.store ?? new InMemoryRoomStore();
@@ -394,6 +396,11 @@ export class RoomManager {
     );
   }
 
+  /** Reports made so far (most recent 500). */
+  listReports(): ContentReportEntry[] {
+    return [...this.reports];
+  }
+
   roomCount(): number {
     return this.store.size();
   }
@@ -414,6 +421,10 @@ export class RoomManager {
       now: this.now,
       random: this.random,
       isConnected: (playerId) => room.players.some((p) => p.id === playerId && p.connected),
+      reportContent: (entry) => {
+        this.reports.push({ ...entry, roomCode: room.code, createdAt: this.now() });
+        if (this.reports.length > 500) this.reports.shift();
+      },
     });
   }
 

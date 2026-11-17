@@ -1,0 +1,666 @@
+{
+  "version": 1,
+  "status": "APPROVED by owner delegation (2026-11-16). {name} is replaced by a player's nickname during the game.",
+  "items": [
+    {
+      "id": "roast-001",
+      "language": "en",
+      "category": "about",
+      "text": "{name} gets arrested. What is the most likely reason?"
+    },
+    {
+      "id": "roast-002",
+      "language": "en",
+      "category": "about",
+      "text": "{name} becomes invisible for one day. What do they do first?"
+    },
+    {
+      "id": "roast-003",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} name their autobiography?"
+    },
+    {
+      "id": "roast-004",
+      "language": "en",
+      "category": "about",
+      "text": "{name} gets one superpower, but it is useless. What is it?"
+    },
+    {
+      "id": "roast-005",
+      "language": "en",
+      "category": "about",
+      "text": "What is the worst thing {name} could say in a job interview?"
+    },
+    {
+      "id": "roast-006",
+      "language": "en",
+      "category": "about",
+      "text": "{name} is stuck in a lift with a celebrity. What do they say?"
+    },
+    {
+      "id": "roast-007",
+      "language": "en",
+      "category": "about",
+      "text": "What would be {name}'s villain origin story?"
+    },
+    {
+      "id": "roast-008",
+      "language": "en",
+      "category": "about",
+      "text": "{name} opens a restaurant. What is the weirdest dish on the menu?"
+    },
+    {
+      "id": "roast-009",
+      "language": "en",
+      "category": "about",
+      "text": "What is {name} secretly searching for online at 3 a.m.?"
+    },
+    {
+      "id": "roast-010",
+      "language": "en",
+      "category": "about",
+      "text": "{name} wins the lottery. What is the first silly thing they buy?"
+    },
+    {
+      "id": "roast-011",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} put on a very honest business card?"
+    },
+    {
+      "id": "roast-012",
+      "language": "en",
+      "category": "about",
+      "text": "{name} becomes the ruler of a tiny island. What is their first law?"
+    },
+    {
+      "id": "roast-013",
+      "language": "en",
+      "category": "about",
+      "text": "What does {name} do when the wifi goes down?"
+    },
+    {
+      "id": "roast-014",
+      "language": "en",
+      "category": "about",
+      "text": "{name} starts a YouTube channel. What is it about?"
+    },
+    {
+      "id": "roast-015",
+      "language": "en",
+      "category": "about",
+      "text": "What is the one thing that would make {name} cry in a movie?"
+    },
+    {
+      "id": "roast-016",
+      "language": "en",
+      "category": "about",
+      "text": "{name} gets a pet dragon. What do they name it?"
+    },
+    {
+      "id": "roast-017",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} do as mayor for a day?"
+    },
+    {
+      "id": "roast-018",
+      "language": "en",
+      "category": "about",
+      "text": "{name} gets lost in a jungle. What is the first thing they do?"
+    },
+    {
+      "id": "roast-019",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name}'s reality show be called?"
+    },
+    {
+      "id": "roast-020",
+      "language": "en",
+      "category": "about",
+      "text": "{name} is secretly a spy. What is their cover story?"
+    },
+    {
+      "id": "roast-021",
+      "language": "en",
+      "category": "about",
+      "text": "What is {name}'s signature dance move called?"
+    },
+    {
+      "id": "roast-022",
+      "language": "en",
+      "category": "about",
+      "text": "{name} starts a diary. What is the first line?"
+    },
+    {
+      "id": "roast-023",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} say to a talking cat?"
+    },
+    {
+      "id": "roast-024",
+      "language": "en",
+      "category": "about",
+      "text": "{name} is a contestant on a cooking show. What goes wrong?"
+    },
+    {
+      "id": "roast-025",
+      "language": "en",
+      "category": "about",
+      "text": "What is {name} famous for in twenty years?"
+    },
+    {
+      "id": "roast-026",
+      "language": "en",
+      "category": "about",
+      "text": "{name} invents a new holiday. What do people do on it?"
+    },
+    {
+      "id": "roast-027",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} bring to a desert island, other than the obvious?"
+    },
+    {
+      "id": "roast-028",
+      "language": "en",
+      "category": "about",
+      "text": "{name} joins the circus. What is their act?"
+    },
+    {
+      "id": "roast-029",
+      "language": "en",
+      "category": "about",
+      "text": "What is the title of {name}'s first rap album?"
+    },
+    {
+      "id": "roast-030",
+      "language": "en",
+      "category": "about",
+      "text": "{name} becomes a wizard. What is their most embarrassing spell?"
+    },
+    {
+      "id": "roast-031",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} do with a time machine?"
+    },
+    {
+      "id": "roast-032",
+      "language": "en",
+      "category": "about",
+      "text": "{name} gets a text from the future. What does it say?"
+    },
+    {
+      "id": "roast-033",
+      "language": "en",
+      "category": "about",
+      "text": "What does {name} whisper to their plants?"
+    },
+    {
+      "id": "roast-034",
+      "language": "en",
+      "category": "about",
+      "text": "{name} is the last person on Earth for one hour. What do they do?"
+    },
+    {
+      "id": "roast-035",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name}'s nickname be in a pirate crew?"
+    },
+    {
+      "id": "roast-036",
+      "language": "en",
+      "category": "about",
+      "text": "{name} runs for school president. What is their campaign promise?"
+    },
+    {
+      "id": "roast-037",
+      "language": "en",
+      "category": "about",
+      "text": "{name} becomes a superhero. What is their catchphrase?"
+    },
+    {
+      "id": "roast-038",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} complain about on a holiday in paradise?"
+    },
+    {
+      "id": "roast-039",
+      "language": "en",
+      "category": "about",
+      "text": "{name} adopts a mysterious creature. What is it?"
+    },
+    {
+      "id": "roast-040",
+      "language": "en",
+      "category": "about",
+      "text": "What does {name} do the second the teacher leaves the room?"
+    },
+    {
+      "id": "roast-041",
+      "language": "en",
+      "category": "about",
+      "text": "{name} is asked to give a TED talk. What is the title?"
+    },
+    {
+      "id": "roast-042",
+      "language": "en",
+      "category": "about",
+      "text": "What is {name}'s weirdest talent?"
+    },
+    {
+      "id": "roast-043",
+      "language": "en",
+      "category": "about",
+      "text": "{name} gets a free ticket to anywhere. Where do they go and what goes wrong?"
+    },
+    {
+      "id": "roast-044",
+      "language": "en",
+      "category": "about",
+      "text": "What is {name}'s favourite kind of trouble?"
+    },
+    {
+      "id": "roast-045",
+      "language": "en",
+      "category": "about",
+      "text": "{name} starts a band. What is the band called?"
+    },
+    {
+      "id": "roast-046",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} do if they woke up as a pigeon?"
+    },
+    {
+      "id": "roast-047",
+      "language": "en",
+      "category": "about",
+      "text": "{name} designs a new emoji. What does it show?"
+    },
+    {
+      "id": "roast-048",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} sell on a late night shopping channel?"
+    },
+    {
+      "id": "roast-049",
+      "language": "en",
+      "category": "about",
+      "text": "{name} is in a horror movie. What is the first mistake they make?"
+    },
+    {
+      "id": "roast-050",
+      "language": "en",
+      "category": "about",
+      "text": "What is the most {name} thing to do at a wedding?"
+    },
+    {
+      "id": "roast-051",
+      "language": "en",
+      "category": "about",
+      "text": "{name} gets one wish from a genie and wastes it. What is it?"
+    },
+    {
+      "id": "roast-052",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} say when winning an award for doing nothing?"
+    },
+    {
+      "id": "roast-053",
+      "language": "en",
+      "category": "about",
+      "text": "{name} gets a very honest fortune cookie. What does it say?"
+    },
+    {
+      "id": "roast-054",
+      "language": "en",
+      "category": "about",
+      "text": "What is {name}'s secret talent that nobody asked for?"
+    },
+    {
+      "id": "roast-055",
+      "language": "en",
+      "category": "about",
+      "text": "{name} becomes a pirate. What is their ship called?"
+    },
+    {
+      "id": "roast-056",
+      "language": "en",
+      "category": "about",
+      "text": "What is {name} most likely to shout at a video game?"
+    },
+    {
+      "id": "roast-057",
+      "language": "en",
+      "category": "about",
+      "text": "{name} travels back to the stone age. How do they annoy everyone?"
+    },
+    {
+      "id": "roast-058",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} text to the wrong group chat?"
+    },
+    {
+      "id": "roast-059",
+      "language": "en",
+      "category": "about",
+      "text": "{name} writes a very short book. What is it called?"
+    },
+    {
+      "id": "roast-060",
+      "language": "en",
+      "category": "about",
+      "text": "What would {name} do on their first day as a robot butler?"
+    },
+    {
+      "id": "roast-061",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst possible thing to say during a job interview?"
+    },
+    {
+      "id": "roast-062",
+      "language": "en",
+      "category": "general",
+      "text": "What is the most embarrassing superpower?"
+    },
+    {
+      "id": "roast-063",
+      "language": "en",
+      "category": "general",
+      "text": "What would be the worst name for a pet goldfish?"
+    },
+    {
+      "id": "roast-064",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to hear your pilot say?"
+    },
+    {
+      "id": "roast-065",
+      "language": "en",
+      "category": "general",
+      "text": "What should never be served at a birthday party?"
+    },
+    {
+      "id": "roast-066",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to find in your sandwich?"
+    },
+    {
+      "id": "roast-067",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst advice anyone has ever given?"
+    },
+    {
+      "id": "roast-068",
+      "language": "en",
+      "category": "general",
+      "text": "What is the best excuse for being late to school?"
+    },
+    {
+      "id": "roast-069",
+      "language": "en",
+      "category": "general",
+      "text": "What do aliens think humans do all day?"
+    },
+    {
+      "id": "roast-070",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst name for a superhero?"
+    },
+    {
+      "id": "roast-071",
+      "language": "en",
+      "category": "general",
+      "text": "What is the most useless invention ever?"
+    },
+    {
+      "id": "roast-072",
+      "language": "en",
+      "category": "general",
+      "text": "What would be a terrible slogan for a bank?"
+    },
+    {
+      "id": "roast-073",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to say on a first date?"
+    },
+    {
+      "id": "roast-074",
+      "language": "en",
+      "category": "general",
+      "text": "What is the strangest thing to bring to a picnic?"
+    },
+    {
+      "id": "roast-075",
+      "language": "en",
+      "category": "general",
+      "text": "What is a terrible name for a bakery?"
+    },
+    {
+      "id": "roast-076",
+      "language": "en",
+      "category": "general",
+      "text": "What do pigeons gossip about?"
+    },
+    {
+      "id": "roast-077",
+      "language": "en",
+      "category": "general",
+      "text": "What should be on the menu at a restaurant for ghosts?"
+    },
+    {
+      "id": "roast-078",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to say to a lifeguard?"
+    },
+    {
+      "id": "roast-079",
+      "language": "en",
+      "category": "general",
+      "text": "What would a dog write in its diary?"
+    },
+    {
+      "id": "roast-080",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to hear when the lights go out?"
+    },
+    {
+      "id": "roast-081",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst theme for a wedding cake?"
+    },
+    {
+      "id": "roast-082",
+      "language": "en",
+      "category": "general",
+      "text": "What is the strangest thing a teacher could say on the first day of school?"
+    },
+    {
+      "id": "roast-083",
+      "language": "en",
+      "category": "general",
+      "text": "What would be the worst ice cream flavour?"
+    },
+    {
+      "id": "roast-084",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst gift to give your best friend?"
+    },
+    {
+      "id": "roast-085",
+      "language": "en",
+      "category": "general",
+      "text": "What do cows talk about when nobody is listening?"
+    },
+    {
+      "id": "roast-086",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst place to hide during hide and seek?"
+    },
+    {
+      "id": "roast-087",
+      "language": "en",
+      "category": "general",
+      "text": "What is a terrible name for a rock band?"
+    },
+    {
+      "id": "roast-088",
+      "language": "en",
+      "category": "general",
+      "text": "What would be the worst thing to find in the fridge at midnight?"
+    },
+    {
+      "id": "roast-089",
+      "language": "en",
+      "category": "general",
+      "text": "What is a bad idea for a school project?"
+    },
+    {
+      "id": "roast-090",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst way to wake someone up?"
+    },
+    {
+      "id": "roast-091",
+      "language": "en",
+      "category": "general",
+      "text": "What would be the worst use of a time machine?"
+    },
+    {
+      "id": "roast-092",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to put on a pizza?"
+    },
+    {
+      "id": "roast-093",
+      "language": "en",
+      "category": "general",
+      "text": "What is the most awkward thing to say in a lift?"
+    },
+    {
+      "id": "roast-094",
+      "language": "en",
+      "category": "general",
+      "text": "What would be a terrible name for a pet tiger?"
+    },
+    {
+      "id": "roast-095",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to forget on the day of an exam?"
+    },
+    {
+      "id": "roast-096",
+      "language": "en",
+      "category": "general",
+      "text": "What does the moon think about all night?"
+    },
+    {
+      "id": "roast-097",
+      "language": "en",
+      "category": "general",
+      "text": "What would be a terrible catchphrase for a news reader?"
+    },
+    {
+      "id": "roast-098",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to yell at a cricket match?"
+    },
+    {
+      "id": "roast-099",
+      "language": "en",
+      "category": "general",
+      "text": "What would make the worst theme park ride?"
+    },
+    {
+      "id": "roast-100",
+      "language": "en",
+      "category": "general",
+      "text": "What is the most suspicious thing a neighbour could say?"
+    },
+    {
+      "id": "roast-101",
+      "language": "en",
+      "category": "general",
+      "text": "What is a terrible title for a movie?"
+    },
+    {
+      "id": "roast-102",
+      "language": "en",
+      "category": "general",
+      "text": "What would be the worst flavour of toothpaste?"
+    },
+    {
+      "id": "roast-103",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing a robot could say when it wakes up?"
+    },
+    {
+      "id": "roast-104",
+      "language": "en",
+      "category": "general",
+      "text": "What is the least helpful thing a map could say?"
+    },
+    {
+      "id": "roast-105",
+      "language": "en",
+      "category": "general",
+      "text": "What is a bad name for a ship?"
+    },
+    {
+      "id": "roast-106",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to say to a stranger on a train?"
+    },
+    {
+      "id": "roast-107",
+      "language": "en",
+      "category": "general",
+      "text": "What would be the worst superhero sidekick?"
+    },
+    {
+      "id": "roast-108",
+      "language": "en",
+      "category": "general",
+      "text": "What is the worst thing to say right before a magic trick?"
+    },
+    {
+      "id": "roast-109",
+      "language": "en",
+      "category": "general",
+      "text": "What is the strangest rule a school could have?"
+    },
+    {
+      "id": "roast-110",
+      "language": "en",
+      "category": "general",
+      "text": "What is a terrible thing to write on a birthday card?"
+    }
+  ]
+}
