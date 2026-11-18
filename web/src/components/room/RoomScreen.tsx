@@ -77,6 +77,7 @@ export function RoomScreen({ code }: { code: string }) {
             kick: roomClient.kickPlayer,
             vote: roomClient.voteInMostLikelyTo,
             impostor: roomClient.impostorAction,
+            roast: roomClient.roastAction,
             backToLobby: roomClient.returnToLobby,
             // Play again: back to the lobby, then straight into the same game.
             playAgain: async () => {

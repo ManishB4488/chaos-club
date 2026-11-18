@@ -156,3 +156,7 @@ chaos-club/
 - `server/src/content/loadRoastPrompts.ts`
 - `server/src/rooms/RoomManager.ts`: keeps content reports (listReports)
 - The game is not offered yet: it is only registered when the prompt file is passed in
+
+## Added with the Roast screens (unverified until PROGRESS.md says so)
+- `web/src/components/games/roast/`: RoastScreen, WritingView, RoastVoting (with ReportButton), RoastReveal, RoastResults
+- `server/src/index.ts` and `server/src/combined.ts`: Roast switched on by passing in the prompt file

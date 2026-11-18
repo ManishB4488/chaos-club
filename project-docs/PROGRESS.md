@@ -61,7 +61,7 @@ Update after every development session. Never mark a feature complete unless it 
 ## Games (do not start until the multiplayer foundation works)
 - [x] Who's Most Likely To? (2-4 players): server module and screens verified by owner (70 server + 20 shared tests, voting, reveal, results, play again, phone)
 - [ ] Impostor Word Game (3-4 players). Words approved; server module VERIFIED (95 server + 23 shared tests, typecheck, build). Screens written and the game switched on: NOT yet verified with real windows.
-- [ ] Roast Your Friends (2-4 players). Prompts: 110 written (approved by delegation). Server module, report keeping and tests written (NOT yet verified). Screens not started; game not switched on.
+- [ ] Roast Your Friends (2-4 players). Prompts approved; server module and screens written and the game switched on: NOT yet verified (owner has not yet reported the server test results).
 - [ ] The Fake Answer (2-4 players)
 - [ ] Draw It Wrong (2-4 players)
 
@@ -84,4 +84,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify the Roast server module (tests, typecheck, build). Then its screens (write answer, anonymous voting or star rating, reveal, report button, results with best answer), then switch it on. Also: expand the word filter list before any public launch.
+Verify Roast with 3 real windows and a 2 player room. Then The Fake Answer (needs 100+ trivia questions for review) and Draw It Wrong. Before any public launch: expand the word filter list, review draft legal pages, set a real contact email.

@@ -3,12 +3,14 @@ import { createGameServer } from "./app";
 import { env } from "./config/env";
 import { loadImpostorWords } from "./content/loadImpostorWords";
 import { loadMostLikelyToQuestions } from "./content/loadQuestions";
+import { loadRoastPrompts } from "./content/loadRoastPrompts";
 import { createGameFactories } from "./games/registry";
 
 const gameFactories = createGameFactories({
   mltQuestions: loadMostLikelyToQuestions(),
   mltConfig: { rounds: env.MLT_ROUNDS },
   impostorWords: loadImpostorWords(),
+  roastPrompts: loadRoastPrompts(),
 });
 
 const server = createGameServer({
