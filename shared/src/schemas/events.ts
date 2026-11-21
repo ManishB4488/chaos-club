@@ -35,3 +35,7 @@ export const gameActionSchema = z.strictObject({
   action: z.unknown(),
 });
 export type GameActionInput = z.infer<typeof gameActionSchema>;
+
+/** Asking for your own secret in the running game. The player is identified by their connection, never by this payload. */
+export const requestSecretSchema = z.strictObject({ gameId: z.enum(GAME_IDS) });
+export type RequestSecretInput = z.infer<typeof requestSecretSchema>;

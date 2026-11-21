@@ -9,6 +9,7 @@ import {
   joinRoomSchema,
   kickPlayerSchema,
   rejoinRoomSchema,
+  requestSecretSchema,
   selectGameSchema,
   type AckError,
   type JoinedPayload,
@@ -181,6 +182,14 @@ export function createRoomGateway(io: Server, manager: RoomManager, options: Gat
       if (!result.ok) return reply(failure(result.error));
       reply({ ok: true });
       broadcast(result.value.code);
+    });
+
+    // A player asks for THEIR OWN secret. The answer goes only to this connection, is never broadcast,
+    // and is never logged. Who is asking is the connection itself, not anything in the request.
+    listen(CLIENT_EVENTS.requestSecret, requestSecretSchema, false, (input, reply) => {
+      const result = manager.secretFor(socket.id, input.gameId);
+      if (!result.ok) return reply(failure(result.error));
+      reply({ ok: true, secret: result.value });
     });
 
     socket.on("disconnect", () => {

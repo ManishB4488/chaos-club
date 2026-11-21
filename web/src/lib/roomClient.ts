@@ -2,6 +2,7 @@ import {
   CLIENT_EVENTS,
   SERVER_EVENTS,
   type GameId,
+  type GameSecret,
   type ImpostorAction,
   type RoastAction,
   type JoinedPayload,
@@ -161,6 +162,18 @@ const selectGame = (gameId: GameId) => sendAction(CLIENT_EVENTS.selectGame, { ga
 const startGame = () => sendAction(CLIENT_EVENTS.startGame);
 const kickPlayer = (playerId: string) => sendAction(CLIENT_EVENTS.kickPlayer, { playerId });
 const returnToLobby = () => sendAction(CLIENT_EVENTS.returnToLobby);
+/** What asking for your own secret gives back. It is only ever held by the component that asked. */
+export type ImpostorSecretResult = { secret: GameSecret } | { error: string };
+
+/**
+ * Asks the server for THIS player's own secret. The answer is returned to the caller only: it is not kept in
+ * this store, not in browser storage, and not logged. The server re-checks who is asking every time.
+ */
+async function requestImpostorSecret(): Promise<ImpostorSecretResult> {
+  const ack = await request<{ secret: GameSecret }>(CLIENT_EVENTS.requestSecret, { gameId: "impostor" });
+  return ack.ok ? { secret: ack.secret } : { error: ack.message };
+}
+
 const roastAction = (action: RoastAction) =>
   sendAction(CLIENT_EVENTS.gameAction, { gameId: "roast", action });
 const impostorAction = (action: ImpostorAction) =>
@@ -183,4 +196,5 @@ export const roomClient = {
   voteInMostLikelyTo,
   impostorAction,
   roastAction,
+  requestImpostorSecret,
 };

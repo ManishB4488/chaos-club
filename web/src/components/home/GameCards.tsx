@@ -4,13 +4,16 @@ import { Card } from "@/components/ui/Card";
 import { GAMES, playersLabel } from "@/lib/games";
 import { cn } from "@/lib/cn";
 import { ACCENT_BG, GAME_ICONS } from "./game-visuals";
+import { PlayNowButton } from "./PlayNowButton";
 
 export function GameCards() {
+  const readyCount = GAMES.filter((game) => game.available).length;
   return (
     <section id="games" className="mx-auto w-full max-w-6xl scroll-mt-6 px-5 py-12">
       <h2 className="font-display text-4xl font-bold sm:text-5xl">Choose Your Chaos</h2>
       <p className="mt-3 max-w-xl text-lg text-ink-soft">
-        Five games for two to four friends. They arrive one at a time, starting with the first two.
+        Five games for two to four friends. {readyCount} {readyCount === 1 ? "is" : "are"} ready to play now,
+        and the rest arrive one at a time.
       </p>
 
       <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -32,13 +35,17 @@ export function GameCards() {
                 <div className="flex flex-wrap gap-2">
                   <Badge>{playersLabel(game)}</Badge>
                   <Badge>{game.duration}</Badge>
-                  <Badge tone={game.upFirst ? "sunny" : "neutral"}>
-                    {game.upFirst ? "Up first" : "Coming soon"}
+                  <Badge tone={game.available ? "sunny" : "neutral"}>
+                    {game.available ? "Ready to play" : "Coming soon"}
                   </Badge>
                 </div>
-                <Button variant="secondary" fullWidth disabled className="mt-auto">
-                  Coming soon
-                </Button>
+                {game.available ? (
+                  <PlayNowButton className="mt-auto" />
+                ) : (
+                  <Button variant="secondary" fullWidth disabled className="mt-auto">
+                    Coming soon
+                  </Button>
+                )}
               </Card>
             </li>
           );

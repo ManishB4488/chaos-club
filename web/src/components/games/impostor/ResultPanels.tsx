@@ -38,16 +38,10 @@ export function RoundResult({ room, game }: { room: RoomView; game: ImpostorView
         </p>
       </Card>
 
-      <div className="grid gap-3 sm:grid-cols-2">
-        <Card padding="md">
-          <p className="text-sm text-ink-soft">Crew word</p>
-          <p className="font-display text-3xl font-bold">{outcome.crewWord}</p>
-        </Card>
-        <Card padding="md">
-          <p className="text-sm text-ink-soft">Impostor word</p>
-          <p className="font-display text-3xl font-bold">{outcome.impostorWord}</p>
-        </Card>
-      </div>
+      <Card padding="md">
+        <p className="text-sm text-ink-soft">The secret crew word was</p>
+        <p className="font-display text-3xl font-bold">{outcome.crewWord}</p>
+      </Card>
 
       <Card padding="md" className="flex flex-col gap-3">
         <h3 className="font-display text-xl font-semibold">Votes</h3>

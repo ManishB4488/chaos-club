@@ -1,10 +1,13 @@
 import type { AvatarId, GameId, PlayerColor } from "./constants";
-import type { ImpostorView } from "./games/impostor";
+import type { ImpostorSecret, ImpostorView } from "./games/impostor";
 import type { MltView } from "./games/mostLikelyTo";
 import type { RoastView } from "./games/roast";
 
 /** What a player can see of the running game. */
 export type GameView = MltView | ImpostorView | RoastView;
+
+/** A player's private secret in a running game. Only ever sent as the reply to their own request. */
+export type GameSecret = ImpostorSecret;
 
 /** Events the browser sends to the server. */
 export const CLIENT_EVENTS = {
@@ -17,6 +20,8 @@ export const CLIENT_EVENTS = {
   startGame: "room:start",
   gameAction: "game:action",
   returnToLobby: "room:returnToLobby",
+  /** Ask the server for YOUR OWN secret in the running game. Answered only to the asking player. */
+  requestSecret: "game:secret",
 } as const;
 
 /** Events the server sends to browsers. */

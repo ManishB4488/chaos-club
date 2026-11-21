@@ -22,7 +22,7 @@ export function Hero() {
           liar.
         </p>
         <RoomActions />
-        <p className="text-sm text-ink-soft">The games arrive one at a time, starting with the first two.</p>
+        <p className="text-sm text-ink-soft">No sign-up needed. Create a room, send the link, and pick a game together.</p>
       </div>
 
       <Card accent="grape" padding="lg" aria-label="Example room, for illustration only">

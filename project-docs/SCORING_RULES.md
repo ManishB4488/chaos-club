@@ -30,7 +30,7 @@ All scoring is calculated on the server. Browsers only display it.
   - A caught impostor gets one guess at the crew's word. A correct guess: **+2**.
 - **Tie at the end:** more rounds survived as impostor first, then they share.
 - **Awards:** Master of Disguise (most survivals), Sharpest Detective (most correct votes), Smooth Operator (impostor who guessed the word).
-- **Secrecy:** roles and words are only ever sent to the player they belong to. This is tested.
+- **Update (owner requirement D-035/D-036):** the crew get the secret word. The impostor is told they are the impostor and gets NO word. Secrets are only served to the player they belong to, on that player's own request, and never in shared updates. This is tested.
 
 ## 3. Roast Your Friends (2 to 4 players)
 

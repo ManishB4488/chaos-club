@@ -1,6 +1,6 @@
 # Impostor Word Game: word pairs (review copy)
 
-100 original pairs in 5 categories. In a round most players get one word and one player gets the other word of the pair (which one is chosen at random). Nobody is told their role: you only see your word.
+100 original pairs in 5 categories. In a round the crew get one word of a pair (either one, chosen at random). The impostor is told they are the impostor and gets NO word, so the other word of each pair is no longer used.
 
 Review: reply with IDs to remove or reword, for example `remove imp-014`.
 

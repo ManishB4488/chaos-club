@@ -9,8 +9,8 @@ export type GameInfo = {
   /** Target length, not yet measured in real games. */
   duration: string;
   accent: AccentColor;
-  /** The two games being built first. */
-  upFirst: boolean;
+  /** True when the game can be played right now. */
+  available: boolean;
   rules: string[];
 };
 
@@ -23,7 +23,7 @@ export const GAMES: GameInfo[] = [
     maxPlayers: 4,
     duration: "About 10 minutes",
     accent: "bubblegum",
-    upFirst: true,
+    available: true,
     rules: [
       "A funny question appears on every screen.",
       "Everyone secretly votes for another player. You cannot vote for yourself.",
@@ -38,11 +38,11 @@ export const GAMES: GameInfo[] = [
     maxPlayers: 4,
     duration: "About 15 minutes",
     accent: "volt",
-    upFirst: true,
+    available: true,
     rules: [
-      "Everyone gets a secret word. The impostor gets a similar one and does not know it.",
-      "Take turns giving a clue without giving the word away.",
-      "Vote for the impostor. If they are caught, they get one guess at the real word.",
+      "The crew get a secret word. One player is the impostor and gets no word. Reveal your secret privately.",
+      "Take turns giving a one-word clue that hints at the word without saying it. The impostor has to bluff.",
+      "Discuss, then vote for the impostor. If they are caught, they get one guess at the crew word.",
     ],
   },
   {
@@ -53,7 +53,7 @@ export const GAMES: GameInfo[] = [
     maxPlayers: 4,
     duration: "About 10 minutes",
     accent: "tangerine",
-    upFirst: false,
+    available: false,
     rules: [
       "A funny situation appears.",
       "Everyone writes a secret answer.",
@@ -68,7 +68,7 @@ export const GAMES: GameInfo[] = [
     maxPlayers: 4,
     duration: "About 15 minutes",
     accent: "grape",
-    upFirst: false,
+    available: false,
     rules: [
       "A strange trivia question appears.",
       "Everyone writes a fake answer that sounds believable.",
@@ -83,7 +83,7 @@ export const GAMES: GameInfo[] = [
     maxPlayers: 4,
     duration: "About 15 minutes",
     accent: "sunny",
-    upFirst: false,
+    available: false,
     rules: [
       "One player secretly picks a word to draw.",
       "They draw it while everyone else types guesses.",

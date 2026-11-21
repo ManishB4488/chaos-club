@@ -160,3 +160,12 @@ chaos-club/
 ## Added with the Roast screens (unverified until PROGRESS.md says so)
 - `web/src/components/games/roast/`: RoastScreen, WritingView, RoastVoting (with ReportButton), RoastReveal, RoastResults
 - `server/src/index.ts` and `server/src/combined.ts`: Roast switched on by passing in the prompt file
+
+## Added for private secret delivery (unverified until PROGRESS.md says so)
+- `shared/src/games/impostor.ts`: ImpostorSecret; the shared view no longer contains any role or word
+- `shared/src/events.ts` and `schemas/events.ts`: the game:secret request
+- `server/src/games/impostor/ImpostorGame.ts`: secretFor(), the only source of a role or word
+- `server/src/rooms/RoomManager.ts`: secretFor(socketId, gameId), identity from the connection, re-checked every time
+- `server/src/socket/roomGateway.ts`: answers game:secret only to the asking connection
+- `server/tests/secretSecurity.test.ts`: multi-session leak tests recording everything each browser receives
+- `web/src/components/games/impostor/SecretCard.tsx`: fetch-on-demand secret with Hide and Pass

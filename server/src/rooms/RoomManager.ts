@@ -4,6 +4,7 @@ import {
   PLAYER_COLORS,
   ROOM_MAX_PLAYERS,
   type GameId,
+  type GameSecret,
   type RoomErrorCode,
   type RoomPhase,
   type RoomView,
@@ -268,6 +269,23 @@ export class RoomManager {
     }
     const result = room.game.handleAction(player.id, action);
     return result.ok ? ok({ code: room.code }) : result;
+  }
+
+  /**
+   * A player's own secret in the running game. WHO is asking comes only from the connection (socket id) the
+   * request arrived on, never from anything the browser claims. Membership of the room and the game's own
+   * rules are checked on EVERY call, so a refresh, a reconnect or a stale connection can never reuse an old
+   * answer.
+   */
+  secretFor(socketId: string, gameId: GameId): Result<GameSecret> {
+    const located = this.locate(socketId);
+    if (!located) return fail("NOT_IN_ROOM");
+    const { room, player } = located;
+    const game = room.game;
+    if (room.phase !== "in-game" || !game || game.id !== gameId || !game.secretFor) {
+      return fail("NO_GAME_RUNNING");
+    }
+    return game.secretFor(player.id);
   }
 
   /** After a game is over, the host can bring everyone back to the lobby (also used for a rematch). */

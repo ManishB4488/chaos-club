@@ -52,6 +52,7 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Four-window test with four separate sessions (normal, incognito, second browser, real phone): worked, including full room, kick and rejoin, host handover, phone lock and reconnect, refresh
 - [x] Single-program production mode (website + game server on one address): owner reports it works
 - [x] Deployed on Render free tier by the owner (not checked by me; live checks to be reported by owner)
+- [ ] SECURITY: private word reveal for the Impostor game (D-035, D-036). Implemented with automated tests. NOT COMPLETE until: (1) npm test passes, including server/tests/secretSecurity.test.ts, and (2) the owner's manual multi-window checks pass (see chat).
 - [ ] Create Room
 - [ ] Join Room
 - [ ] Multiplayer lobby (host controls, kick, leave, per-game minimum players)
@@ -84,4 +85,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify Roast with 3 real windows and a 2 player room. Then The Fake Answer (needs 100+ trivia questions for review) and Draw It Wrong. Before any public launch: expand the word filter list, review draft legal pages, set a real contact email.
+Run the secret security checks (automated and manual). Do not mark the private word reveal complete until they pass. Then verify Roast, then The Fake Answer and Draw It Wrong.

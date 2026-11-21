@@ -1,4 +1,4 @@
-import type { AvatarId, GameId, GameView, PlayerColor } from "@chaos/shared";
+import type { AvatarId, GameId, GameSecret, GameView, PlayerColor } from "@chaos/shared";
 import type { Result } from "../rooms/types";
 
 export type GamePlayer = {
@@ -42,4 +42,9 @@ export interface GameInstance {
   forceFinish(): void;
   isFinished(): boolean;
   viewFor(playerId: string): GameView;
+  /**
+   * A player's own secret, if this game has secrets. It is NEVER part of viewFor(). The caller must already
+   * have proven which player is asking, because this method trusts the id it is given.
+   */
+  secretFor?(playerId: string): Result<GameSecret>;
 }

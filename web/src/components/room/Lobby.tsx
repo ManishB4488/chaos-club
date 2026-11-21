@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { copyText } from "@/lib/clipboard";
+import type { ImpostorSecretResult } from "@/lib/roomClient";
 import { SITE_NAME } from "@/lib/site";
 import { ImpostorScreen } from "@/components/games/impostor/ImpostorScreen";
 import { MostLikelyToScreen } from "@/components/games/mostLikelyTo/MostLikelyToScreen";
@@ -24,6 +25,7 @@ export type LobbyActions = {
   backToLobby: () => Promise<string | null>;
   impostor: (action: ImpostorAction) => Promise<string | null>;
   roast: (action: RoastAction) => Promise<string | null>;
+  impostorSecret: () => Promise<ImpostorSecretResult>;
 };
 
 type LobbyProps = {
@@ -137,6 +139,7 @@ export function Lobby({ room, online, actions }: LobbyProps) {
               game={room.game}
               actions={{
                 send: actions.impostor,
+                revealSecret: actions.impostorSecret,
                 playAgain: actions.playAgain,
                 backToLobby: actions.backToLobby,
               }}

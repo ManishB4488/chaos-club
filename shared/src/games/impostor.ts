@@ -13,6 +13,12 @@ export const impostorActionSchema = z.discriminatedUnion("type", [
 ]);
 export type ImpostorAction = z.infer<typeof impostorActionSchema>;
 
+/**
+ * A player's private role and word. Delivered ONLY as the direct reply to that player's own authorized
+ * request, never in a broadcast. The crew get the word. The impostor is told their role and gets NO word.
+ */
+export type ImpostorSecret = { role: "crew"; word: string } | { role: "impostor"; word: null };
+
 export type ImpostorStep =
   | "words" // everyone reads their own secret word
   | "clues" // one clue each, in turn
@@ -39,7 +45,6 @@ export type ImpostorOutcome = {
   counts: Record<string, number>;
   /** Hidden until the result step, because a caught impostor is still guessing it. */
   crewWord: string | null;
-  impostorWord: string | null;
   guess: string | null;
   guessCorrect: boolean | null;
   pointsGained: Record<string, number> | null;
@@ -61,8 +66,9 @@ export type ImpostorAward = {
 };
 
 /**
- * What ONE player may see. The only secret here is `myWord`, and it is only ever the player's own.
- * Roles are never sent: nobody is told whether they are the impostor until the vote is over.
+ * What ONE player may see in the shared room updates. It deliberately contains NO secrets:
+ * no role and no word. A player gets their own secret only by asking the server for it (see ImpostorSecret).
+ * The crew word appears here only at the round result, after the votes and the guess are final.
  */
 export type ImpostorView = {
   gameId: "impostor";
@@ -73,7 +79,6 @@ export type ImpostorView = {
   stepEndsAt: number | null;
   stepDurationMs: number | null;
   participants: ImpostorParticipant[];
-  myWord: string | null;
   clueOrder: string[];
   currentSpeakerId: string | null;
   /** Clues are public: everyone sees every clue and who gave it. */

@@ -5,7 +5,7 @@ export function HowToPlay() {
   return (
     <section id="how-to-play" className="mx-auto w-full max-w-6xl scroll-mt-6 px-5 py-12">
       <h2 className="font-display text-4xl font-bold sm:text-5xl">How to play</h2>
-      <p className="mt-3 max-w-3xl text-lg text-ink-soft">Tap a game to read its rules. Scoring is added when each game launches.</p>
+      <p className="mt-3 max-w-3xl text-lg text-ink-soft">Tap a game to read how it works.</p>
 
       <div className="mt-8 flex max-w-3xl flex-col gap-3">
         {GAMES.map((game) => (

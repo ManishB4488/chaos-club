@@ -5,6 +5,7 @@ import {
   type ImpostorCategory,
   type ImpostorOutcome,
   type ImpostorRanking,
+  type ImpostorSecret,
   type ImpostorView,
   type RoomErrorCode,
 } from "@chaos/shared";
@@ -47,7 +48,6 @@ type RoundPlan = {
   impostorId: string;
   category: ImpostorCategory;
   crewWord: string;
-  impostorWord: string;
 };
 
 type RoundOutcome = {
@@ -138,8 +138,8 @@ export class ImpostorGame implements GameInstance {
       return {
         impostorId,
         category: pair.category,
+        // Either word of the pair can become the crew word. The other word is not used.
         crewWord: swap ? pair.impostor : pair.crew,
-        impostorWord: swap ? pair.crew : pair.impostor,
       };
     });
 
@@ -218,16 +218,27 @@ export class ImpostorGame implements GameInstance {
     return this.step === "finished";
   }
 
+  /**
+   * The ONLY way a player learns their role or word. The caller has already proven which player is asking.
+   * The crew get the word. The impostor is told their role and is NEVER given the word.
+   * Only available while the round is running; after that the word is public in the round result anyway.
+   */
+  secretFor(playerId: string): Result<ImpostorSecret> {
+    if (!this.isParticipant(playerId)) return { ok: false, error: "NOT_A_PARTICIPANT" };
+    if (!["words", "clues", "discussion", "voting", "guess"].includes(this.step)) {
+      return { ok: false, error: "WRONG_STEP" };
+    }
+    const plan = this.currentPlan();
+    const secret: ImpostorSecret =
+      playerId === plan.impostorId
+        ? { role: "impostor", word: null }
+        : { role: "crew", word: plan.crewWord };
+    return { ok: true, value: secret };
+  }
+
   viewFor(playerId: string): ImpostorView {
     const finished = this.step === "finished";
     const plan = this.plan[this.round - 1];
-    const myWord =
-      finished || !plan || !this.isParticipant(playerId)
-        ? null
-        : playerId === plan.impostorId
-          ? plan.impostorWord
-          : plan.crewWord;
-
     let outcome: ImpostorOutcome | null = null;
     if (this.outcome && plan && (this.step === "guess" || this.step === "result")) {
       const atResult = this.step === "result";
@@ -237,7 +248,6 @@ export class ImpostorGame implements GameInstance {
         votes: this.outcome.votes.map((vote) => ({ ...vote })),
         counts: { ...this.outcome.counts },
         crewWord: atResult ? plan.crewWord : null,
-        impostorWord: atResult ? plan.impostorWord : null,
         guess: this.outcome.guess,
         guessCorrect: this.outcome.guessCorrect,
         pointsGained: atResult ? { ...this.outcome.pointsGained } : null,
@@ -253,7 +263,6 @@ export class ImpostorGame implements GameInstance {
       stepEndsAt: this.stepEndsAt,
       stepDurationMs: this.stepDurationMs,
       participants: this.participants.map((p) => ({ ...p })),
-      myWord,
       clueOrder: [...this.clueOrder],
       currentSpeakerId: this.step === "clues" ? (this.clueOrder[this.clueIndex] ?? null) : null,
       clues: this.clues.map((clue) => ({ ...clue })),
@@ -276,10 +285,13 @@ export class ImpostorGame implements GameInstance {
     if (!CLUE_FORMAT.test(clue) || containsBlockedWord(clue)) return fail("CLUE_NOT_ALLOWED");
 
     const plan = this.currentPlan();
-    const ownWord = normalizeWord(playerId === plan.impostorId ? plan.impostorWord : plan.crewWord);
-    const normalized = normalizeWord(clue);
-    if (normalized.includes(ownWord) || (normalized.length >= 3 && ownWord.includes(normalized))) {
-      return fail("CLUE_NOT_ALLOWED");
+    // The impostor has no word, so there is nothing for their clue to give away.
+    if (playerId !== plan.impostorId) {
+      const ownWord = normalizeWord(plan.crewWord);
+      const normalized = normalizeWord(clue);
+      if (normalized.includes(ownWord) || (normalized.length >= 3 && ownWord.includes(normalized))) {
+        return fail("CLUE_NOT_ALLOWED");
+      }
     }
 
     this.clues.push({ playerId, text: clue });

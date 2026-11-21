@@ -26,7 +26,7 @@ const PAIRS: ImpostorWordPair[] = [
   { id: "p5", category: "entertainment", crew: "Chess", impostor: "Ludo" },
 ];
 
-function expectError(result: Result<void>, error: RoomErrorCode): void {
+function expectError(result: Result<unknown>, error: RoomErrorCode): void {
   expect(result.ok).toBe(false);
   if (!result.ok) expect(result.error).toBe(error);
 }
@@ -62,43 +62,111 @@ function setup(playerCount = 3) {
 
 type Setup = ReturnType<typeof setup>;
 
-/** Works out who the impostor is from what each player is shown: they hold the only word nobody else has. */
+/** Works out the roles by asking for each player's own secret, exactly as the server does for real players. */
 function roles(game: ImpostorGame, ids: string[]) {
-  const words = ids.map((id) => ({ id, word: game.viewFor(id).myWord ?? "" }));
-  const impostor = words.find((entry) => words.filter((other) => other.word === entry.word).length === 1);
-  const crew = words.filter((entry) => entry.id !== impostor?.id);
-  if (!impostor || !crew[0]) throw new Error("Could not tell the roles apart.");
-  return {
-    impostorId: impostor.id,
-    impostorWord: impostor.word,
-    crewWord: crew[0].word,
-    crewIds: crew.map((entry) => entry.id),
-  };
+  const secrets = ids.map((id) => {
+    const result = game.secretFor(id);
+    if (!result.ok) throw new Error(`No secret for ${id}: ${result.error}`);
+    return { id, secret: result.value };
+  });
+  const impostor = secrets.find((entry) => entry.secret.role === "impostor");
+  const crew = secrets.filter((entry) => entry.secret.role === "crew");
+  const crewWord = crew[0]?.secret.word ?? "";
+  if (!impostor || !crewWord) throw new Error("Could not tell the roles apart.");
+  return { impostorId: impostor.id, crewWord, crewIds: crew.map((entry) => entry.id) };
 }
 
 const act = (game: ImpostorGame, id: string, action: unknown) => game.handleAction(id, action);
 const speaker = (game: ImpostorGame, ids: string[]) => game.viewFor(ids[0] ?? "").currentSpeakerId ?? "";
+const vote = (s: Setup, voter: string, target: string) => act(s.game, voter, { type: "vote", targetId: target });
 
 function toClues(s: Setup) {
   s.advance(CONFIG.wordsMs);
 }
-
-function toDiscussion(s: Setup) {
-  toClues(s);
+function giveClues(s: Setup) {
   for (let i = 0; i < s.ids.length; i++) {
     expect(act(s.game, speaker(s.game, s.ids), { type: "clue", text: "hint" }).ok).toBe(true);
   }
 }
-
-function toVoting(s: Setup) {
-  toDiscussion(s);
+function allReady(s: Setup) {
   for (const id of s.ids) act(s.game, id, { type: "ready" });
 }
+function toDiscussion(s: Setup) {
+  toClues(s);
+  giveClues(s);
+}
+function toVoting(s: Setup) {
+  toDiscussion(s);
+  allReady(s);
+}
+/** Everyone votes for the next player: always a tie, so the impostor survives. */
+function ringVote(s: Setup) {
+  s.ids.forEach((id, i) => vote(s, id, s.ids[(i + 1) % s.ids.length] ?? ""));
+}
 
-const vote = (s: Setup, voter: string, target: string) => act(s.game, voter, { type: "vote", targetId: target });
+describe("secrets", () => {
+  it("gives the crew the word and tells the impostor only their role, with no word", () => {
+    const s = setup();
+    const r = roles(s.game, s.ids);
+    expect(s.game.secretFor(r.impostorId)).toEqual({ ok: true, value: { role: "impostor", word: null } });
+    expect(r.crewIds).toHaveLength(2);
+    for (const id of r.crewIds) {
+      expect(s.game.secretFor(id)).toEqual({ ok: true, value: { role: "crew", word: r.crewWord } });
+    }
+    const allWords = PAIRS.flatMap((pair) => [pair.crew, pair.impostor]);
+    expect(allWords).toContain(r.crewWord);
+  });
+
+  it("refuses to give a secret to someone who is not in the game", () => {
+    const s = setup();
+    expectError(s.game.secretFor("outsider"), "NOT_A_PARTICIPANT");
+  });
+
+  it("keeps every role and word out of every shared view while the round runs", () => {
+    const s = setup();
+    const r = roles(s.game, s.ids);
+    const check = () => {
+      for (const id of s.ids) {
+        const json = JSON.stringify(s.game.viewFor(id));
+        expect(json).not.toContain(r.crewWord);
+        expect(json).not.toContain("myWord");
+        expect(json).not.toContain("impostorId");
+        expect(json).not.toContain('"role"');
+      }
+    };
+    check();
+    toClues(s);
+    check();
+    giveClues(s);
+    check();
+    allReady(s);
+    check();
+  });
+
+  it("serves secrets only while the round is running", () => {
+    const s = setup();
+    toVoting(s);
+    ringVote(s);
+    expect(s.game.viewFor("a").step).toBe("result");
+    expectError(s.game.secretFor("a"), "WRONG_STEP");
+  });
+
+  it("never shows a caught impostor the crew word before their guess", () => {
+    const s = setup();
+    const r = roles(s.game, s.ids);
+    toVoting(s);
+    for (const id of r.crewIds) vote(s, id, r.impostorId);
+    vote(s, r.impostorId, r.crewIds[0] ?? "");
+    const view = s.game.viewFor(r.impostorId);
+    expect(view.step).toBe("guess");
+    expect(view.outcome?.crewWord).toBeNull();
+    expect(JSON.stringify(view)).not.toContain(r.crewWord);
+    expect(s.game.secretFor(r.impostorId)).toEqual({ ok: true, value: { role: "impostor", word: null } });
+  });
+});
 
 describe("starting a round", () => {
-  it("gives each player only their own secret word, with no role shown", () => {
+  it("starts with a category and no outcome", () => {
     const s = setup();
     const view = s.game.viewFor("a");
     expect(view.step).toBe("words");
@@ -106,24 +174,6 @@ describe("starting a round", () => {
     expect(view.totalRounds).toBe(3);
     expect(view.category).not.toBeNull();
     expect(view.outcome).toBeNull();
-
-    const r = roles(s.game, s.ids);
-    const pair = PAIRS.find((p) => [p.crew, p.impostor].includes(r.crewWord));
-    expect([pair?.crew, pair?.impostor].sort()).toEqual([r.crewWord, r.impostorWord].sort());
-    expect(r.crewIds).toHaveLength(2);
-  });
-
-  it("never shows one player another player's word before the result", () => {
-    const s = setup();
-    const r = roles(s.game, s.ids);
-    const crewView = JSON.stringify(s.game.viewFor(r.crewIds[0] ?? ""));
-    const impostorView = JSON.stringify(s.game.viewFor(r.impostorId));
-    expect(crewView).not.toContain(r.impostorWord);
-    expect(impostorView).not.toContain(r.crewWord);
-
-    toVoting(s);
-    expect(JSON.stringify(s.game.viewFor(r.crewIds[0] ?? ""))).not.toContain(r.impostorWord);
-    expect(s.game.viewFor(r.impostorId).outcome).toBeNull();
   });
 
   it("makes every player the impostor exactly once", () => {
@@ -132,8 +182,7 @@ describe("starting a round", () => {
     for (let round = 1; round <= 3; round++) {
       seen.push(roles(s.game, s.ids).impostorId);
       toVoting(s);
-      // A ring of votes (each player votes for the next) always ties, so nobody is caught.
-      s.ids.forEach((id, i) => vote(s, id, s.ids[(i + 1) % s.ids.length] ?? ""));
+      ringVote(s);
       s.advance(CONFIG.resultMs);
     }
     expect([...seen].sort()).toEqual(["a", "b", "c"]);
@@ -160,15 +209,23 @@ describe("clues", () => {
     expectError(act(s.game, other, { type: "clue", text: "hint" }), "NOT_YOUR_TURN");
   });
 
-  it("rejects clues that are not one word, contain your own word, or are blocked", () => {
+  it("rejects clues that are not one word or are blocked", () => {
     const s = setup();
     toClues(s);
     const current = speaker(s.game, s.ids);
-    const own = s.game.viewFor(current).myWord ?? "";
     expectError(act(s.game, current, { type: "clue", text: "red hot" }), "CLUE_NOT_ALLOWED");
-    expectError(act(s.game, current, { type: "clue", text: `${own.toLowerCase()}s` }), "CLUE_NOT_ALLOWED");
     expectError(act(s.game, current, { type: "clue", text: "shit" }), "CLUE_NOT_ALLOWED");
     expect(act(s.game, current, { type: "clue", text: "hint" }).ok).toBe(true);
+  });
+
+  it("stops a crew member using their own word, but the impostor has no word to protect", () => {
+    const s = setup();
+    const r = roles(s.game, s.ids);
+    toClues(s);
+    const current = speaker(s.game, s.ids);
+    const attempt = act(s.game, current, { type: "clue", text: `${r.crewWord.toLowerCase()}s` });
+    if (current === r.impostorId) expect(attempt.ok).toBe(true);
+    else expectError(attempt, "CLUE_NOT_ALLOWED");
   });
 
   it("shows every clue to everyone, with who gave it, and moves to the next speaker", () => {
@@ -258,7 +315,6 @@ describe("scoring a round", () => {
     expect(view.step).toBe("guess");
     expect(view.outcome?.caught).toBe(true);
     expect(view.outcome?.impostorId).toBe(r.impostorId);
-    expect(view.outcome?.crewWord).toBeNull();
     expect(view.scores[r.crewIds[0] ?? ""]).toBe(2);
     expect(view.scores[r.impostorId]).toBe(0);
     expectError(act(s.game, r.crewIds[0] ?? "", { type: "guess", text: "x" }), "NOT_YOUR_TURN");
@@ -312,7 +368,6 @@ describe("scoring a round", () => {
     expect(view.step).toBe("result");
     expect(view.outcome?.caught).toBe(false);
     expect(view.outcome?.crewWord).toBe(r.crewWord);
-    expect(view.outcome?.impostorWord).toBe(r.impostorWord);
     expect(view.scores).toEqual({ [r.impostorId]: 3, [c1]: 2, [c2]: 0 });
     expect(view.outcome?.pointsGained).toEqual({ [r.impostorId]: 3, [c1]: 2, [c2]: 0 });
   });
@@ -336,18 +391,15 @@ describe("the whole game", () => {
     const s = setup();
     for (let round = 1; round <= 3; round++) {
       toVoting(s);
-      s.ids.forEach((id, i) => vote(s, id, s.ids[(i + 1) % s.ids.length] ?? ""));
+      ringVote(s);
       s.advance(CONFIG.resultMs);
     }
     const view = s.game.viewFor("a");
     expect(view.step).toBe("finished");
-    expect(view.myWord).toBeNull();
     expect(view.results?.endedEarly).toBe(false);
-    // Each player was the impostor once (+3) and suspected the impostor once (+2).
     expect(view.results?.ranking.map((entry) => entry.score)).toEqual([5, 5, 5]);
     expect(view.results?.ranking.map((entry) => entry.rank)).toEqual([1, 1, 1]);
-    const awardIds = view.results?.awards.map((award) => award.id);
-    expect(awardIds).toEqual(["master-of-disguise", "sharpest-detective"]);
+    expect(view.results?.awards.map((award) => award.id)).toEqual(["master-of-disguise", "sharpest-detective"]);
     expect(view.results?.awards[0]?.playerIds.sort()).toEqual(["a", "b", "c"]);
   });
 

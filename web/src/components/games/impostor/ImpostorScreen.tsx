@@ -1,25 +1,27 @@
 "use client";
 
-import { Eye, EyeOff } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { ImpostorAction, ImpostorView, RoomView } from "@chaos/shared";
 import { TimerBar } from "@/components/games/mostLikelyTo/TimerBar";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import type { ImpostorSecretResult } from "@/lib/roomClient";
 import { useCountdown } from "@/lib/useCountdown";
 import { CluesView, DiscussionView } from "./CluePanel";
 import { FinalResults, RoundResult } from "./ResultPanels";
+import { SecretCard } from "./SecretCard";
 import { GuessView, ImpostorVoting } from "./VotePanel";
 
 export type ImpostorScreenActions = {
   send: (action: ImpostorAction) => Promise<string | null>;
+  /** Asks the server for this player's own secret. Never part of the shared room updates. */
+  revealSecret: () => Promise<ImpostorSecretResult>;
   playAgain: () => Promise<string | null>;
   backToLobby: () => Promise<string | null>;
 };
 
 const STEP_LABELS: Record<string, string> = {
-  words: "Read your word",
+  words: "Your secret",
   clues: "Clues",
   discussion: "Discussion",
   voting: "Vote",
@@ -46,30 +48,6 @@ function StepHeader({ room, game }: { room: RoomView; game: ImpostorView }) {
   );
 }
 
-/** The player's own word. Hidden until they tap, so nobody reads it over their shoulder. */
-function MyWord({ word }: { word: string }) {
-  const [visible, setVisible] = useState(false);
-  return (
-    <Card accent="volt" padding="md" className="flex items-center justify-between gap-4">
-      <div className="min-w-0">
-        <p className="text-sm text-ink-soft">Your secret word</p>
-        <p className="truncate font-display text-3xl font-bold">
-          {visible ? word : "\u2022\u2022\u2022\u2022\u2022\u2022"}
-        </p>
-      </div>
-      <Button
-        size="sm"
-        variant="secondary"
-        aria-pressed={visible}
-        onClick={() => setVisible((current) => !current)}
-      >
-        {visible ? <EyeOff aria-hidden className="size-4" /> : <Eye aria-hidden className="size-4" />}
-        {visible ? "Hide" : "Show"}
-      </Button>
-    </Card>
-  );
-}
-
 type ImpostorScreenProps = {
   room: RoomView;
   game: ImpostorView;
@@ -79,16 +57,17 @@ type ImpostorScreenProps = {
 /** Picks the right screen for the current step of the round. */
 export function ImpostorScreen({ room, game, actions }: ImpostorScreenProps) {
   const isHost = room.hostId === room.selfId;
+  const secretsAvailable = ["words", "clues", "discussion", "voting", "guess"].includes(game.step);
   let content: ReactNode;
 
   switch (game.step) {
     case "words":
       content = (
         <Card padding="lg" className="flex flex-col gap-3">
-          <h2 className="font-display text-3xl font-bold">Read your word</h2>
+          <h2 className="font-display text-3xl font-bold">Check your secret</h2>
           <p className="text-lg text-ink-soft">
-            Tap Show to see your secret word, then hide it again. Most players have the same word, but one
-            player has a different one. You are not told which you are. Give clues to find out.
+            Reveal your secret privately, then hide it again before anyone sees. The crew all share one secret
+            word. One player is the impostor and does not get the word. Give clues to find out who.
           </p>
         </Card>
       );
@@ -124,7 +103,10 @@ export function ImpostorScreen({ room, game, actions }: ImpostorScreenProps) {
   return (
     <div className="flex flex-col gap-6">
       {game.step !== "finished" && <StepHeader room={room} game={game} />}
-      {game.step !== "finished" && game.myWord && <MyWord word={game.myWord} />}
+      {secretsAvailable && (
+        // The key makes the secret disappear every time the round moves to a new step or round.
+        <SecretCard key={`${game.round}-${game.step}`} onReveal={actions.revealSecret} />
+      )}
       {content}
     </div>
   );
