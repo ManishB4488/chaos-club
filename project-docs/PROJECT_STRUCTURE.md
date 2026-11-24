@@ -169,3 +169,10 @@ chaos-club/
 - `server/src/socket/roomGateway.ts`: answers game:secret only to the asking connection
 - `server/tests/secretSecurity.test.ts`: multi-session leak tests recording everything each browser receives
 - `web/src/components/games/impostor/SecretCard.tsx`: fetch-on-demand secret with Hide and Pass
+
+## Added with the Fake Answer server module (unverified until PROGRESS.md says so)
+- `content/en/fake-answer-trivia.json`: 112 questions
+- `shared/src/games/fakeAnswer.ts`: actions, steps and private view
+- `server/src/games/fakeAnswer/FakeAnswerGame.ts`: the rules, scoring, awards and reports
+- `server/src/content/loadTrivia.ts`
+- The game is not offered yet: it is only registered when the trivia file is passed in

@@ -367,7 +367,8 @@ describe("running a game inside a room", () => {
     const { manager, code, ids } = gameSetup();
     unwrap(manager.gameAction("s1", "most-likely-to", voteFor(ids[1] ?? "")));
     const seenByOther = manager.viewFor(code, ids[1] ?? "");
-    expect(seenByOther?.game?.votedIds).toEqual([ids[0]]);
+    const game = seenByOther?.game;
+    expect(game && "votedIds" in game ? game.votedIds : undefined).toEqual([ids[0]]);
     expect(JSON.stringify(seenByOther)).not.toContain("targetId");
     unwrap(manager.gameAction("s2", "most-likely-to", voteFor(ids[0] ?? "")));
     expect(manager.viewFor(code, ids[0] ?? "")?.game?.step).toBe("reveal");

@@ -51,8 +51,7 @@ describe("a whole game over real connections", () => {
     expect((await guestSawVoting).game?.round).toBe(1);
 
     // The host votes first. The guest may see THAT the host voted, but never WHO for.
-    const guestSawOneVote = waitFor<RoomView>(guest, SERVER_EVENTS.roomState, (v) => v.game?.votedIds.length === 1);
-    expect(await send<Ack>(host, CLIENT_EVENTS.gameAction, vote(joined.playerId))).toMatchObject({ ok: true });
+    const guestSawOneVote = waitFor<RoomView>(guest, SERVER_EVENTS.roomState, (v) => !!v.game && "votedIds" in v.game && v.game.votedIds.length === 1); expect(await send<Ack>(host, CLIENT_EVENTS.gameAction, vote(joined.playerId))).toMatchObject({ ok: true });
     const partial = await guestSawOneVote;
     expect(mltView(partial).reveal).toBeNull();
     expect(JSON.stringify(partial)).not.toContain("targetId");

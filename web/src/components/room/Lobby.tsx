@@ -144,7 +144,7 @@ export function Lobby({ room, online, actions }: LobbyProps) {
                 backToLobby: actions.backToLobby,
               }}
             />
-          ) : (
+          ) : room.game.gameId === "roast" ? (
             <RoastScreen
               room={room}
               game={room.game}
@@ -154,6 +154,10 @@ export function Lobby({ room, online, actions }: LobbyProps) {
                 backToLobby: actions.backToLobby,
               }}
             />
+          ) : (
+            <Card padding="lg">
+              <p className="text-ink-soft">This game has no screen yet.</p>
+            </Card>
           )}
         </>
       ) : (

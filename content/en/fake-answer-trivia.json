@@ -1,0 +1,1109 @@
+{
+  "version": 1,
+  "status": "APPROVED by owner delegation (2026-11-22). Answers are short, so players can write convincing fakes. alsoAccept lists other forms of the real answer.",
+  "items": [
+    {
+      "id": "fake-001",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of flamingos called?",
+      "answer": "A flamboyance",
+      "alsoAccept": [
+        "flamboyance"
+      ]
+    },
+    {
+      "id": "fake-002",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of crows called?",
+      "answer": "A murder",
+      "alsoAccept": [
+        "murder"
+      ]
+    },
+    {
+      "id": "fake-003",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of owls called?",
+      "answer": "A parliament",
+      "alsoAccept": [
+        "parliament"
+      ]
+    },
+    {
+      "id": "fake-004",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of ferrets called?",
+      "answer": "A business",
+      "alsoAccept": [
+        "business"
+      ]
+    },
+    {
+      "id": "fake-005",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of giraffes called?",
+      "answer": "A tower",
+      "alsoAccept": [
+        "tower"
+      ]
+    },
+    {
+      "id": "fake-006",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of porcupines called?",
+      "answer": "A prickle",
+      "alsoAccept": [
+        "prickle"
+      ]
+    },
+    {
+      "id": "fake-007",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of butterflies called?",
+      "answer": "A kaleidoscope",
+      "alsoAccept": [
+        "kaleidoscope"
+      ]
+    },
+    {
+      "id": "fake-008",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of pugs called?",
+      "answer": "A grumble",
+      "alsoAccept": [
+        "grumble"
+      ]
+    },
+    {
+      "id": "fake-009",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of cats called?",
+      "answer": "A clowder",
+      "alsoAccept": [
+        "clowder"
+      ]
+    },
+    {
+      "id": "fake-010",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a group of zebras called?",
+      "answer": "A dazzle",
+      "alsoAccept": [
+        "dazzle"
+      ]
+    },
+    {
+      "id": "fake-011",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a baby kangaroo called?",
+      "answer": "A joey",
+      "alsoAccept": [
+        "joey"
+      ]
+    },
+    {
+      "id": "fake-012",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a baby echidna called?",
+      "answer": "A puggle",
+      "alsoAccept": [
+        "puggle"
+      ]
+    },
+    {
+      "id": "fake-013",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a baby hedgehog called?",
+      "answer": "A hoglet",
+      "alsoAccept": [
+        "hoglet"
+      ]
+    },
+    {
+      "id": "fake-014",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a baby bat called?",
+      "answer": "A pup",
+      "alsoAccept": [
+        "pup"
+      ]
+    },
+    {
+      "id": "fake-015",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a baby rabbit called?",
+      "answer": "A kit",
+      "alsoAccept": [
+        "kit",
+        "kitten"
+      ]
+    },
+    {
+      "id": "fake-016",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a female fox called?",
+      "answer": "A vixen",
+      "alsoAccept": [
+        "vixen"
+      ]
+    },
+    {
+      "id": "fake-017",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a male swan called?",
+      "answer": "A cob",
+      "alsoAccept": [
+        "cob"
+      ]
+    },
+    {
+      "id": "fake-018",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a male duck called?",
+      "answer": "A drake",
+      "alsoAccept": [
+        "drake"
+      ]
+    },
+    {
+      "id": "fake-019",
+      "language": "en",
+      "category": "animals",
+      "question": "What is a female donkey called?",
+      "answer": "A jenny",
+      "alsoAccept": [
+        "jenny",
+        "jennet"
+      ]
+    },
+    {
+      "id": "fake-020",
+      "language": "en",
+      "category": "animals",
+      "question": "What shape is wombat poo?",
+      "answer": "Cubes",
+      "alsoAccept": [
+        "cube",
+        "cubes",
+        "cube shaped"
+      ]
+    },
+    {
+      "id": "fake-021",
+      "language": "en",
+      "category": "animals",
+      "question": "How many hearts does an octopus have?",
+      "answer": "Three",
+      "alsoAccept": [
+        "3",
+        "three hearts"
+      ]
+    },
+    {
+      "id": "fake-022",
+      "language": "en",
+      "category": "animals",
+      "question": "What colour is a polar bear's skin?",
+      "answer": "Black",
+      "alsoAccept": [
+        "black skin"
+      ]
+    },
+    {
+      "id": "fake-023",
+      "language": "en",
+      "category": "animals",
+      "question": "Which bird is the only one that can fly backwards?",
+      "answer": "The hummingbird",
+      "alsoAccept": [
+        "hummingbird",
+        "hummingbirds"
+      ]
+    },
+    {
+      "id": "fake-024",
+      "language": "en",
+      "category": "animals",
+      "question": "Which animal has fingerprints that can be mistaken for a human's?",
+      "answer": "The koala",
+      "alsoAccept": [
+        "koala",
+        "koalas"
+      ]
+    },
+    {
+      "id": "fake-025",
+      "language": "en",
+      "category": "animals",
+      "question": "Which land animal has the longest pregnancy?",
+      "answer": "The elephant",
+      "alsoAccept": [
+        "elephant",
+        "elephants"
+      ]
+    },
+    {
+      "id": "fake-026",
+      "language": "en",
+      "category": "words",
+      "question": "What is the plastic tip at the end of a shoelace called?",
+      "answer": "An aglet",
+      "alsoAccept": [
+        "aglet"
+      ]
+    },
+    {
+      "id": "fake-027",
+      "language": "en",
+      "category": "words",
+      "question": "What is the dot above a lowercase i called?",
+      "answer": "A tittle",
+      "alsoAccept": [
+        "tittle"
+      ]
+    },
+    {
+      "id": "fake-028",
+      "language": "en",
+      "category": "words",
+      "question": "What is the # symbol sometimes called?",
+      "answer": "An octothorpe",
+      "alsoAccept": [
+        "octothorpe"
+      ]
+    },
+    {
+      "id": "fake-029",
+      "language": "en",
+      "category": "words",
+      "question": "What is the & symbol called?",
+      "answer": "An ampersand",
+      "alsoAccept": [
+        "ampersand"
+      ]
+    },
+    {
+      "id": "fake-030",
+      "language": "en",
+      "category": "words",
+      "question": "What is the punctuation mark that combines ! and ? called?",
+      "answer": "An interrobang",
+      "alsoAccept": [
+        "interrobang"
+      ]
+    },
+    {
+      "id": "fake-031",
+      "language": "en",
+      "category": "words",
+      "question": "What is the ~ symbol called?",
+      "answer": "A tilde",
+      "alsoAccept": [
+        "tilde"
+      ]
+    },
+    {
+      "id": "fake-032",
+      "language": "en",
+      "category": "words",
+      "question": "What is the space between your eyebrows called?",
+      "answer": "The glabella",
+      "alsoAccept": [
+        "glabella"
+      ]
+    },
+    {
+      "id": "fake-033",
+      "language": "en",
+      "category": "words",
+      "question": "What is the groove between your nose and upper lip called?",
+      "answer": "The philtrum",
+      "alsoAccept": [
+        "philtrum"
+      ]
+    },
+    {
+      "id": "fake-034",
+      "language": "en",
+      "category": "words",
+      "question": "What is the smell of rain on dry earth called?",
+      "answer": "Petrichor",
+      "alsoAccept": [
+        "petrichor"
+      ]
+    },
+    {
+      "id": "fake-035",
+      "language": "en",
+      "category": "words",
+      "question": "What do you call a word that is its own opposite, like sanction?",
+      "answer": "A contronym",
+      "alsoAccept": [
+        "contronym",
+        "auto antonym",
+        "autoantonym"
+      ]
+    },
+    {
+      "id": "fake-036",
+      "language": "en",
+      "category": "words",
+      "question": "What do you call two words blended together, like brunch?",
+      "answer": "A portmanteau",
+      "alsoAccept": [
+        "portmanteau"
+      ]
+    },
+    {
+      "id": "fake-037",
+      "language": "en",
+      "category": "words",
+      "question": "What do you call a word that reads the same backwards, like level?",
+      "answer": "A palindrome",
+      "alsoAccept": [
+        "palindrome"
+      ]
+    },
+    {
+      "id": "fake-038",
+      "language": "en",
+      "category": "words",
+      "question": "What is the plural of the large antlered animal found in Canada?",
+      "answer": "Sheep",
+      "alsoAccept": [
+        "sheeps"
+      ]
+    },
+    {
+      "id": "fake-039",
+      "language": "en",
+      "category": "words",
+      "question": "What do you call a word that sounds like what it describes, such as buzz?",
+      "answer": "Onomatopoeia",
+      "alsoAccept": [
+        "onomatopoeic"
+      ]
+    },
+    {
+      "id": "fake-040",
+      "language": "en",
+      "category": "words",
+      "question": "What is the fear of the number 13 called?",
+      "answer": "Triskaidekaphobia",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-041",
+      "language": "en",
+      "category": "words",
+      "question": "What is a misheard song lyric called?",
+      "answer": "A mondegreen",
+      "alsoAccept": [
+        "mondegreen"
+      ]
+    },
+    {
+      "id": "fake-042",
+      "language": "en",
+      "category": "words",
+      "question": "What do you call a person who loves books?",
+      "answer": "A bibliophile",
+      "alsoAccept": [
+        "bibliophile"
+      ]
+    },
+    {
+      "id": "fake-043",
+      "language": "en",
+      "category": "words",
+      "question": "What is the little hook under the letter c in the word facade called?",
+      "answer": "A cedilla",
+      "alsoAccept": [
+        "cedilla"
+      ]
+    },
+    {
+      "id": "fake-044",
+      "language": "en",
+      "category": "words",
+      "question": "What does the word sesquipedalian describe?",
+      "answer": "Very long words",
+      "alsoAccept": [
+        "long words",
+        "a very long word"
+      ]
+    },
+    {
+      "id": "fake-045",
+      "language": "en",
+      "category": "words",
+      "question": "What do you call a person who loves rain?",
+      "answer": "A pluviophile",
+      "alsoAccept": [
+        "pluviophile"
+      ]
+    },
+    {
+      "id": "fake-046",
+      "language": "en",
+      "category": "science",
+      "question": "What is the smallest bone in the human body?",
+      "answer": "The stapes",
+      "alsoAccept": [
+        "stapes",
+        "stirrup"
+      ]
+    },
+    {
+      "id": "fake-047",
+      "language": "en",
+      "category": "science",
+      "question": "How many bones does an adult human body have?",
+      "answer": "206",
+      "alsoAccept": [
+        "206 bones"
+      ]
+    },
+    {
+      "id": "fake-048",
+      "language": "en",
+      "category": "science",
+      "question": "What is the largest organ of the human body?",
+      "answer": "The skin",
+      "alsoAccept": [
+        "skin"
+      ]
+    },
+    {
+      "id": "fake-049",
+      "language": "en",
+      "category": "science",
+      "question": "What is known as the powerhouse of the cell?",
+      "answer": "The mitochondrion",
+      "alsoAccept": [
+        "mitochondria",
+        "mitochondrion"
+      ]
+    },
+    {
+      "id": "fake-050",
+      "language": "en",
+      "category": "science",
+      "question": "What is the study of fungi called?",
+      "answer": "Mycology",
+      "alsoAccept": [
+        "mycology"
+      ]
+    },
+    {
+      "id": "fake-051",
+      "language": "en",
+      "category": "science",
+      "question": "What is the study of clouds called?",
+      "answer": "Nephology",
+      "alsoAccept": [
+        "nephology"
+      ]
+    },
+    {
+      "id": "fake-052",
+      "language": "en",
+      "category": "science",
+      "question": "What is the study of earthquakes called?",
+      "answer": "Seismology",
+      "alsoAccept": [
+        "seismology"
+      ]
+    },
+    {
+      "id": "fake-053",
+      "language": "en",
+      "category": "science",
+      "question": "Which metal is liquid at room temperature?",
+      "answer": "Mercury",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-054",
+      "language": "en",
+      "category": "science",
+      "question": "What is the chemical symbol for gold?",
+      "answer": "Au",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-055",
+      "language": "en",
+      "category": "science",
+      "question": "What is the chemical symbol for sodium?",
+      "answer": "Na",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-056",
+      "language": "en",
+      "category": "science",
+      "question": "What is the lightest chemical element?",
+      "answer": "Hydrogen",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-057",
+      "language": "en",
+      "category": "science",
+      "question": "What is the pH of pure water?",
+      "answer": "7",
+      "alsoAccept": [
+        "seven",
+        "ph 7"
+      ]
+    },
+    {
+      "id": "fake-058",
+      "language": "en",
+      "category": "science",
+      "question": "What is the unit of electrical resistance?",
+      "answer": "The ohm",
+      "alsoAccept": [
+        "ohm",
+        "ohms"
+      ]
+    },
+    {
+      "id": "fake-059",
+      "language": "en",
+      "category": "science",
+      "question": "What is the bone in your thigh called?",
+      "answer": "The femur",
+      "alsoAccept": [
+        "femur"
+      ]
+    },
+    {
+      "id": "fake-060",
+      "language": "en",
+      "category": "science",
+      "question": "What is the most abundant gas in Earths air?",
+      "answer": "Nitrogen",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-061",
+      "language": "en",
+      "category": "science",
+      "question": "What is the hardest natural substance?",
+      "answer": "Diamond",
+      "alsoAccept": [
+        "diamonds"
+      ]
+    },
+    {
+      "id": "fake-062",
+      "language": "en",
+      "category": "science",
+      "question": "What does an entomologist study?",
+      "answer": "Insects",
+      "alsoAccept": [
+        "insect"
+      ]
+    },
+    {
+      "id": "fake-063",
+      "language": "en",
+      "category": "science",
+      "question": "What does a barometer measure?",
+      "answer": "Air pressure",
+      "alsoAccept": [
+        "atmospheric pressure",
+        "pressure"
+      ]
+    },
+    {
+      "id": "fake-064",
+      "language": "en",
+      "category": "science",
+      "question": "How many legs does an insect have?",
+      "answer": "Six",
+      "alsoAccept": [
+        "6",
+        "six legs"
+      ]
+    },
+    {
+      "id": "fake-065",
+      "language": "en",
+      "category": "science",
+      "question": "At what temperature in Fahrenheit does water boil at sea level?",
+      "answer": "212 degrees",
+      "alsoAccept": [
+        "212",
+        "212 f",
+        "212 degrees fahrenheit"
+      ]
+    },
+    {
+      "id": "fake-066",
+      "language": "en",
+      "category": "science",
+      "question": "Which planet has the hottest surface?",
+      "answer": "Venus",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-067",
+      "language": "en",
+      "category": "science",
+      "question": "What is the name of the galaxy we live in?",
+      "answer": "The Milky Way",
+      "alsoAccept": [
+        "milky way"
+      ]
+    },
+    {
+      "id": "fake-068",
+      "language": "en",
+      "category": "science",
+      "question": "About how long does sunlight take to reach the Earth?",
+      "answer": "About 8 minutes",
+      "alsoAccept": [
+        "8 minutes",
+        "eight minutes",
+        "8 minutes 20 seconds"
+      ]
+    },
+    {
+      "id": "fake-069",
+      "language": "en",
+      "category": "science",
+      "question": "Which planet spins on its side?",
+      "answer": "Uranus",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-070",
+      "language": "en",
+      "category": "science",
+      "question": "What is the largest moon of Saturn?",
+      "answer": "Titan",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-071",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the capital of Australia?",
+      "answer": "Canberra",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-072",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the capital of Switzerland?",
+      "answer": "Bern",
+      "alsoAccept": [
+        "berne"
+      ]
+    },
+    {
+      "id": "fake-073",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the capital of Canada?",
+      "answer": "Ottawa",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-074",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the capital of Brazil?",
+      "answer": "Brasilia",
+      "alsoAccept": [
+        "brasília"
+      ]
+    },
+    {
+      "id": "fake-075",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the capital of New Zealand?",
+      "answer": "Wellington",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-076",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the capital of Turkey?",
+      "answer": "Ankara",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-077",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the smallest country in the world?",
+      "answer": "Vatican City",
+      "alsoAccept": [
+        "the vatican",
+        "vatican"
+      ]
+    },
+    {
+      "id": "fake-078",
+      "language": "en",
+      "category": "geography",
+      "question": "Which country has the most time zones when its overseas territories are counted?",
+      "answer": "France",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-079",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the largest desert in the world?",
+      "answer": "Antarctica",
+      "alsoAccept": [
+        "the antarctic",
+        "antarctic desert"
+      ]
+    },
+    {
+      "id": "fake-080",
+      "language": "en",
+      "category": "geography",
+      "question": "Which country has the only national flag that is not a rectangle or a square?",
+      "answer": "Nepal",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-081",
+      "language": "en",
+      "category": "geography",
+      "question": "Which continent has the most countries?",
+      "answer": "Africa",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-082",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the deepest ocean trench called?",
+      "answer": "The Mariana Trench",
+      "alsoAccept": [
+        "mariana trench",
+        "marianas trench"
+      ]
+    },
+    {
+      "id": "fake-083",
+      "language": "en",
+      "category": "geography",
+      "question": "Which country has the most natural lakes?",
+      "answer": "Canada",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-084",
+      "language": "en",
+      "category": "geography",
+      "question": "What is the longest mountain range on land?",
+      "answer": "The Andes",
+      "alsoAccept": [
+        "andes"
+      ]
+    },
+    {
+      "id": "fake-085",
+      "language": "en",
+      "category": "geography",
+      "question": "In which country is the city of Timbuktu?",
+      "answer": "Mali",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-086",
+      "language": "en",
+      "category": "food",
+      "question": "What is the most expensive spice by weight?",
+      "answer": "Saffron",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-087",
+      "language": "en",
+      "category": "food",
+      "question": "What is tofu made from?",
+      "answer": "Soybeans",
+      "alsoAccept": [
+        "soya beans",
+        "soybean",
+        "soya",
+        "soy",
+        "soy beans"
+      ]
+    },
+    {
+      "id": "fake-088",
+      "language": "en",
+      "category": "food",
+      "question": "What is the main ingredient of hummus?",
+      "answer": "Chickpeas",
+      "alsoAccept": [
+        "chickpea",
+        "chick peas",
+        "garbanzo beans"
+      ]
+    },
+    {
+      "id": "fake-089",
+      "language": "en",
+      "category": "food",
+      "question": "Which nut is marzipan traditionally made from?",
+      "answer": "Almonds",
+      "alsoAccept": [
+        "almond"
+      ]
+    },
+    {
+      "id": "fake-090",
+      "language": "en",
+      "category": "food",
+      "question": "Which fruit has its seeds on the outside?",
+      "answer": "Strawberry",
+      "alsoAccept": [
+        "strawberries"
+      ]
+    },
+    {
+      "id": "fake-091",
+      "language": "en",
+      "category": "food",
+      "question": "What is another name for an aubergine?",
+      "answer": "Eggplant",
+      "alsoAccept": [
+        "brinjal"
+      ]
+    },
+    {
+      "id": "fake-092",
+      "language": "en",
+      "category": "food",
+      "question": "Which cheese is traditionally used in a Greek salad?",
+      "answer": "Feta",
+      "alsoAccept": [
+        "feta cheese"
+      ]
+    },
+    {
+      "id": "fake-093",
+      "language": "en",
+      "category": "food",
+      "question": "Which herb is the main ingredient of pesto?",
+      "answer": "Basil",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-094",
+      "language": "en",
+      "category": "food",
+      "question": "What is kimchi mainly made from?",
+      "answer": "Fermented cabbage",
+      "alsoAccept": [
+        "cabbage"
+      ]
+    },
+    {
+      "id": "fake-095",
+      "language": "en",
+      "category": "food",
+      "question": "What is paneer made from?",
+      "answer": "Curdled milk",
+      "alsoAccept": [
+        "milk"
+      ]
+    },
+    {
+      "id": "fake-096",
+      "language": "en",
+      "category": "food",
+      "question": "What does the Italian word vermicelli mean?",
+      "answer": "Little worms",
+      "alsoAccept": [
+        "little worm"
+      ]
+    },
+    {
+      "id": "fake-097",
+      "language": "en",
+      "category": "history",
+      "question": "Which civilisation built Machu Picchu?",
+      "answer": "The Inca",
+      "alsoAccept": [
+        "inca",
+        "incas",
+        "the incas"
+      ]
+    },
+    {
+      "id": "fake-098",
+      "language": "en",
+      "category": "history",
+      "question": "In which year did the Titanic sink?",
+      "answer": "1912",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-099",
+      "language": "en",
+      "category": "history",
+      "question": "Who was the first person to walk on the Moon?",
+      "answer": "Neil Armstrong",
+      "alsoAccept": [
+        "armstrong"
+      ]
+    },
+    {
+      "id": "fake-100",
+      "language": "en",
+      "category": "history",
+      "question": "What was the name of the ship that carried the Pilgrims to America in 1620?",
+      "answer": "The Mayflower",
+      "alsoAccept": [
+        "mayflower"
+      ]
+    },
+    {
+      "id": "fake-101",
+      "language": "en",
+      "category": "history",
+      "question": "Which country gave the Statue of Liberty to the United States?",
+      "answer": "France",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-102",
+      "language": "en",
+      "category": "history",
+      "question": "Which dog was the first animal to orbit the Earth?",
+      "answer": "Laika",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-103",
+      "language": "en",
+      "category": "history",
+      "question": "In which country were the first modern Olympic Games held in 1896?",
+      "answer": "Greece",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-104",
+      "language": "en",
+      "category": "history",
+      "question": "How many strings does a standard violin have?",
+      "answer": "Four",
+      "alsoAccept": [
+        "4"
+      ]
+    },
+    {
+      "id": "fake-105",
+      "language": "en",
+      "category": "history",
+      "question": "How many keys does a standard piano have?",
+      "answer": "88",
+      "alsoAccept": [
+        "eighty eight",
+        "eighty-eight"
+      ]
+    },
+    {
+      "id": "fake-106",
+      "language": "en",
+      "category": "history",
+      "question": "How many sides does a stop sign have?",
+      "answer": "Eight",
+      "alsoAccept": [
+        "8"
+      ]
+    },
+    {
+      "id": "fake-107",
+      "language": "en",
+      "category": "history",
+      "question": "How many rings are on the Olympic flag?",
+      "answer": "Five",
+      "alsoAccept": [
+        "5"
+      ]
+    },
+    {
+      "id": "fake-108",
+      "language": "en",
+      "category": "history",
+      "question": "In chess, which piece moves only diagonally?",
+      "answer": "The bishop",
+      "alsoAccept": [
+        "bishop",
+        "bishops"
+      ]
+    },
+    {
+      "id": "fake-109",
+      "language": "en",
+      "category": "history",
+      "question": "How many squares are on a chessboard?",
+      "answer": "64",
+      "alsoAccept": [
+        "sixty four",
+        "sixty-four"
+      ]
+    },
+    {
+      "id": "fake-110",
+      "language": "en",
+      "category": "history",
+      "question": "What is the traditional gift for a 25th wedding anniversary?",
+      "answer": "Silver",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-111",
+      "language": "en",
+      "category": "history",
+      "question": "What is the Roman numeral for 50?",
+      "answer": "L",
+      "alsoAccept": []
+    },
+    {
+      "id": "fake-112",
+      "language": "en",
+      "category": "history",
+      "question": "How many minutes are there in a day?",
+      "answer": "1,440",
+      "alsoAccept": [
+        "1440"
+      ]
+    }
+  ]
+}

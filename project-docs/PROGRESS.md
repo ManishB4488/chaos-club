@@ -63,7 +63,7 @@ Update after every development session. Never mark a feature complete unless it 
 - [x] Who's Most Likely To? (2-4 players): server module and screens verified by owner (70 server + 20 shared tests, voting, reveal, results, play again, phone)
 - [ ] Impostor Word Game (3-4 players). Words approved; server module VERIFIED (95 server + 23 shared tests, typecheck, build). Screens written and the game switched on: NOT yet verified with real windows.
 - [ ] Roast Your Friends (2-4 players). Prompts approved; server module and screens written and the game switched on: NOT yet verified (owner has not yet reported the server test results).
-- [ ] The Fake Answer (2-4 players)
+- [ ] The Fake Answer (2-4 players). 112 trivia questions written (approved by delegation; owner to check answers). Server module, report keeping and tests written (NOT yet verified). Screens not started; game not switched on.
 - [ ] Draw It Wrong (2-4 players)
 
 ## Testing
@@ -85,4 +85,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Run the secret security checks (automated and manual). Do not mark the private word reveal complete until they pass. Then verify Roast, then The Fake Answer and Draw It Wrong.
+1) Owner: confirm the live Render deploy, then run the eight manual secret checks (private word reveal is NOT complete until they pass). 2) Verify Roast with real windows. 3) Verify the Fake Answer server module (npm test). 4) Fake Answer screens, then Draw It Wrong.

@@ -43,7 +43,7 @@ All scoring is calculated on the server. Browsers only display it.
 ## 4. The Fake Answer (2 to 4 players)
 
 - **Length:** 6 questions. 45 seconds to write a fake answer, 25 seconds to choose.
-- **Rules:** your own fake answer is hidden from you. A fake that matches the real answer after ignoring capitals and punctuation is refused and you write another. Identical fakes are merged and both writers are credited.
+- **Rules:** your own fake answer is hidden from you. A fake that matches the real answer after ignoring capitals and punctuation is quietly set aside (not refused, so nobody can find the real answer by guessing). See D-037. Identical fakes are merged and both writers are credited.
 - **Points:** choosing the real answer **+2**. Each player who chooses your fake **+1** to you.
 - **Tie at the end:** more correct answers first, then they share.
 - **Awards:** Professional Liar (most players fooled), Truth Seeker (most correct answers).

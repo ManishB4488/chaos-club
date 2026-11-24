@@ -1,4 +1,5 @@
 import type { GameId } from "@chaos/shared";
+import { FakeAnswerGame, type FakeAnswerConfig, type FakeAnswerQuestion } from "./fakeAnswer/FakeAnswerGame";
 import { ImpostorGame, type ImpostorConfig, type ImpostorWordPair } from "./impostor/ImpostorGame";
 import { RoastGame, type RoastConfig, type RoastPrompt } from "./roast/RoastGame";
 import { MostLikelyToGame, type MltConfig, type MltQuestion } from "./mostLikelyTo/MostLikelyToGame";
@@ -17,6 +18,9 @@ export type GameContent = {
   /** Prompts for Roast Your Friends. The game only exists when these are given. */
   roastPrompts?: RoastPrompt[];
   roastConfig?: Partial<RoastConfig>;
+  /** Trivia for The Fake Answer. The game only exists when these are given. */
+  triviaQuestions?: FakeAnswerQuestion[];
+  fakeAnswerConfig?: Partial<FakeAnswerConfig>;
 };
 
 /** Every game that really exists. A game missing here cannot be started. */
@@ -34,6 +38,11 @@ export function createGameFactories(content: GameContent): GameFactories {
   const prompts = content.roastPrompts;
   if (prompts) {
     factories.roast = (context) => new RoastGame({ ...context, prompts, config: content.roastConfig });
+  }
+  const trivia = content.triviaQuestions;
+  if (trivia) {
+    factories["fake-answer"] = (context) =>
+      new FakeAnswerGame({ ...context, questions: trivia, config: content.fakeAnswerConfig });
   }
   return factories;
 }

@@ -1,10 +1,11 @@
 import type { AvatarId, GameId, PlayerColor } from "./constants";
+import type { FakeAnswerView } from "./games/fakeAnswer";
 import type { ImpostorSecret, ImpostorView } from "./games/impostor";
 import type { MltView } from "./games/mostLikelyTo";
 import type { RoastView } from "./games/roast";
 
 /** What a player can see of the running game. */
-export type GameView = MltView | ImpostorView | RoastView;
+export type GameView = MltView | ImpostorView | RoastView | FakeAnswerView;
 
 /** A player's private secret in a running game. Only ever sent as the reply to their own request. */
 export type GameSecret = ImpostorSecret;
