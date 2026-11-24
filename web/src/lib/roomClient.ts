@@ -1,6 +1,7 @@
 import {
   CLIENT_EVENTS,
   SERVER_EVENTS,
+  type FakeAnswerAction,
   type GameId,
   type GameSecret,
   type ImpostorAction,
@@ -174,6 +175,8 @@ async function requestImpostorSecret(): Promise<ImpostorSecretResult> {
   return ack.ok ? { secret: ack.secret } : { error: ack.message };
 }
 
+const fakeAnswerAction = (action: FakeAnswerAction) =>
+  sendAction(CLIENT_EVENTS.gameAction, { gameId: "fake-answer", action });
 const roastAction = (action: RoastAction) =>
   sendAction(CLIENT_EVENTS.gameAction, { gameId: "roast", action });
 const impostorAction = (action: ImpostorAction) =>
@@ -197,4 +200,5 @@ export const roomClient = {
   impostorAction,
   roastAction,
   requestImpostorSecret,
+  fakeAnswerAction,
 };

@@ -249,7 +249,7 @@ describe("choosing", () => {
 });
 
 describe("reporting", () => {
-  it("passes a report on once per fake, never for the real answer, and only while options are showing", () => {
+  it("passes a report on once per fake, only while options are showing, and gives no clue about the real answer", () => {
     const s = setup();
     expectError(act(s.game, "a", { type: "report", optionId: "o1" }), "WRONG_STEP");
     submit(s, "a", "Gallium");
@@ -258,7 +258,10 @@ describe("reporting", () => {
     const fake = optionId(s, "a", "Sodium");
     expect(act(s.game, "a", { type: "report", optionId: fake, reason: "rude" }).ok).toBe(true);
     expectError(act(s.game, "a", { type: "report", optionId: fake }), "ALREADY_DONE");
-    expectError(act(s.game, "a", { type: "report", optionId: realOption(s, "a") }), "ANSWER_NOT_FOUND");
+    // Reporting the real answer must look exactly like reporting a fake, or a player could find it by trying each
+    // option in turn. It is accepted but not recorded.
+    expect(act(s.game, "a", { type: "report", optionId: realOption(s, "a") }).ok).toBe(true);
+    expectError(act(s.game, "a", { type: "report", optionId: "zzz" }), "ANSWER_NOT_FOUND");
     expect(s.reports).toEqual([{ game: "fake-answer", text: "Sodium", reason: "rude" }]);
   });
 });

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Copy, Link as LinkIcon, LogOut, Share2, UserX } from "lucide-react";
-import type { GameId, ImpostorAction, RoastAction, RoomView } from "@chaos/shared";
+import type { FakeAnswerAction, GameId, ImpostorAction, RoastAction, RoomView } from "@chaos/shared";
 import { Avatar } from "@/components/ui/Avatar";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +10,7 @@ import { Card } from "@/components/ui/Card";
 import { copyText } from "@/lib/clipboard";
 import type { ImpostorSecretResult } from "@/lib/roomClient";
 import { SITE_NAME } from "@/lib/site";
+import { FakeAnswerScreen } from "@/components/games/fakeAnswer/FakeAnswerScreen";
 import { ImpostorScreen } from "@/components/games/impostor/ImpostorScreen";
 import { MostLikelyToScreen } from "@/components/games/mostLikelyTo/MostLikelyToScreen";
 import { RoastScreen } from "@/components/games/roast/RoastScreen";
@@ -26,6 +27,7 @@ export type LobbyActions = {
   impostor: (action: ImpostorAction) => Promise<string | null>;
   roast: (action: RoastAction) => Promise<string | null>;
   impostorSecret: () => Promise<ImpostorSecretResult>;
+  fakeAnswer: (action: FakeAnswerAction) => Promise<string | null>;
 };
 
 type LobbyProps = {
@@ -155,9 +157,15 @@ export function Lobby({ room, online, actions }: LobbyProps) {
               }}
             />
           ) : (
-            <Card padding="lg">
-              <p className="text-ink-soft">This game has no screen yet.</p>
-            </Card>
+            <FakeAnswerScreen
+              room={room}
+              game={room.game}
+              actions={{
+                send: actions.fakeAnswer,
+                playAgain: actions.playAgain,
+                backToLobby: actions.backToLobby,
+              }}
+            />
           )}
         </>
       ) : (

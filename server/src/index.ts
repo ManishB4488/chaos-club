@@ -4,6 +4,7 @@ import { env } from "./config/env";
 import { loadImpostorWords } from "./content/loadImpostorWords";
 import { loadMostLikelyToQuestions } from "./content/loadQuestions";
 import { loadRoastPrompts } from "./content/loadRoastPrompts";
+import { loadTrivia } from "./content/loadTrivia";
 import { createGameFactories } from "./games/registry";
 
 const gameFactories = createGameFactories({
@@ -11,6 +12,7 @@ const gameFactories = createGameFactories({
   mltConfig: { rounds: env.MLT_ROUNDS },
   impostorWords: loadImpostorWords(),
   roastPrompts: loadRoastPrompts(),
+  triviaQuestions: loadTrivia(),
 });
 
 const server = createGameServer({

@@ -16,6 +16,7 @@ const { env } = await import("./config/env");
 const { loadImpostorWords } = await import("./content/loadImpostorWords");
 const { loadMostLikelyToQuestions } = await import("./content/loadQuestions");
 const { loadRoastPrompts } = await import("./content/loadRoastPrompts");
+const { loadTrivia } = await import("./content/loadTrivia");
 const { createGameFactories } = await import("./games/registry");
 
 const webDir = resolve(import.meta.dirname, "../../web");
@@ -33,6 +34,7 @@ const gameFactories = createGameFactories({
   mltConfig: { rounds: env.MLT_ROUNDS },
   impostorWords: loadImpostorWords(),
   roastPrompts: loadRoastPrompts(),
+  triviaQuestions: loadTrivia(),
 });
 
 const server = createGameServer({

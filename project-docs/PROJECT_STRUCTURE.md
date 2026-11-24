@@ -176,3 +176,7 @@ chaos-club/
 - `server/src/games/fakeAnswer/FakeAnswerGame.ts`: the rules, scoring, awards and reports
 - `server/src/content/loadTrivia.ts`
 - The game is not offered yet: it is only registered when the trivia file is passed in
+
+## Added with the Fake Answer screens (unverified until PROGRESS.md says so)
+- `web/src/components/games/fakeAnswer/`: FakeAnswerScreen, WriteView, ChooseView (with FakeReportButton), FakeReveal, FakeResults
+- `server/src/index.ts` and `server/src/combined.ts`: The Fake Answer switched on by passing in the trivia file

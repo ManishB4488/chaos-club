@@ -219,9 +219,11 @@ export class FakeAnswerGame implements GameInstance {
 
   private report(playerId: string, optionId: string, reason: string | null): Result<void> {
     if (this.step !== "choosing" && this.step !== "reveal") return fail("WRONG_STEP");
-    // Only fakes written by other players can be reported. The real answer cannot.
-    const option = this.options.find((o) => o.id === optionId && !o.isReal && !o.authorIds.includes(playerId));
+    const option = this.options.find((o) => o.id === optionId);
     if (!option) return fail("ANSWER_NOT_FOUND");
+    // Reporting the real answer (or your own fake) gets the same plain "ok" as any other report, but is not
+    // recorded. A different reply would let a player find the real answer by reporting each option in turn.
+    if (option.isReal || option.authorIds.includes(playerId)) return done;
     const key = `${this.round}:${playerId}:${optionId}`;
     if (this.reported.has(key)) return fail("ALREADY_DONE");
     this.reported.add(key);
