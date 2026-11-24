@@ -180,3 +180,11 @@ chaos-club/
 ## Added with the Fake Answer screens (unverified until PROGRESS.md says so)
 - `web/src/components/games/fakeAnswer/`: FakeAnswerScreen, WriteView, ChooseView (with FakeReportButton), FakeReveal, FakeResults
 - `server/src/index.ts` and `server/src/combined.ts`: The Fake Answer switched on by passing in the trivia file
+
+## Added with the Draw It Wrong server slice (unverified until PROGRESS.md says so)
+- `content/en/draw-words.json`: 110 words
+- `shared/src/games/drawItWrong.ts`: actions, strokes, rules, secrets and the private view
+- `server/src/games/drawItWrong/DrawItWrongGame.ts`: rules, challenges, guessing, scoring, awards, drawings
+- `server/src/socket/roomGateway.ts`: live drawing relay (game:draw, draw:delta) and game:drawing
+- `server/src/rooms/RoomManager.ts`: gameAction now also returns live messages; drawingFor()
+- The game is not offered yet: it is only registered when the word file is passed in

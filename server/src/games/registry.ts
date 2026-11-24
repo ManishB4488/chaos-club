@@ -1,4 +1,5 @@
 import type { GameId } from "@chaos/shared";
+import { DrawItWrongGame, type DrawConfig, type DrawWord } from "./drawItWrong/DrawItWrongGame";
 import { FakeAnswerGame, type FakeAnswerConfig, type FakeAnswerQuestion } from "./fakeAnswer/FakeAnswerGame";
 import { ImpostorGame, type ImpostorConfig, type ImpostorWordPair } from "./impostor/ImpostorGame";
 import { RoastGame, type RoastConfig, type RoastPrompt } from "./roast/RoastGame";
@@ -21,6 +22,9 @@ export type GameContent = {
   /** Trivia for The Fake Answer. The game only exists when these are given. */
   triviaQuestions?: FakeAnswerQuestion[];
   fakeAnswerConfig?: Partial<FakeAnswerConfig>;
+  /** Words for Draw It Wrong. The game only exists when these are given. */
+  drawWords?: DrawWord[];
+  drawConfig?: Partial<DrawConfig>;
 };
 
 /** Every game that really exists. A game missing here cannot be started. */
@@ -43,6 +47,11 @@ export function createGameFactories(content: GameContent): GameFactories {
   if (trivia) {
     factories["fake-answer"] = (context) =>
       new FakeAnswerGame({ ...context, questions: trivia, config: content.fakeAnswerConfig });
+  }
+  const drawWords = content.drawWords;
+  if (drawWords) {
+    factories["draw-it-wrong"] = (context) =>
+      new DrawItWrongGame({ ...context, words: drawWords, config: content.drawConfig });
   }
   return factories;
 }

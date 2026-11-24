@@ -102,7 +102,10 @@ describe("private secrets, tested with several real sessions", () => {
 
       // 3. The impostor got their role and NO word. The crew got the same word.
       expect(secrets[impostorIndex]).toEqual({ role: "impostor", word: null });
-      const crewWords = crewIndexes.map((index) => secrets[index]?.word);
+      const crewWords = crewIndexes.map((index) => {
+        const secret = secrets[index];
+        return secret && "word" in secret ? secret.word : undefined;
+      });
       expect(new Set(crewWords).size).toBe(1);
       const crewWord = String(crewWords[0]);
       expect(ALL_TOKENS).toContain(crewWord);

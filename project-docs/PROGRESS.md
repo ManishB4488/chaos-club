@@ -64,7 +64,7 @@ Update after every development session. Never mark a feature complete unless it 
 - [ ] Impostor Word Game (3-4 players). Words approved; server module VERIFIED (95 server + 23 shared tests, typecheck, build). Screens written and the game switched on: NOT yet verified with real windows.
 - [ ] Roast Your Friends (2-4 players). Prompts approved; server module and screens written and the game switched on: NOT yet verified (owner has not yet reported the server test results).
 - [ ] The Fake Answer (2-4 players). 112 trivia questions (owner to check answers). Server module and screens written and the game switched on in the server: NOT yet verified. Homepage card still says Coming soon.
-- [ ] Draw It Wrong (2-4 players)
+- [ ] Draw It Wrong (2-4 players). 110 words, shared types, server rules, live stroke relay and tests written (NOT yet verified). Drawing screen (canvas, tools, guess feed, replay) not started; game not switched on.
 
 ## Testing
 - [ ] Two-player testing
@@ -85,4 +85,4 @@ None recorded yet.
 - 7 moderate npm audit warnings in web linting tools (minimatch via typescript-eslint). Dev-only, not in the game server.
 
 ## Next Task
-Verify The Fake Answer (3 windows + a 2 player room), Roast, and the private-secret checks on the live site. Then switch the homepage cards on for verified games. Then Draw It Wrong (the last game).
+1) Owner: verify the Fake Answer and Roast in real windows, and run the manual private-secret checks. 2) Verify this server slice (npm test). 3) Build the Draw It Wrong screens: canvas with tools, live view for guessers, guess feed, eyes-closed mode, results with replay.

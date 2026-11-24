@@ -156,7 +156,7 @@ export function Lobby({ room, online, actions }: LobbyProps) {
                 backToLobby: actions.backToLobby,
               }}
             />
-          ) : (
+          ) : room.game.gameId === "fake-answer" ? (
             <FakeAnswerScreen
               room={room}
               game={room.game}
@@ -166,6 +166,10 @@ export function Lobby({ room, online, actions }: LobbyProps) {
                 backToLobby: actions.backToLobby,
               }}
             />
+          ) : (
+            <Card padding="lg">
+              <p className="text-ink-soft">This game has no screen yet.</p>
+            </Card>
           )}
         </>
       ) : (

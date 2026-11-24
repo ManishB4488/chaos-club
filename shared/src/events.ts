@@ -1,14 +1,15 @@
 import type { AvatarId, GameId, PlayerColor } from "./constants";
+import type { DrawItWrongView, DrawSecret } from "./games/drawItWrong";
 import type { FakeAnswerView } from "./games/fakeAnswer";
 import type { ImpostorSecret, ImpostorView } from "./games/impostor";
 import type { MltView } from "./games/mostLikelyTo";
 import type { RoastView } from "./games/roast";
 
 /** What a player can see of the running game. */
-export type GameView = MltView | ImpostorView | RoastView | FakeAnswerView;
+export type GameView = MltView | ImpostorView | RoastView | FakeAnswerView | DrawItWrongView;
 
 /** A player's private secret in a running game. Only ever sent as the reply to their own request. */
-export type GameSecret = ImpostorSecret;
+export type GameSecret = ImpostorSecret | DrawSecret;
 
 /** Events the browser sends to the server. */
 export const CLIENT_EVENTS = {
@@ -23,6 +24,10 @@ export const CLIENT_EVENTS = {
   returnToLobby: "room:returnToLobby",
   /** Ask the server for YOUR OWN secret in the running game. Answered only to the asking player. */
   requestSecret: "game:secret",
+  /** Drawing moves (lines, undo, clear). Has a higher rate limit than game:action. */
+  drawAction: "game:draw",
+  /** Ask for the current drawing, to join late, after a refresh, or for the replay. */
+  requestDrawing: "game:drawing",
 } as const;
 
 /** Events the server sends to browsers. */
@@ -31,6 +36,8 @@ export const SERVER_EVENTS = {
   roomState: "room:state",
   /** Sent only to a player who was removed by the host. */
   kicked: "room:kicked",
+  /** A small update to the drawing, sent while the artist draws. */
+  drawDelta: "draw:delta",
 } as const;
 
 export type RoomPhase = "lobby" | "starting" | "in-game";
@@ -63,7 +70,8 @@ export type RoomErrorCode =
   | "CLUE_NOT_ALLOWED"
   | "ALREADY_DONE"
   | "CONTENT_NOT_ALLOWED"
-  | "ANSWER_NOT_FOUND";
+  | "ANSWER_NOT_FOUND"
+  | "DRAWING_RULE";
 
 /** Plain-language messages the website can show. */
 export const ROOM_ERROR_MESSAGES: Record<RoomErrorCode, string> = {
@@ -95,6 +103,7 @@ export const ROOM_ERROR_MESSAGES: Record<RoomErrorCode, string> = {
   ALREADY_DONE: "You have already done that.",
   CONTENT_NOT_ALLOWED: "That is not allowed here. Please keep it friendly and try again.",
   ANSWER_NOT_FOUND: "That answer does not exist.",
+  DRAWING_RULE: "That is not allowed in this round.",
 };
 
 export type PlayerView = {

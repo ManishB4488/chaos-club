@@ -39,3 +39,10 @@ export type GameActionInput = z.infer<typeof gameActionSchema>;
 /** Asking for your own secret in the running game. The player is identified by their connection, never by this payload. */
 export const requestSecretSchema = z.strictObject({ gameId: z.enum(GAME_IDS) });
 export type RequestSecretInput = z.infer<typeof requestSecretSchema>;
+
+/** Ask for the drawing of the current round, or of an earlier round (for the replay). */
+export const requestDrawingSchema = z.strictObject({
+  gameId: z.enum(GAME_IDS),
+  round: z.number().int().min(1).max(20).optional(),
+});
+export type RequestDrawingInput = z.infer<typeof requestDrawingSchema>;

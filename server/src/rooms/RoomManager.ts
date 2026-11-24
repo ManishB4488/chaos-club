@@ -4,13 +4,14 @@ import {
   PLAYER_COLORS,
   ROOM_MAX_PLAYERS,
   type GameId,
+  type DrawingSnapshot,
   type GameSecret,
   type RoomErrorCode,
   type RoomPhase,
   type RoomView,
 } from "@chaos/shared";
 import type { GameFactories } from "../games/registry";
-import type { ContentReportEntry, GameInstance } from "../games/types";
+import type { ContentReportEntry, GameInstance, StreamBatch } from "../games/types";
 import { InMemoryRoomStore, type RoomStore } from "../storage/roomStore";
 import { generateRoomCode } from "./codes";
 import {
@@ -260,7 +261,11 @@ export class RoomManager {
   // ---------- during a game ----------
 
   /** Passes a player's action to the running game. The game checks and applies it. */
-  gameAction(socketId: string, gameId: GameId, action: unknown): Result<{ code: string }> {
+  gameAction(
+    socketId: string,
+    gameId: GameId,
+    action: unknown,
+  ): Result<{ code: string; stream: StreamBatch }> {
     const located = this.locate(socketId);
     if (!located) return fail("NOT_IN_ROOM");
     const { room, player } = located;
@@ -268,7 +273,10 @@ export class RoomManager {
       return fail("NO_GAME_RUNNING");
     }
     const result = room.game.handleAction(player.id, action);
-    return result.ok ? ok({ code: room.code }) : result;
+    if (!result.ok) return result;
+    // Live messages (such as one piece of a line) go straight to the other players.
+    const stream = room.game.drainStream?.() ?? { events: [], silent: false };
+    return ok({ code: room.code, stream });
   }
 
   /**
@@ -286,6 +294,21 @@ export class RoomManager {
       return fail("NO_GAME_RUNNING");
     }
     return game.secretFor(player.id);
+  }
+
+  /**
+   * The drawing of the current round, or of an earlier one (for the replay). Identity comes from the
+   * connection, and membership is re-checked on every request. The word is only included once it is public.
+   */
+  drawingFor(socketId: string, gameId: GameId, round?: number): Result<DrawingSnapshot> {
+    const located = this.locate(socketId);
+    if (!located) return fail("NOT_IN_ROOM");
+    const { room, player } = located;
+    const game = room.game;
+    if (room.phase !== "in-game" || !game || game.id !== gameId || !game.drawingFor) {
+      return fail("NO_GAME_RUNNING");
+    }
+    return game.drawingFor(player.id, round);
   }
 
   /** After a game is over, the host can bring everyone back to the lobby (also used for a rematch). */

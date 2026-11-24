@@ -80,17 +80,36 @@ export function SecretCard({ onReveal }: { onReveal: () => Promise<ImpostorSecre
 
   return (
     <Card accent={secret.role === "impostor" ? "bubblegum" : "sunny"} padding="md" className="flex flex-col gap-3">
-      {secret.role === "impostor" ? (
+      {secret.role === "impostor" && (
         <>
           <p className="font-display text-3xl font-bold">You are the IMPOSTOR</p>
           <p className="text-lg text-ink-soft">
             You do not get the word. Listen to the clues, blend in, and try not to get caught.
           </p>
         </>
-      ) : (
+      )}
+      {secret.role === "crew" && (
         <>
           <p className="text-sm text-ink-soft">You are on the crew. The secret word is</p>
           <p className="font-display text-4xl font-bold">{secret.word}</p>
+        </>
+      )}
+      {secret.role === "artist" &&
+        (secret.word ? (
+          <>
+            <p className="text-sm text-ink-soft">You are the artist. The secret word is</p>
+            <p className="font-display text-4xl font-bold">{secret.word}</p>
+          </>
+        ) : (
+          <>
+            <p className="font-display text-3xl font-bold">You are the artist</p>
+            <p className="text-lg text-ink-soft">You do not have a word yet.</p>
+          </>
+        ))}
+      {secret.role === "guesser" && (
+        <>
+          <p className="font-display text-3xl font-bold">You are the guesser</p>
+          <p className="text-lg text-ink-soft">You have no secret word. Watch the others and work it out.</p>
         </>
       )}
       <p className="text-sm text-ink-soft">This hides itself in 15 seconds.</p>

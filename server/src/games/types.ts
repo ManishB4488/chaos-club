@@ -1,4 +1,4 @@
-import type { AvatarId, GameId, GameSecret, GameView, PlayerColor } from "@chaos/shared";
+import type { AvatarId, DrawingSnapshot, GameId, GameSecret, GameView, PlayerColor } from "@chaos/shared";
 import type { Result } from "../rooms/types";
 
 export type GamePlayer = {
@@ -7,6 +7,20 @@ export type GamePlayer = {
   avatar: AvatarId;
   color: PlayerColor;
 };
+
+/** A small live message for the other players (for example one piece of a line being drawn). */
+export type StreamEvent = {
+  event: string;
+  data: unknown;
+  /** Do not send to this player (the one who made the move, who already has it). */
+  exceptPlayerId?: string;
+};
+
+/**
+ * Live messages produced by the last move. `silent` means the move changed nothing that the normal room
+ * update shows, so the room update is not re-sent (otherwise every tiny piece of a line would trigger one).
+ */
+export type StreamBatch = { events: StreamEvent[]; silent: boolean };
 
 /** A player's report that some content is not okay. Kept for review (the admin panel comes later). */
 export type ContentReportEntry = {
@@ -47,4 +61,8 @@ export interface GameInstance {
    * have proven which player is asking, because this method trusts the id it is given.
    */
   secretFor?(playerId: string): Result<GameSecret>;
+  /** Live messages produced by the last move, and whether the normal room update can be skipped. */
+  drainStream?(): StreamBatch;
+  /** The current (or an earlier round's) drawing. Only for drawing games. */
+  drawingFor?(playerId: string, round?: number): Result<DrawingSnapshot>;
 }

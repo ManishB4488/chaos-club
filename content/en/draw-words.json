@@ -1,0 +1,666 @@
+{
+  "version": 1,
+  "status": "APPROVED by owner delegation (2026-11-23). Simple, drawable words.",
+  "items": [
+    {
+      "id": "draw-001",
+      "language": "en",
+      "category": "animals",
+      "word": "cat"
+    },
+    {
+      "id": "draw-002",
+      "language": "en",
+      "category": "animals",
+      "word": "dog"
+    },
+    {
+      "id": "draw-003",
+      "language": "en",
+      "category": "animals",
+      "word": "elephant"
+    },
+    {
+      "id": "draw-004",
+      "language": "en",
+      "category": "animals",
+      "word": "giraffe"
+    },
+    {
+      "id": "draw-005",
+      "language": "en",
+      "category": "animals",
+      "word": "penguin"
+    },
+    {
+      "id": "draw-006",
+      "language": "en",
+      "category": "animals",
+      "word": "snake"
+    },
+    {
+      "id": "draw-007",
+      "language": "en",
+      "category": "animals",
+      "word": "butterfly"
+    },
+    {
+      "id": "draw-008",
+      "language": "en",
+      "category": "animals",
+      "word": "fish"
+    },
+    {
+      "id": "draw-009",
+      "language": "en",
+      "category": "animals",
+      "word": "spider"
+    },
+    {
+      "id": "draw-010",
+      "language": "en",
+      "category": "animals",
+      "word": "owl"
+    },
+    {
+      "id": "draw-011",
+      "language": "en",
+      "category": "animals",
+      "word": "rabbit"
+    },
+    {
+      "id": "draw-012",
+      "language": "en",
+      "category": "animals",
+      "word": "turtle"
+    },
+    {
+      "id": "draw-013",
+      "language": "en",
+      "category": "animals",
+      "word": "monkey"
+    },
+    {
+      "id": "draw-014",
+      "language": "en",
+      "category": "animals",
+      "word": "lion"
+    },
+    {
+      "id": "draw-015",
+      "language": "en",
+      "category": "animals",
+      "word": "duck"
+    },
+    {
+      "id": "draw-016",
+      "language": "en",
+      "category": "animals",
+      "word": "bee"
+    },
+    {
+      "id": "draw-017",
+      "language": "en",
+      "category": "animals",
+      "word": "crab"
+    },
+    {
+      "id": "draw-018",
+      "language": "en",
+      "category": "animals",
+      "word": "horse"
+    },
+    {
+      "id": "draw-019",
+      "language": "en",
+      "category": "animals",
+      "word": "shark"
+    },
+    {
+      "id": "draw-020",
+      "language": "en",
+      "category": "animals",
+      "word": "frog"
+    },
+    {
+      "id": "draw-021",
+      "language": "en",
+      "category": "animals",
+      "word": "whale"
+    },
+    {
+      "id": "draw-022",
+      "language": "en",
+      "category": "animals",
+      "word": "snail"
+    },
+    {
+      "id": "draw-023",
+      "language": "en",
+      "category": "food",
+      "word": "pizza"
+    },
+    {
+      "id": "draw-024",
+      "language": "en",
+      "category": "food",
+      "word": "banana"
+    },
+    {
+      "id": "draw-025",
+      "language": "en",
+      "category": "food",
+      "word": "burger"
+    },
+    {
+      "id": "draw-026",
+      "language": "en",
+      "category": "food",
+      "word": "ice cream"
+    },
+    {
+      "id": "draw-027",
+      "language": "en",
+      "category": "food",
+      "word": "apple"
+    },
+    {
+      "id": "draw-028",
+      "language": "en",
+      "category": "food",
+      "word": "cake"
+    },
+    {
+      "id": "draw-029",
+      "language": "en",
+      "category": "food",
+      "word": "sandwich"
+    },
+    {
+      "id": "draw-030",
+      "language": "en",
+      "category": "food",
+      "word": "pineapple"
+    },
+    {
+      "id": "draw-031",
+      "language": "en",
+      "category": "food",
+      "word": "carrot"
+    },
+    {
+      "id": "draw-032",
+      "language": "en",
+      "category": "food",
+      "word": "egg"
+    },
+    {
+      "id": "draw-033",
+      "language": "en",
+      "category": "food",
+      "word": "cookie"
+    },
+    {
+      "id": "draw-034",
+      "language": "en",
+      "category": "food",
+      "word": "watermelon"
+    },
+    {
+      "id": "draw-035",
+      "language": "en",
+      "category": "food",
+      "word": "popcorn"
+    },
+    {
+      "id": "draw-036",
+      "language": "en",
+      "category": "food",
+      "word": "donut"
+    },
+    {
+      "id": "draw-037",
+      "language": "en",
+      "category": "food",
+      "word": "noodles"
+    },
+    {
+      "id": "draw-038",
+      "language": "en",
+      "category": "food",
+      "word": "cheese"
+    },
+    {
+      "id": "draw-039",
+      "language": "en",
+      "category": "food",
+      "word": "strawberry"
+    },
+    {
+      "id": "draw-040",
+      "language": "en",
+      "category": "food",
+      "word": "lemon"
+    },
+    {
+      "id": "draw-041",
+      "language": "en",
+      "category": "food",
+      "word": "corn"
+    },
+    {
+      "id": "draw-042",
+      "language": "en",
+      "category": "food",
+      "word": "mushroom"
+    },
+    {
+      "id": "draw-043",
+      "language": "en",
+      "category": "food",
+      "word": "sushi"
+    },
+    {
+      "id": "draw-044",
+      "language": "en",
+      "category": "food",
+      "word": "taco"
+    },
+    {
+      "id": "draw-045",
+      "language": "en",
+      "category": "objects",
+      "word": "umbrella"
+    },
+    {
+      "id": "draw-046",
+      "language": "en",
+      "category": "objects",
+      "word": "bicycle"
+    },
+    {
+      "id": "draw-047",
+      "language": "en",
+      "category": "objects",
+      "word": "clock"
+    },
+    {
+      "id": "draw-048",
+      "language": "en",
+      "category": "objects",
+      "word": "key"
+    },
+    {
+      "id": "draw-049",
+      "language": "en",
+      "category": "objects",
+      "word": "scissors"
+    },
+    {
+      "id": "draw-050",
+      "language": "en",
+      "category": "objects",
+      "word": "lamp"
+    },
+    {
+      "id": "draw-051",
+      "language": "en",
+      "category": "objects",
+      "word": "chair"
+    },
+    {
+      "id": "draw-052",
+      "language": "en",
+      "category": "objects",
+      "word": "bed"
+    },
+    {
+      "id": "draw-053",
+      "language": "en",
+      "category": "objects",
+      "word": "camera"
+    },
+    {
+      "id": "draw-054",
+      "language": "en",
+      "category": "objects",
+      "word": "guitar"
+    },
+    {
+      "id": "draw-055",
+      "language": "en",
+      "category": "objects",
+      "word": "glasses"
+    },
+    {
+      "id": "draw-056",
+      "language": "en",
+      "category": "objects",
+      "word": "hat"
+    },
+    {
+      "id": "draw-057",
+      "language": "en",
+      "category": "objects",
+      "word": "bottle"
+    },
+    {
+      "id": "draw-058",
+      "language": "en",
+      "category": "objects",
+      "word": "ladder"
+    },
+    {
+      "id": "draw-059",
+      "language": "en",
+      "category": "objects",
+      "word": "candle"
+    },
+    {
+      "id": "draw-060",
+      "language": "en",
+      "category": "objects",
+      "word": "balloon"
+    },
+    {
+      "id": "draw-061",
+      "language": "en",
+      "category": "objects",
+      "word": "tent"
+    },
+    {
+      "id": "draw-062",
+      "language": "en",
+      "category": "objects",
+      "word": "phone"
+    },
+    {
+      "id": "draw-063",
+      "language": "en",
+      "category": "objects",
+      "word": "rocket"
+    },
+    {
+      "id": "draw-064",
+      "language": "en",
+      "category": "objects",
+      "word": "book"
+    },
+    {
+      "id": "draw-065",
+      "language": "en",
+      "category": "objects",
+      "word": "backpack"
+    },
+    {
+      "id": "draw-066",
+      "language": "en",
+      "category": "objects",
+      "word": "mirror"
+    },
+    {
+      "id": "draw-067",
+      "language": "en",
+      "category": "places",
+      "word": "house"
+    },
+    {
+      "id": "draw-068",
+      "language": "en",
+      "category": "places",
+      "word": "castle"
+    },
+    {
+      "id": "draw-069",
+      "language": "en",
+      "category": "places",
+      "word": "mountain"
+    },
+    {
+      "id": "draw-070",
+      "language": "en",
+      "category": "places",
+      "word": "beach"
+    },
+    {
+      "id": "draw-071",
+      "language": "en",
+      "category": "places",
+      "word": "bridge"
+    },
+    {
+      "id": "draw-072",
+      "language": "en",
+      "category": "places",
+      "word": "volcano"
+    },
+    {
+      "id": "draw-073",
+      "language": "en",
+      "category": "places",
+      "word": "rainbow"
+    },
+    {
+      "id": "draw-074",
+      "language": "en",
+      "category": "places",
+      "word": "moon"
+    },
+    {
+      "id": "draw-075",
+      "language": "en",
+      "category": "places",
+      "word": "sun"
+    },
+    {
+      "id": "draw-076",
+      "language": "en",
+      "category": "places",
+      "word": "tree"
+    },
+    {
+      "id": "draw-077",
+      "language": "en",
+      "category": "places",
+      "word": "cloud"
+    },
+    {
+      "id": "draw-078",
+      "language": "en",
+      "category": "places",
+      "word": "island"
+    },
+    {
+      "id": "draw-079",
+      "language": "en",
+      "category": "places",
+      "word": "lighthouse"
+    },
+    {
+      "id": "draw-080",
+      "language": "en",
+      "category": "places",
+      "word": "tower"
+    },
+    {
+      "id": "draw-081",
+      "language": "en",
+      "category": "places",
+      "word": "rain"
+    },
+    {
+      "id": "draw-082",
+      "language": "en",
+      "category": "places",
+      "word": "snowman"
+    },
+    {
+      "id": "draw-083",
+      "language": "en",
+      "category": "places",
+      "word": "flower"
+    },
+    {
+      "id": "draw-084",
+      "language": "en",
+      "category": "places",
+      "word": "fire"
+    },
+    {
+      "id": "draw-085",
+      "language": "en",
+      "category": "places",
+      "word": "river"
+    },
+    {
+      "id": "draw-086",
+      "language": "en",
+      "category": "places",
+      "word": "windmill"
+    },
+    {
+      "id": "draw-087",
+      "language": "en",
+      "category": "places",
+      "word": "igloo"
+    },
+    {
+      "id": "draw-088",
+      "language": "en",
+      "category": "places",
+      "word": "pyramid"
+    },
+    {
+      "id": "draw-089",
+      "language": "en",
+      "category": "actions",
+      "word": "sleeping"
+    },
+    {
+      "id": "draw-090",
+      "language": "en",
+      "category": "actions",
+      "word": "swimming"
+    },
+    {
+      "id": "draw-091",
+      "language": "en",
+      "category": "actions",
+      "word": "dancing"
+    },
+    {
+      "id": "draw-092",
+      "language": "en",
+      "category": "actions",
+      "word": "fishing"
+    },
+    {
+      "id": "draw-093",
+      "language": "en",
+      "category": "actions",
+      "word": "singing"
+    },
+    {
+      "id": "draw-094",
+      "language": "en",
+      "category": "actions",
+      "word": "running"
+    },
+    {
+      "id": "draw-095",
+      "language": "en",
+      "category": "actions",
+      "word": "cooking"
+    },
+    {
+      "id": "draw-096",
+      "language": "en",
+      "category": "actions",
+      "word": "reading"
+    },
+    {
+      "id": "draw-097",
+      "language": "en",
+      "category": "actions",
+      "word": "jumping"
+    },
+    {
+      "id": "draw-098",
+      "language": "en",
+      "category": "actions",
+      "word": "painting"
+    },
+    {
+      "id": "draw-099",
+      "language": "en",
+      "category": "actions",
+      "word": "climbing"
+    },
+    {
+      "id": "draw-100",
+      "language": "en",
+      "category": "actions",
+      "word": "laughing"
+    },
+    {
+      "id": "draw-101",
+      "language": "en",
+      "category": "actions",
+      "word": "flying"
+    },
+    {
+      "id": "draw-102",
+      "language": "en",
+      "category": "actions",
+      "word": "skating"
+    },
+    {
+      "id": "draw-103",
+      "language": "en",
+      "category": "actions",
+      "word": "camping"
+    },
+    {
+      "id": "draw-104",
+      "language": "en",
+      "category": "actions",
+      "word": "sneezing"
+    },
+    {
+      "id": "draw-105",
+      "language": "en",
+      "category": "actions",
+      "word": "juggling"
+    },
+    {
+      "id": "draw-106",
+      "language": "en",
+      "category": "actions",
+      "word": "waving"
+    },
+    {
+      "id": "draw-107",
+      "language": "en",
+      "category": "actions",
+      "word": "surfing"
+    },
+    {
+      "id": "draw-108",
+      "language": "en",
+      "category": "actions",
+      "word": "brushing teeth"
+    },
+    {
+      "id": "draw-109",
+      "language": "en",
+      "category": "actions",
+      "word": "yawning"
+    },
+    {
+      "id": "draw-110",
+      "language": "en",
+      "category": "actions",
+      "word": "clapping"
+    }
+  ]
+}

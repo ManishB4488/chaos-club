@@ -9,9 +9,11 @@ import {
   joinRoomSchema,
   kickPlayerSchema,
   rejoinRoomSchema,
+  requestDrawingSchema,
   requestSecretSchema,
   selectGameSchema,
   type AckError,
+  type GameId,
   type JoinedPayload,
   type RoomErrorCode,
 } from "@chaos/shared";
@@ -73,6 +75,8 @@ export function createRoomGateway(io: Server, manager: RoomManager, options: Gat
   io.on("connection", (socket) => {
     const generalLimit = new TokenBucket(30, 10, now);
     const joinLimit = new TokenBucket(5, 0.5, now);
+    // Drawing sends many small messages, so it gets a bigger allowance than ordinary actions.
+    const drawLimit = new TokenBucket(80, 40, now);
     const ip = clientIp(socket, options.trustProxy ?? false);
 
     /** Registers one event with rate limiting, validation and error handling around it. */
@@ -81,11 +85,12 @@ export function createRoomGateway(io: Server, manager: RoomManager, options: Gat
       schema: ZodType<T> | null,
       isJoinAttempt: boolean,
       run: (input: T, reply: Reply) => void,
+      limiter: TokenBucket = generalLimit,
     ): void {
       socket.on(event, (payload: unknown, ack: unknown) => {
         const reply: Reply = typeof ack === "function" ? (ack as Reply) : () => undefined;
 
-        if (!generalLimit.take()) return reply(failure("RATE_LIMITED"));
+        if (!limiter.take()) return reply(failure("RATE_LIMITED"));
         if (isJoinAttempt && !(joinLimit.take() && ipJoinLimiter.take(ip))) {
           return reply(failure("RATE_LIMITED"));
         }
@@ -170,11 +175,27 @@ export function createRoomGateway(io: Server, manager: RoomManager, options: Gat
       countdownTimers.add(timer);
     });
 
-    listen(CLIENT_EVENTS.gameAction, gameActionSchema, false, (input, reply) => {
+    const runGameAction = (input: { gameId: GameId; action?: unknown }, reply: Reply) => {
       const result = manager.gameAction(socket.id, input.gameId, input.action);
       if (!result.ok) return reply(failure(result.error));
       reply({ ok: true });
-      broadcast(result.value.code);
+      const { code, stream } = result.value;
+      for (const event of stream.events) {
+        for (const { playerId, socketId } of manager.recipients(code)) {
+          if (playerId !== event.exceptPlayerId) io.to(socketId).emit(event.event, event.data);
+        }
+      }
+      // A tiny drawing update changes nothing the normal room update shows, so it is not re-sent.
+      if (!stream.silent) broadcast(code);
+    };
+    listen(CLIENT_EVENTS.gameAction, gameActionSchema, false, runGameAction);
+    listen(CLIENT_EVENTS.drawAction, gameActionSchema, false, runGameAction, drawLimit);
+
+    // The current (or an earlier) drawing, answered only to the asking connection.
+    listen(CLIENT_EVENTS.requestDrawing, requestDrawingSchema, false, (input, reply) => {
+      const result = manager.drawingFor(socket.id, input.gameId, input.round);
+      if (!result.ok) return reply(failure(result.error));
+      reply({ ok: true, drawing: result.value });
     });
 
     listen<void>(CLIENT_EVENTS.returnToLobby, null, false, (_input, reply) => {
