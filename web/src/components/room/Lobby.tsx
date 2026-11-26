@@ -2,14 +2,22 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Copy, Link as LinkIcon, LogOut, Share2, UserX } from "lucide-react";
-import type { FakeAnswerAction, GameId, ImpostorAction, RoastAction, RoomView } from "@chaos/shared";
+import type {
+  DrawItWrongAction,
+  FakeAnswerAction,
+  GameId,
+  ImpostorAction,
+  RoastAction,
+  RoomView,
+} from "@chaos/shared";
 import { Avatar } from "@/components/ui/Avatar";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { copyText } from "@/lib/clipboard";
-import type { ImpostorSecretResult } from "@/lib/roomClient";
+import type { DrawSecretResult, DrawingResult, ImpostorSecretResult } from "@/lib/roomClient";
 import { SITE_NAME } from "@/lib/site";
+import { DrawItWrongScreen } from "@/components/games/drawItWrong/DrawItWrongScreen";
 import { FakeAnswerScreen } from "@/components/games/fakeAnswer/FakeAnswerScreen";
 import { ImpostorScreen } from "@/components/games/impostor/ImpostorScreen";
 import { MostLikelyToScreen } from "@/components/games/mostLikelyTo/MostLikelyToScreen";
@@ -28,6 +36,10 @@ export type LobbyActions = {
   roast: (action: RoastAction) => Promise<string | null>;
   impostorSecret: () => Promise<ImpostorSecretResult>;
   fakeAnswer: (action: FakeAnswerAction) => Promise<string | null>;
+  drawSend: (action: DrawItWrongAction) => Promise<string | null>;
+  drawMove: (action: DrawItWrongAction) => Promise<string | null>;
+  drawSecret: () => Promise<DrawSecretResult>;
+  drawLoad: (round?: number) => Promise<DrawingResult>;
 };
 
 type LobbyProps = {
@@ -167,9 +179,18 @@ export function Lobby({ room, online, actions }: LobbyProps) {
               }}
             />
           ) : (
-            <Card padding="lg">
-              <p className="text-ink-soft">This game has no screen yet.</p>
-            </Card>
+            <DrawItWrongScreen
+              room={room}
+              game={room.game}
+              actions={{
+                send: actions.drawSend,
+                move: actions.drawMove,
+                revealSecret: actions.drawSecret,
+                loadDrawing: actions.drawLoad,
+                playAgain: actions.playAgain,
+                backToLobby: actions.backToLobby,
+              }}
+            />
           )}
         </>
       ) : (

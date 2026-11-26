@@ -319,13 +319,25 @@ export class DrawItWrongGame implements GameInstance {
     if (past) {
       return {
         ok: true,
-        value: { round: past.round, word: past.word || null, artistId: past.artistId, strokes: past.strokes.map(copyStroke) },
+        value: {
+          round: past.round,
+          word: past.word || null,
+          artistId: past.artistId,
+          strokes: past.strokes.map(copyStroke),
+          nextStrokeId: 0,
+        },
       };
     }
     if (wanted !== this.round || this.step === "finished") return { ok: false, error: "WRONG_STEP" };
     return {
       ok: true,
-      value: { round: this.round, word: null, artistId: this.artistId, strokes: this.strokes.map(copyStroke) },
+      value: {
+        round: this.round,
+        word: null,
+        artistId: this.artistId,
+        strokes: this.strokes.map(copyStroke),
+        nextStrokeId: this.lastStrokeId + 1,
+      },
     };
   }
 

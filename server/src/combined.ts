@@ -13,6 +13,7 @@ const { default: next } = await import("next");
 const { GAME_PLAYER_LIMITS, ROOM_MAX_PLAYERS } = await import("@chaos/shared");
 const { createGameServer } = await import("./app");
 const { env } = await import("./config/env");
+const { loadDrawWords } = await import("./content/loadDrawWords");
 const { loadImpostorWords } = await import("./content/loadImpostorWords");
 const { loadMostLikelyToQuestions } = await import("./content/loadQuestions");
 const { loadRoastPrompts } = await import("./content/loadRoastPrompts");
@@ -35,6 +36,7 @@ const gameFactories = createGameFactories({
   impostorWords: loadImpostorWords(),
   roastPrompts: loadRoastPrompts(),
   triviaQuestions: loadTrivia(),
+  drawWords: loadDrawWords(),
 });
 
 const server = createGameServer({

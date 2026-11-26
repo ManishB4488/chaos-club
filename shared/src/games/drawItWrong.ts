@@ -74,6 +74,8 @@ export type DrawingSnapshot = {
   word: string | null;
   artistId: string;
   strokes: DrawStroke[];
+  /** The line number the artist's next line must use (so a refresh can carry on). 0 for finished rounds. */
+  nextStrokeId: number;
 };
 
 export type DrawMode = "free" | "circles" | "one-color" | "one-stroke" | "five-strokes" | "eyes-closed";

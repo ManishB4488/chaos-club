@@ -188,3 +188,9 @@ chaos-club/
 - `server/src/socket/roomGateway.ts`: live drawing relay (game:draw, draw:delta) and game:drawing
 - `server/src/rooms/RoomManager.ts`: gameAction now also returns live messages; drawingFor()
 - The game is not offered yet: it is only registered when the word file is passed in
+
+## Added with the Draw It Wrong screens (unverified until PROGRESS.md says so)
+- `web/src/components/games/drawItWrong/`: DrawItWrongScreen, CanvasSurface, ArtistPad, DrawSecretCard, GuessPanel, DrawResults (with the replay)
+- `web/src/lib/drawingStore.ts`: holds and paints the lines outside React; `useLiveDrawing.ts`: keeps it in step with the server; `replay.ts`
+- `shared/src/games/drawItWrong.ts`: DrawingSnapshot now tells the artist which line number to continue from
+- `server/src/index.ts` and `server/src/combined.ts`: Draw It Wrong switched on by passing in the word file

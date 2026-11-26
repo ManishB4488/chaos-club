@@ -80,6 +80,10 @@ export function RoomScreen({ code }: { code: string }) {
             roast: roomClient.roastAction,
             impostorSecret: roomClient.requestImpostorSecret,
             fakeAnswer: roomClient.fakeAnswerAction,
+            drawSend: roomClient.drawSend,
+            drawMove: roomClient.drawMove,
+            drawSecret: roomClient.requestDrawSecret,
+            drawLoad: roomClient.requestDrawing,
             backToLobby: roomClient.returnToLobby,
             // Play again: back to the lobby, then straight into the same game.
             playAgain: async () => {

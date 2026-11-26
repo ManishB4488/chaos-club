@@ -1,6 +1,7 @@
 import { GAME_PLAYER_LIMITS, ROOM_MAX_PLAYERS } from "@chaos/shared";
 import { createGameServer } from "./app";
 import { env } from "./config/env";
+import { loadDrawWords } from "./content/loadDrawWords";
 import { loadImpostorWords } from "./content/loadImpostorWords";
 import { loadMostLikelyToQuestions } from "./content/loadQuestions";
 import { loadRoastPrompts } from "./content/loadRoastPrompts";
@@ -13,6 +14,7 @@ const gameFactories = createGameFactories({
   impostorWords: loadImpostorWords(),
   roastPrompts: loadRoastPrompts(),
   triviaQuestions: loadTrivia(),
+  drawWords: loadDrawWords(),
 });
 
 const server = createGameServer({

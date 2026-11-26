@@ -1,6 +1,9 @@
 import {
   CLIENT_EVENTS,
   SERVER_EVENTS,
+  type DrawItWrongAction,
+  type DrawSecret,
+  type DrawingSnapshot,
   type FakeAnswerAction,
   type GameId,
   type GameSecret,
@@ -175,6 +178,33 @@ async function requestImpostorSecret(): Promise<ImpostorSecretResult> {
   return ack.ok ? { secret: ack.secret } : { error: ack.message };
 }
 
+/** What asking for the artist's private words gives back. Only the component that asked ever holds it. */
+export type DrawSecretResult = { secret: DrawSecret } | { error: string };
+export type DrawingResult = { drawing: DrawingSnapshot } | { error: string };
+
+/** The artist's own words, served only to the asking connection, re-checked by the server every time. */
+async function requestDrawSecret(): Promise<DrawSecretResult> {
+  const ack = await request<{ secret: GameSecret }>(CLIENT_EVENTS.requestSecret, { gameId: "draw-it-wrong" });
+  if (!ack.ok) return { error: ack.message };
+  const secret = ack.secret;
+  return secret.role === "artist" || secret.role === "guesser" ? { secret } : { error: "Unexpected reply." };
+}
+
+/** The current drawing, or an earlier round's (for the replay). It never contains the word before the round ends. */
+async function requestDrawing(round?: number): Promise<DrawingResult> {
+  const ack = await request<{ drawing: DrawingSnapshot }>(CLIENT_EVENTS.requestDrawing, {
+    gameId: "draw-it-wrong",
+    ...(round ? { round } : {}),
+  });
+  return ack.ok ? { drawing: ack.drawing } : { error: ack.message };
+}
+
+/** Picking a word and guessing. */
+const drawSend = (action: DrawItWrongAction) =>
+  sendAction(CLIENT_EVENTS.gameAction, { gameId: "draw-it-wrong", action });
+/** Lines, undo and clear. These use their own, higher rate limit. */
+const drawMove = (action: DrawItWrongAction) =>
+  sendAction(CLIENT_EVENTS.drawAction, { gameId: "draw-it-wrong", action });
 const fakeAnswerAction = (action: FakeAnswerAction) =>
   sendAction(CLIENT_EVENTS.gameAction, { gameId: "fake-answer", action });
 const roastAction = (action: RoastAction) =>
@@ -201,4 +231,8 @@ export const roomClient = {
   roastAction,
   requestImpostorSecret,
   fakeAnswerAction,
+  requestDrawSecret,
+  requestDrawing,
+  drawSend,
+  drawMove,
 };
